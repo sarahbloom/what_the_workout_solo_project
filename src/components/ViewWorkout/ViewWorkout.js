@@ -22,6 +22,7 @@ class ViewWorkout extends Component {
       // this.props.history.push('home');
     }
   }
+  
   logout = () => {
     this.props.dispatch(triggerLogout());
     // this.props.history.push('home');
@@ -40,14 +41,14 @@ class ViewWorkout extends Component {
     
     let workoutList = this.props.state.viewWorkoutList.map((workoutItem) =>{
       return <li className="workoutList" key={workoutItem.id}> 
-        <Link to="/viewworkout/detail">
-          <Button value={workoutItem} 
-        onClick={() => this.viewWorkoutDetail(workoutItem)} 
-        variant="raised" color="primary"> 
-          {workoutItem.name} 
-        </Button>
-        </Link>
-      </li>
+                <Link to="/viewworkout/detail" >
+                  <Button value={workoutItem} 
+                  onClick={() => this.viewWorkoutDetail(workoutItem)} 
+                  variant="raised" color="primary"> 
+                    {workoutItem.name} 
+                  </Button>
+                </Link>
+              </li>
     })
 
     if (this.props.user.userName) {

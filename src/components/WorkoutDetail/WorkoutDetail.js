@@ -2,7 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Nav from '../../components/Nav/Nav';
+
 import { triggerLogout } from '../../redux/actions/loginActions';
+
+const mapStateToProps = state => ({
+  user: state.user,
+  workoutDetailList: state.workoutDetailList
+});
 
 class WorkoutDetail extends Component {
   componentDidUpdate() {
@@ -18,9 +24,12 @@ class WorkoutDetail extends Component {
 
   render() {
     let content = null;
-    let workoutDetailArray = this.props.state.workoutDetailList.map(exerciseItem =>{
+    // console.log("workout detail props", this.props.workoutDetailList);
+    
+    let workoutDetailArray = this.props.workoutDetailList.map(exerciseItem =>{
         return (
-          <li key={exerciseItem.id}> {exerciseItem} </li>
+          <li key={exerciseItem.id}>  Name: {exerciseItem.name} Sets: { exerciseItem.default_sets} Repetitions: { exerciseItem.default_reps} Weight: { exerciseItem.default_weight}
+          </li> //make this its own component
         )
     })
 
@@ -44,10 +53,5 @@ class WorkoutDetail extends Component {
     );
   }
 }
-
-const mapStateToProps = state => ({
-  user: state.user,
-  state
-});
 
 export default connect(mapStateToProps)(WorkoutDetail);
