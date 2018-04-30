@@ -31,7 +31,7 @@ class ViewWorkout extends Component {
     
     // this.props.dispatch({ 
     //   type: "DISPLAY_WORKOUT_DETAILS",
-    //   payload: this.props.state.viewWorkoutList
+    //   payload: workoutItem.id
     // })
   }
 
