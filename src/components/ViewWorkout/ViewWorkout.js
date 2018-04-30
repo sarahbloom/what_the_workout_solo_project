@@ -11,9 +11,17 @@ const mapStateToProps = state => ({
   user: state.user,
 });
 
-class UserPage extends Component {
+class ViewWorkout extends Component {
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
+    this.getAllWorkouts();
+  }
+
+  //load added workouts to DOM 
+  getAllWorkouts = () =>{
+    this.props.dispatch({
+      type: "GET_WORKOUT"
+    })
   }
 
   componentDidUpdate() {
@@ -33,16 +41,8 @@ class UserPage extends Component {
     if (this.props.user.userName) {
       content = (
         <div>
-          <h1
-            id="welcome"
-          >
-            Welcome, { this.props.user.userName }!
-          </h1>
-          <button
-            onClick={this.logout}
-          >
-            Log Out
-          </button>
+          <h1 id="welcome"> Welcome, { this.props.user.userName }!</h1>
+          <button onClick={this.logout}> Log Out </button>
         </div>
       );
     }
@@ -57,5 +57,5 @@ class UserPage extends Component {
 }
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(UserPage);
+export default connect(mapStateToProps)(ViewWorkout);
 

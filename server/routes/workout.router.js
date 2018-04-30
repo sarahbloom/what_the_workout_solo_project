@@ -2,11 +2,9 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-//GET route template
-
+//GET workouts in DB to view all workouts
 router.get('/', (req, res) => {
-    console.log('/ workout GET view workouts');
-    console.log('is authenticated?', req.isAuthenticated());
+    // console.log('is authenticated?', req.isAuthenticated());
     console.log('user', req.user);  
     if (req.isAuthenticated()){
         let queryText = `SELECT * FROM "workout" WHERE user_id = $1;`;
@@ -20,7 +18,6 @@ router.get('/', (req, res) => {
         })
     } else {
         res.sendStatus(403);
-        //TODO: add alert box
     }
 });
 
