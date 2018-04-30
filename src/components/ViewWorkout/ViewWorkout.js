@@ -6,30 +6,28 @@ import Nav from '../../components/Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { triggerLogout } from '../../redux/actions/loginActions';
 
-
-const mapStateToProps = state => ({
-  user: state.user,
-});
-
 class ViewWorkout extends Component {
+  //all workouts will display on DOM on page load
   componentDidMount() {
-    this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
-    this.getAllWorkouts();
+    this.props.dispatch({ 
+      type: USER_ACTIONS.FETCH_USER 
+    });
   }
 
-  //load added workouts to DOM 
-  getAllWorkouts = () =>{
-    this.props.dispatch({
-      type: "GET_WORKOUT"
-    })
+  componentWillMount(){
+    this.getWorkoutList();
   }
 
+    getWorkoutList= () =>{
+      this.props.dispatch({
+        type: "GET_WORKOUT"
+      })
+  }
   componentDidUpdate() {
     if (!this.props.user.isLoading && this.props.user.userName === null) {
       this.props.history.push('home');
     }
   }
-
   logout = () => {
     this.props.dispatch(triggerLogout());
     // this.props.history.push('home');
@@ -37,11 +35,17 @@ class ViewWorkout extends Component {
 
   render() {
     let content = null;
+    console.log(this.props.state);
+    
+    let workoutList = this.props.state.viewWorkoutList.map((workoutItem) =>{
+      return <li className="workoutList" key={workoutItem.id}> {workoutItem.name} </li>
+    })
 
     if (this.props.user.userName) {
       content = (
         <div>
           <h1 id="welcome"> Welcome, { this.props.user.userName }!</h1>
+          <ul className="workoutList"> {workoutList} </ul>
           <button onClick={this.logout}> Log Out </button>
         </div>
       );
@@ -56,6 +60,10 @@ class ViewWorkout extends Component {
   }
 }
 
-// this allows us to use <App /> in index.js
+const mapStateToProps = state => ({
+  user: state.user,
+  state
+});
+
 export default connect(mapStateToProps)(ViewWorkout);
 

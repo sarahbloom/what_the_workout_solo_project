@@ -5,12 +5,12 @@ const Nav = () => (
   <div className="navbar">
     <div>
       <ul>
-        <li>
+        <li className="navBar">
           <Link to="/user">
            View All Workouts
           </Link>
         </li>
-        <li>
+        <li className="navBar">
           <Link to="/info">
             Workout Details
           </Link>

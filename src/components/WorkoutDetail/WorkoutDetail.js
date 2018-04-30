@@ -4,10 +4,6 @@ import { connect } from 'react-redux';
 import Nav from '../../components/Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 
-const mapStateToProps = state => ({
-  user: state.user,
-});
-
 class WorkoutDetail extends Component {
   componentDidMount() {
     this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
@@ -41,5 +37,9 @@ class WorkoutDetail extends Component {
   }
 }
 
-// this allows us to use <App /> in index.js
+const mapStateToProps = state => ({
+  user: state.user,
+  state
+});
+
 export default connect(mapStateToProps)(WorkoutDetail);
