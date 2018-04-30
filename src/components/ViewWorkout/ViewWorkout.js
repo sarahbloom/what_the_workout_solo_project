@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Button from 'material-ui/Button';
+import '../ViewWorkout/ViewWorkout.css'
 
 import Nav from '../../components/Nav/Nav';
 
@@ -38,14 +40,17 @@ class ViewWorkout extends Component {
     console.log(this.props.state);
     
     let workoutList = this.props.state.viewWorkoutList.map((workoutItem) =>{
-      return <li className="workoutList" key={workoutItem.id}> {workoutItem.name} </li>
+      return <li className="workoutList" key={workoutItem.id}> 
+        <Button variant="raised" color="primary"> {workoutItem.name} </Button>
+        <br />
+      </li>
     })
 
     if (this.props.user.userName) {
       content = (
         <div>
           <h1 id="welcome"> Welcome, { this.props.user.userName }!</h1>
-          <ul className="workoutList"> {workoutList} </ul>
+          <ul> {workoutList} </ul>
           <button onClick={this.logout}> Log Out </button>
         </div>
       );
