@@ -28,7 +28,10 @@ class WorkoutDetail extends Component {
     
     let workoutDetailArray = this.props.workoutDetailList.map(exerciseItem =>{
         return (
-          <li key={exerciseItem.id}>  Name: {exerciseItem.name} Sets: { exerciseItem.default_sets} Repetitions: { exerciseItem.default_reps} Weight: { exerciseItem.default_weight}
+          <li key={exerciseItem.name}>  <strong>Name:</strong> {exerciseItem.name} &nbsp;
+            <strong>Sets:</strong> {exerciseItem.default_sets} &nbsp;
+            <strong>Repetitions:</strong> {exerciseItem.default_reps} &nbsp;
+            <strong>Resistance:</strong> {exerciseItem.default_weight}&nbsp;
           </li> //make this its own component
         )
     })
