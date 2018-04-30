@@ -19,7 +19,20 @@ router.get('/', (req, res) => {
     } else {
         res.sendStatus(403);
     }
-});
+});// end GET all workouts
+
+//GET workout details for a specific workout
+router.get('/detail', (req, res)=>{
+    console.log('is authenticated?', req.isAuthenticated());
+    console.log('user', req.user);
+    // if (red.isAuthenticated()){
+    //     let queryText = `SELECT "exercise"."name", "default_sets", "default_reps", "default_weight" FROM "exercise" 
+	// JOIN "workout_detail" ON "exercise"."id" = "workout_detail"."exercise_id"
+	// JOIN "workout" ON "workout"."id" = "workout_detail"."workout_id"
+    // WHERE "workout"."id" = $1;`;
+    // pool.query(queryText, [req.body.id])
+    // }//end if statement
+})// end GET workout details
 
 //POST route template
 router.post('/', (req, res) => {

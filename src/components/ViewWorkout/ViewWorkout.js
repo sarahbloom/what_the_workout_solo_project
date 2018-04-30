@@ -12,18 +12,9 @@ class ViewWorkout extends Component {
   //all workouts will display on DOM on page load
   componentDidMount() {
     this.props.dispatch({ 
-      type: USER_ACTIONS.FETCH_USER 
+      type: USER_ACTIONS.FETCH_USER,
+      type: "GET_WORKOUT"
     });
-  }
-
-  componentWillMount(){
-    this.getWorkoutList();
-  }
-
-    getWorkoutList= () =>{
-      this.props.dispatch({
-        type: "GET_WORKOUT"
-      })
   }
   componentDidUpdate() {
     if (!this.props.user.isLoading && this.props.user.userName === null) {
@@ -35,14 +26,24 @@ class ViewWorkout extends Component {
     // this.props.history.push('home');
   }
 
+  viewWorkoutDetail = (workoutItem) => {
+  console.log('clicked button', workoutItem.id);
+    
+    // this.props.dispatch({ 
+    //   type: "DISPLAY_WORKOUT_DETAILS",
+    //   payload: this.props.state.viewWorkoutList
+    // })
+  }
+
   render() {
     let content = null;
-    console.log(this.props.state);
     
     let workoutList = this.props.state.viewWorkoutList.map((workoutItem) =>{
       return <li className="workoutList" key={workoutItem.id}> 
-        <Button variant="raised" color="primary"> {workoutItem.name} </Button>
-        <br />
+        <Button value={workoutItem} onClick={() => this.viewWorkoutDetail(workoutItem)} 
+        variant="raised" color="primary"> 
+          {workoutItem.name} 
+        </Button>
       </li>
     })
 
@@ -50,6 +51,8 @@ class ViewWorkout extends Component {
       content = (
         <div>
           <h1 id="welcome"> Welcome, { this.props.user.userName }!</h1>
+          
+          <h2>Your Workouts</h2>
           <ul> {workoutList} </ul>
           <button onClick={this.logout}> Log Out </button>
         </div>

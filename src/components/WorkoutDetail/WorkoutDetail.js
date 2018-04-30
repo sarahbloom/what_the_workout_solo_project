@@ -21,9 +21,9 @@ class WorkoutDetail extends Component {
     if (this.props.user.userName) {
       content = (
         <div>
-          <p>
-            Info Page
-          </p>
+          <h2>
+            Workout Details
+          </h2>
         </div>
       );
     }
