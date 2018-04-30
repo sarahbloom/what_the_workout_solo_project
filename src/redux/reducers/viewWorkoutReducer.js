@@ -2,7 +2,7 @@
 
 const viewWorkoutList = (state = [], action) =>{
     switch (action.type){
-        case "SET_WORKOUT_LIST":
+        case 'SET_WORKOUT_LIST':
         return action.payload;
         default:
         return state;

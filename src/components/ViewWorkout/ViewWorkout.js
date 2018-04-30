@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from 'material-ui/Button';
-import '../ViewWorkout/ViewWorkout.css'
+import { Link } from 'react-router-dom';
 
+import '../ViewWorkout/ViewWorkout.css'
 import Nav from '../../components/Nav/Nav';
 
 import { USER_ACTIONS } from '../../redux/actions/userActions';
@@ -18,7 +19,7 @@ class ViewWorkout extends Component {
   }
   componentDidUpdate() {
     if (!this.props.user.isLoading && this.props.user.userName === null) {
-      this.props.history.push('home');
+      // this.props.history.push('home');
     }
   }
   logout = () => {
@@ -28,11 +29,10 @@ class ViewWorkout extends Component {
 
   viewWorkoutDetail = (workoutItem) => {
   console.log('clicked button', workoutItem.id);
-    
-    // this.props.dispatch({ 
-    //   type: "DISPLAY_WORKOUT_DETAILS",
-    //   payload: workoutItem.id
-    // })
+    this.props.dispatch({ 
+      type: 'DISPLAY_WORKOUT_DETAIL',
+      payload: workoutItem.id
+    })
   }
 
   render() {
@@ -40,10 +40,13 @@ class ViewWorkout extends Component {
     
     let workoutList = this.props.state.viewWorkoutList.map((workoutItem) =>{
       return <li className="workoutList" key={workoutItem.id}> 
-        <Button value={workoutItem} onClick={() => this.viewWorkoutDetail(workoutItem)} 
+        <Link to="/viewworkout/detail">
+          <Button value={workoutItem} 
+        onClick={() => this.viewWorkoutDetail(workoutItem)} 
         variant="raised" color="primary"> 
           {workoutItem.name} 
         </Button>
+        </Link>
       </li>
     })
 

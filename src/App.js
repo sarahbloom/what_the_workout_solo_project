@@ -10,7 +10,7 @@ import Header from './components/Header/Header';
 import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import ViewWorkout from './components/ViewWorkout/ViewWorkout';
-// import WorkoutDetail from './components/WorkoutDetail/WorkoutDetail'
+import WorkoutDetail from './components/WorkoutDetail/WorkoutDetail'
 
 import './styles/main.css';
 
@@ -29,8 +29,12 @@ const App = () => (
           component={RegisterPage}
         />
         <Route
-          path="/viewworkout"
+          exact path="/viewworkout"
           component={ViewWorkout}
+        />
+        <Route
+          path="/viewworkout/detail"
+          component={WorkoutDetail}
         />
         {/* <Route
           path="/addworkout"

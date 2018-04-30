@@ -23,9 +23,9 @@ router.get('/', (req, res) => {
 
 //GET workout details for a specific workout
 router.get('/detail/:id', (req, res)=>{
-    console.log('is authenticated?', req.isAuthenticated());
+    // console.log('is authenticated?', req.isAuthenticated());
     console.log('user', req.user);
-    console.log('body', req.body);
+    console.log('workout id:', req.params.id);
     
     if (req.isAuthenticated()){
         let queryText = `SELECT "exercise"."name", "default_sets", "default_reps", "default_weight" FROM "exercise" 

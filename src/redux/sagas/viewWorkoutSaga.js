@@ -2,11 +2,11 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
 function* viewWorkout(action){
-    console.log('in viewWorkoutSaga');
+    // console.log('in viewWorkoutSaga');
     try {
         const viewWorkoutResponse = yield call(axios.get, '/api/workout')
         yield put({
-            type: "SET_WORKOUT_LIST",
+            type: 'SET_WORKOUT_LIST',
             payload: viewWorkoutResponse.data
     })
     } catch (error) {
