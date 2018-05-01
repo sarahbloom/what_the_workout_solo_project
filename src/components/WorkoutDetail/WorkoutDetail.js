@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Button from 'material-ui/Button';
+import { Link } from 'react-router-dom';
 
 import Nav from '../../components/Nav/Nav';
 
 import { triggerLogout } from '../../redux/actions/loginActions';
 
-const mapStateToProps = state => ({
-  user: state.user,
-  workoutDetailList: state.workoutDetailList
-});
-
 class WorkoutDetail extends Component {
   componentDidUpdate() {
     if (!this.props.user.isLoading && this.props.user.userName === null) {
-      // this.props.history.push('home');
+      this.props.history.push('home');
     }
   }
 
@@ -39,10 +36,16 @@ class WorkoutDetail extends Component {
     if (this.props.user.userName) {
       content = (
         <div>
-          <h2>
-            Workout Details
-          </h2>
+        <h2> Workout Details </h2>
+        <Link to="/editworkout">
+            <Button value={this.props.workoutDetailList}
+              // onClick={() => this.viewExerciseDetail(this.props.workoutDetailList)}
+              >
+              Edit exercise
+              </Button>
+              </Link> 
           <ul> {workoutDetailArray} </ul>
+
         </div>
       );
     }
@@ -51,10 +54,18 @@ class WorkoutDetail extends Component {
       <div>
         <Nav />
         { content }
-        <button onClick={this.logout}> Log Out </button>
+        <Link to="/startworkout">
+        <button> Start Workout! </button>
+        {/* TODO: Link this to complete Workout */}
+        </Link>
       </div>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  user: state.user,
+  workoutDetailList: state.workoutDetailList
+});
 
 export default connect(mapStateToProps)(WorkoutDetail);

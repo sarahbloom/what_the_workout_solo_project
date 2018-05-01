@@ -1,7 +1,7 @@
 
 
 const workoutDetailList = (state = [], action) => {
-    console.log('workoutDetailList', action);
+    // console.log('workoutDetailList', action);
     
     switch (action.type) {
         case 'SET_WORKOUT_DETAILS':

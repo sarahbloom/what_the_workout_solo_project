@@ -10,7 +10,10 @@ import Header from './components/Header/Header';
 import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import ViewWorkout from './components/ViewWorkout/ViewWorkout';
-import WorkoutDetail from './components/WorkoutDetail/WorkoutDetail'
+import WorkoutDetail from './components/WorkoutDetail/WorkoutDetail';
+import EditWorkout from './components/WorkoutDetail/EditAWorkout/EditAWorkout';
+import StartWorkout from './components/StartWorkout/StartWorkout';
+import EditExercise from './components/EditExercise/EditExercise';
 
 import './styles/main.css';
 
@@ -36,10 +39,18 @@ const App = () => (
           path="/viewworkout/detail"
           component={WorkoutDetail}
         />
-        {/* <Route
-          path="/addworkout"
-          component={AddWorkout}
-        /> */}
+        <Route
+          path="/editworkout"
+          component={EditWorkout}
+        />
+        <Route
+          path="/editexercise"
+          component={EditExercise}
+        />
+        <Route
+          path="/startworkout"
+          component={StartWorkout}
+        />
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
 

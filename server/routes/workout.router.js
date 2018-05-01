@@ -28,7 +28,7 @@ router.get('/detail/:id', (req, res)=>{
     console.log('workout id:', req.params.id);
     
     if (req.isAuthenticated()){
-        let queryText = `SELECT "exercise"."name", "default_sets", "default_reps", "default_weight" FROM "exercise" 
+        let queryText = `SELECT "exercise"."name", "default_sets", "default_reps", "default_weight", "workout"."name" as "workout_name" FROM "exercise"
 	JOIN "workout_detail" ON "exercise"."id" = "workout_detail"."exercise_id"
 	JOIN "workout" ON "workout"."id" = "workout_detail"."workout_id"
     WHERE "workout"."id" = $1;`;

@@ -19,13 +19,13 @@ class ViewWorkout extends Component {
   }
   componentDidUpdate() {
     if (!this.props.user.isLoading && this.props.user.userName === null) {
-      // this.props.history.push('home');
+      this.props.history.push('home');
     }
   }
   
   logout = () => {
     this.props.dispatch(triggerLogout());
-    // this.props.history.push('home');
+    this.props.history.push('home');
   }
 
   viewWorkoutDetail = (workoutItem) => {
