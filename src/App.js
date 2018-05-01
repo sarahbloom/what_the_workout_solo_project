@@ -11,7 +11,7 @@ import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import ViewWorkout from './components/ViewWorkout/ViewWorkout';
 import WorkoutDetail from './components/WorkoutDetail/WorkoutDetail';
-import EditWorkout from './components/WorkoutDetail/EditAWorkout/EditAWorkout';
+import CreateWorkout from './components/WorkoutDetail/CreateWorkout/CreateWorkout';
 import StartWorkout from './components/StartWorkout/StartWorkout';
 import EditExercise from './components/EditExercise/EditExercise';
 
@@ -41,7 +41,7 @@ const App = () => (
         />
         <Route
           path="/editworkout"
-          component={EditWorkout}
+          component={CreateWorkout}
         />
         <Route
           path="/editexercise"

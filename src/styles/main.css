@@ -8,15 +8,16 @@ body {
 }
 
 .instructions {
-    background-color: #00acb0;
+    background-color: #1c92c0;
     padding: 5px;
     color: #ece7e7;
 }
 
 form {
-    background-color: #dbd5d5;
+    background-color: #41c6fa;
     width: 30%;
     height: 250px;
+    width: 150px;
     margin: 20px auto;
     padding: 25px;
     border-radius: 2px;
@@ -48,7 +49,7 @@ input[type="submit"] {
 }
 
 .navbar {
-  background-color: #00acb0;
+  background-color: #1c92c0;
   width: 100%;
   border-radius: 0px;
 }

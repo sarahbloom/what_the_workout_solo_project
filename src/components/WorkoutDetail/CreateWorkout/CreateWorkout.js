@@ -5,13 +5,13 @@ import { connect } from 'react-redux';
 
 import Nav from '../../Nav/Nav';
 
-class EditWorkout extends Component{
+class CreateWorkout extends Component{
     //info goes here
     render(){
         return(
             <div>
                 <Nav />
-                <h2> Edit Workout </h2>
+                <h2> Create Workout </h2>
             </div>
         )
     }
@@ -22,4 +22,4 @@ const mapStateToProps = state => ({
     state
 });
 
-export default connect(mapStateToProps)(EditWorkout);
+export default connect(mapStateToProps)(CreateWorkout);

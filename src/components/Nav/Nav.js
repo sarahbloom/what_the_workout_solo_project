@@ -11,8 +11,8 @@ const Nav = () => (
           </Link>
         </li>
         <li className="navBar">
-          <Link to="/addworkout">
-            Add Workout
+          <Link to="/editworkout">
+            Create Workout
           </Link>
         </li>
       </ul>
