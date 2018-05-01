@@ -4,6 +4,7 @@ import Button from 'material-ui/Button';
 import { Link } from 'react-router-dom';
 
 import Nav from '../../components/Nav/Nav';
+import WorkoutDetailItem from './WorkoutDetailItem';
 
 class WorkoutDetail extends Component {
   componentDidUpdate() {
@@ -18,11 +19,12 @@ class WorkoutDetail extends Component {
     
     let workoutDetailArray = this.props.workoutDetailList.map(exerciseItem =>{
         return (
-          <li key={exerciseItem.name}>  <strong>Name:</strong> {exerciseItem.name} &nbsp;
-            <strong>Sets:</strong> {exerciseItem.default_sets} &nbsp;
-            <strong>Repetitions:</strong> {exerciseItem.default_reps} &nbsp;
-            <strong>Resistance:</strong> {exerciseItem.default_weight}&nbsp;
-          </li> //make this its own component
+          < WorkoutDetailItem key={exerciseItem.name} exerciseItem={exerciseItem} /> 
+          // <li key={exerciseItem.name}>  <strong>Name:</strong> {exerciseItem.name} &nbsp;
+          //   <strong>Sets:</strong> {exerciseItem.default_sets} &nbsp;
+          //   <strong>Repetitions:</strong> {exerciseItem.default_reps} &nbsp;
+          //   <strong>Resistance:</strong> {exerciseItem.default_weight}&nbsp;
+          // </li> //make this its own component
         )
     })
 

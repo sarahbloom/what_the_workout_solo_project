@@ -1,5 +1,4 @@
 import React, {Component}from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { triggerLogout } from '../../redux/actions/loginActions';
 
@@ -18,7 +17,7 @@ class Nav extends Component {
           <ul>
             <li className="navBar">
               <Link to="/viewworkout">
-                View All Workouts
+                View Workouts
           </Link>
             </li>
             <li className="navBar">
