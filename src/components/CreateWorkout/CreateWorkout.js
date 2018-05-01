@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import Button from 'material-ui/Button';
-// import { Link } from 'react-router-dom';
+
 import { withStyles } from 'material-ui/styles';
 import List, { ListItem, ListItemSecondaryAction, ListItemText } from 'material-ui/List';
-import Checkbox from 'material-ui/Checkbox';
+import { Edit } from 'material-ui-icons';
+import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
+import Checkbox from 'material-ui/Checkbox';
 
 import Nav from '../Nav/Nav';
+import WorkoutDetailItem from '../WorkoutDetail/WorkoutDetailItem';
 
 class CreateWorkout extends Component{
     state = {
@@ -35,7 +37,7 @@ class CreateWorkout extends Component{
             <div>
                 <Nav />
                 <h2> Add/Edit Your Workout </h2>
-                {/* <div style={{ maxWidth: "350px" }} className="editExerciseClass">
+                <div style={{ maxWidth: "350px" }} className="editExerciseClass">
                     <List>
                         {[0, 1, 2, 3].map(value => (
                             <ListItem
@@ -44,7 +46,6 @@ class CreateWorkout extends Component{
                                 dense
                                 button
                                 onClick={this.handleToggle(value)}
-                                className={classes.listItem}
                             >
                                 <Checkbox
                                     checked={this.state.checked.indexOf(value) !== -1}
@@ -53,14 +54,14 @@ class CreateWorkout extends Component{
                                 />
                                 <ListItemText primary={`Line item ${value + 1}`} />
                                 <ListItemSecondaryAction>
-                                    <IconButton aria-label="Comments">
-                                        <CommentIcon />
+                                    <IconButton>
+                                        <Edit />
                                     </IconButton>
                                 </ListItemSecondaryAction>
                             </ListItem>
                         ))}
                     </List>
-                </div> */}
+                </div>
             </div>
         )
     }//end render
