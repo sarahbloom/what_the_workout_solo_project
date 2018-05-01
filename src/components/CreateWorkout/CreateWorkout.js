@@ -8,25 +8,6 @@ import Nav from '../Nav/Nav';
 import CreateWorkoutItem from './CreateWorkoutItem'
 
 class CreateWorkout extends Component{
-    state = {
-        checked: [0],
-    };
-
-    handleToggle = value => () => {
-        const { checked } = this.state;
-        const currentIndex = checked.indexOf(value);
-        const newChecked = [...checked];
-
-        if (currentIndex === -1) {
-            newChecked.push(value);
-        } else {
-            newChecked.splice(currentIndex, 1);
-        }
-
-        this.setState({
-            checked: newChecked,
-        });
-    };
 
     componentDidMount() {
         this.props.dispatch({
@@ -37,8 +18,9 @@ class CreateWorkout extends Component{
     render(){
         let ExerciseList = this.props.createWorkoutExerciseList.map(exercise =>{
             return (
-                < CreateWorkoutItem key={exercise.name} exercise={exercise} /> 
+                < CreateWorkoutItem key={exercise.id} exercise={exercise} handleToggle={this.handleToggle}/> 
             )  
+            // let selectedExercise = this.props.createWorkoutExerciseList.filter
             
         })
 

@@ -11,43 +11,30 @@ import { Link } from 'react-router-dom';
 
 
 class CreateWorkoutItem extends Component {
-    state = {
-        checked: [0],
-    };
 
-    handleToggle = value => () => {
-        const { checked } = this.state;
-        const currentIndex = checked.indexOf(value);
-        const newChecked = [...checked];
-
-        if (currentIndex === -1) {
-            newChecked.push(value);
-        } else {
-            newChecked.splice(currentIndex, 1);
-        }
-
-        this.setState({
-            checked: newChecked,
-        });
-    };
-
+    handleToggle = (exercise) => {
+        console.log(this.props.exercise.selected);
+        this.props.exercise.selected = !this.props.exercise.selected;
+        console.log(this.props.exercise.selected);
+        
+    }     
+    
     render() {
         
             let content = (
             <div  className="editExerciseClass">
                     <ListItem
                         style={{ maxWidth: "350px" }}
-                        key={this.props.exercise.name}
+                        key={this.props.exercise.id}
                         dense
                         button
-                        onClick={this.handleToggle(this.props.exercise.name)}
+                        onClick={this.handleToggle}
                     >
                         <Checkbox
-                        checked={this.state.checked.indexOf(this.props.exercise.name) !== -1}
                             tabIndex={-1}
                             disableRipple
                         />
-
+                    
                         <ListItemText primary={`Name: ${this.props.exercise.name} 
                                         Sets: ${this.props.exercise.default_sets}
                                         Repetitions: ${this.props.exercise.default_reps}
