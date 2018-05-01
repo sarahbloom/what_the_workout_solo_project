@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Button from 'material-ui/Button';
 import { Link } from 'react-router-dom';
 
-import Nav from '../../components/Nav/Nav';
+import Nav from '../../Nav/Nav';
 import WorkoutDetailItem from './WorkoutDetailItem';
 
 class WorkoutDetail extends Component {

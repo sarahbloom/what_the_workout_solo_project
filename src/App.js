@@ -10,7 +10,7 @@ import Header from './components/Header/Header';
 import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import ViewWorkout from './components/ViewWorkout/ViewWorkout';
-import WorkoutDetail from './components/WorkoutDetail/WorkoutDetail';
+import WorkoutDetail from './components/ViewWorkout/WorkoutDetail/WorkoutDetail';
 import CreateWorkout from './components//CreateWorkout/CreateWorkout';
 import StartWorkout from './components/StartWorkout/StartWorkout';
 import EditExercise from './components/EditExercise/EditExercise';
@@ -40,7 +40,7 @@ const App = () => (
           component={WorkoutDetail}
         />
         <Route
-          path="/editworkout"
+          path="/createworkout"
           component={CreateWorkout}
         />
         <Route

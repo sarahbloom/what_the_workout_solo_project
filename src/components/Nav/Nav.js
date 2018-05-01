@@ -21,7 +21,7 @@ class Nav extends Component {
           </Link>
             </li>
             <li className="navBar">
-              <Link to="/editworkout">
+              <Link to="/createworkout">
                 Create Workout
           </Link>
             </li>

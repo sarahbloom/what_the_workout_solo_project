@@ -10,6 +10,7 @@ import Checkbox from 'material-ui/Checkbox';
 import { Link } from 'react-router-dom';
 
 import Nav from '../Nav/Nav';
+import CreateWorkoutItem from './CreateWorkoutItem'
 
 class CreateWorkout extends Component{
     state = {
@@ -34,61 +35,42 @@ class CreateWorkout extends Component{
 
     componentDidMount() {
         this.props.dispatch({
-            type: 'GET_WORKOUT'
+            type: 'GET_EXERCISE'
         });
     }
     
     render(){
-        
+        let ExerciseList = this.props.createWorkoutExerciseList.map(exercise =>{
+            return (
+                < CreateWorkoutItem key={exercise.name} exercise={exercise} /> 
+            )  
+            
+        })
 
         return(
             <div>
                 <Nav />
                 <h2> Create Your Workout! </h2>
 
-                TODO: Determine how want to display this
+                {/* TODO: Determine how want to display this */}
                 {/* <select className="exerciseTypeDropDown">
                     <option value="">Exercise Type:</option>
                     <option value="lower body">Lower Body</option>
                     <option value="upper body">Upper Body</option>
                 </select> */}
-                <div style={{ maxWidth: "350px" }} className="editExerciseClass">
-                    <List>
-                        {[0, 1, 2, 3].map(value => (
-                            <ListItem
-                                key={value}
-                                role={undefined}
-                                dense
-                                button
-                                onClick={this.handleToggle(value)}
-                            >
-                                <Checkbox
-                                    checked={this.state.checked.indexOf(value) !== -1}
-                                    tabIndex={-1}
-                                    disableRipple
-                                />
-                                <ListItemText primary={`Line item ${value + 1}`} />
-                                <ListItemSecondaryAction>
-                                    <IconButton >
-                                        <Edit />
-                                    </IconButton>
-                                </ListItemSecondaryAction>
-                            </ListItem>
-                        ))}
-                    </List>
-                </div>
+                {ExerciseList}
                 {/* THIS will post to DB - workout */}
                 <Link to="/startworkout">
                     <Button variant="raised" color="primary" > Start Workout! </Button>
                 </Link>
             </div>
         )
-    }//end render
-}//end class
+    }
+}
 
 const mapStateToProps = state => ({
     user: state.user,
-    state
+    createWorkoutExerciseList: state.createWorkoutExerciseList
 });
 
 export default connect(mapStateToProps)(CreateWorkout);

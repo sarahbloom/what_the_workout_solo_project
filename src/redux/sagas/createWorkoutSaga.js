@@ -19,7 +19,7 @@ function* createWorkout (action){
 }//end createWorkout
 
 function* createWorkoutSaga(){
-    yield takeEvery('GET_WORKOUT', createWorkout)
+    yield takeEvery('GET_EXERCISE', createWorkout)
 }
 
 export default createWorkoutSaga;
