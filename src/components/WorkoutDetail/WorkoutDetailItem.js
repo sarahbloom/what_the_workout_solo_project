@@ -8,16 +8,23 @@ import Nav from '../../components/Nav/Nav';
 class WorkoutDetailItem extends Component{
 
     render (){
-        return(
-            <li key={this.props.exerciseItem.name}>  
-            <strong>Name:</strong> {this.props.exerciseItem.name} &nbsp;
+
+        let content = null;
+
+        if (this.props.user.userName) {
+            content = (<li key={this.props.exerciseItem.name}>
+                <strong>Name:</strong> {this.props.exerciseItem.name} &nbsp;
             <strong>Sets:</strong> {this.props.exerciseItem.default_sets} &nbsp;
             <strong>Repetitions:</strong> {this.props.exerciseItem.default_reps} &nbsp;
             <strong>Resistance:</strong> {this.props.exerciseItem.default_weight}&nbsp;
-          </li>
+          </li>)
+        }
+
+        return(
+           content
         )
-    }
-}
+    }//end render
+}//end class
 
 const mapStateToProps = state => ({
     user: state.user,

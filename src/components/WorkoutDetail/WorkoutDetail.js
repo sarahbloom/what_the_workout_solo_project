@@ -20,28 +20,15 @@ class WorkoutDetail extends Component {
     let workoutDetailArray = this.props.workoutDetailList.map(exerciseItem =>{
         return (
           < WorkoutDetailItem key={exerciseItem.name} exerciseItem={exerciseItem} /> 
-          // <li key={exerciseItem.name}>  <strong>Name:</strong> {exerciseItem.name} &nbsp;
-          //   <strong>Sets:</strong> {exerciseItem.default_sets} &nbsp;
-          //   <strong>Repetitions:</strong> {exerciseItem.default_reps} &nbsp;
-          //   <strong>Resistance:</strong> {exerciseItem.default_weight}&nbsp;
-          // </li> //make this its own component
         )
     })
 
     if (this.props.user.userName) {
       content = (
-        <div>
-        <h2> Workout Details </h2>
-        <Link to="/editworkout">
-            <Button value={this.props.workoutDetailList}
-              // onClick={() => this.viewExerciseDetail(this.props.workoutDetailList)}
-              >
-              Edit exercise
-              </Button>
-              </Link> 
-          <ul> {workoutDetailArray} </ul>
-
-        </div>
+          <div>
+            <h2> Workout Details </h2>
+              <ul> {workoutDetailArray} </ul>
+          </div>
       );
     }
 
@@ -50,8 +37,7 @@ class WorkoutDetail extends Component {
         <Nav />
         { content }
         <Link to="/startworkout">
-        <button> Start Workout! </button>
-        {/* TODO: Link this to complete Workout */}
+          <button variant="raised" color="primary" > Start Workout! </button>
         </Link>
       </div>
     );

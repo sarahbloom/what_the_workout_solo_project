@@ -1,4 +1,5 @@
 import React, {Component}from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { triggerLogout } from '../../redux/actions/loginActions';
 
@@ -7,7 +8,6 @@ class Nav extends Component {
 
   logout = () => {
     this.props.dispatch(triggerLogout());
-    this.props.history.push('home');
   }
 
   render(){
@@ -36,5 +36,9 @@ class Nav extends Component {
     )
   }
 }
+const mapStateToProps = state => ({
+  user: state.user,
+  state
+});
 
-export default Nav;
+export default connect(mapStateToProps) (Nav);
