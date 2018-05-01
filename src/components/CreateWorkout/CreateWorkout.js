@@ -10,7 +10,6 @@ import Checkbox from 'material-ui/Checkbox';
 import { Link } from 'react-router-dom';
 
 import Nav from '../Nav/Nav';
-import WorkoutDetailItem from '../WorkoutDetail/WorkoutDetailItem';
 
 class CreateWorkout extends Component{
     state = {
@@ -32,6 +31,12 @@ class CreateWorkout extends Component{
             checked: newChecked,
         });
     };
+
+    componentDidMount() {
+        this.props.dispatch({
+            type: "GET_WORKOUT"
+        });
+    }
     
     render(){
         
@@ -40,34 +45,41 @@ class CreateWorkout extends Component{
             <div>
                 <Nav />
                 <h2> Create Your Workout! </h2>
-                {/* <div style={{ maxWidth: "350px" }} className="editExerciseClass">
-                    <List> */}
-                        {/* {this.props.workoutDetailList.map(editExercise => (
+
+                TODO: Determine how want to display this
+                {/* <select className="exerciseTypeDropDown">
+                    <option value="">Exercise Type:</option>
+                    <option value="lower body">Lower Body</option>
+                    <option value="upper body">Upper Body</option>
+                </select> */}
+                <div style={{ maxWidth: "350px" }} className="editExerciseClass">
+                    <List>
+                        {[0, 1, 2, 3].map(value => (
                             <ListItem
-                            key={editExercise.name}
+                                key={value}
                                 role={undefined}
                                 dense
                                 button
-                            onClick={this.handleToggle(editExercise)}
+                                onClick={this.handleToggle(value)}
                             >
                                 <Checkbox
-                                checked={this.state.checked.indexOf(editExercise) !== -1}
+                                    checked={this.state.checked.indexOf(value) !== -1}
                                     tabIndex={-1}
                                     disableRipple
                                 />
-                            <ListItemText primary={<editExercise.name  />} />
+                                <ListItemText primary={`Line item ${value + 1}`} />
                                 <ListItemSecondaryAction>
-                                    <IconButton>
+                                    <IconButton >
                                         <Edit />
                                     </IconButton>
                                 </ListItemSecondaryAction>
                             </ListItem>
                         ))}
                     </List>
-                </div> */}
-
+                </div>
+                //THIS will post to DB - workout
                 <Link to="/startworkout">
-                    <button variant="raised" color="primary" > Start Workout! </button>
+                    <Button variant="raised" color="primary" > Start Workout! </Button>
                 </Link>
             </div>
         )
