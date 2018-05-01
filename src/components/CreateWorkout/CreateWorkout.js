@@ -34,7 +34,7 @@ class CreateWorkout extends Component{
 
     componentDidMount() {
         this.props.dispatch({
-            type: "GET_WORKOUT"
+            type: 'GET_WORKOUT'
         });
     }
     
@@ -77,7 +77,7 @@ class CreateWorkout extends Component{
                         ))}
                     </List>
                 </div>
-                //THIS will post to DB - workout
+                {/* THIS will post to DB - workout */}
                 <Link to="/startworkout">
                     <Button variant="raised" color="primary" > Start Workout! </Button>
                 </Link>

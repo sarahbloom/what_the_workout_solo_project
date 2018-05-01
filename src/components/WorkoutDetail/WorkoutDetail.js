@@ -37,7 +37,7 @@ class WorkoutDetail extends Component {
         <Nav />
         { content }
         <Link to="/startworkout">
-          <button variant="raised" color="primary" > Start Workout! </button>
+          <Button variant="raised" color="primary" > Start Workout! </Button>
         </Link>
       </div>
     );

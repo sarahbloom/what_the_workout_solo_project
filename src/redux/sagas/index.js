@@ -3,6 +3,7 @@ import userSaga from './userSaga';
 import loginSaga from './loginSaga';
 import viewWorkoutList from './viewWorkoutSaga';
 import workoutDetailSaga from './workoutDetailSaga';
+import createWorkoutSaga from './createWorkoutSaga'
 
 
 export default function* rootSaga() {
@@ -11,6 +12,7 @@ export default function* rootSaga() {
     loginSaga(),
     viewWorkoutList(),
     workoutDetailSaga(),
+    createWorkoutSaga(),
     // watchIncrementAsync()
   ]);
 }
