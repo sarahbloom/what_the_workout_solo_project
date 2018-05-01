@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { withStyles } from 'material-ui/styles';
-import List, { ListItem, ListItemSecondaryAction, ListItemText } from 'material-ui/List';
-import { Edit } from 'material-ui-icons';
 import Button from 'material-ui/Button';
-import IconButton from 'material-ui/IconButton';
-import Checkbox from 'material-ui/Checkbox';
 import { Link } from 'react-router-dom';
 
 import Nav from '../Nav/Nav';
