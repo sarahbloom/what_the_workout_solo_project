@@ -7,7 +7,6 @@ import '../ViewWorkout/ViewWorkout.css'
 import Nav from '../../components/Nav/Nav';
 
 import { USER_ACTIONS } from '../../redux/actions/userActions';
-import { triggerLogout } from '../../redux/actions/loginActions';
 
 class ViewWorkout extends Component {
   //all workouts will display on DOM on page load
@@ -21,11 +20,6 @@ class ViewWorkout extends Component {
     if (!this.props.user.isLoading && this.props.user.userName === null) {
       this.props.history.push('home');
     }
-  }
-  
-  logout = () => {
-    this.props.dispatch(triggerLogout());
-    this.props.history.push('home');
   }
 
   viewWorkoutDetail = (workoutItem) => {
@@ -58,7 +52,6 @@ class ViewWorkout extends Component {
           
           <h2>Your Workouts</h2>
           <ul> {workoutList} </ul>
-          <button onClick={this.logout}> Log Out </button>
         </div>
       );
     }

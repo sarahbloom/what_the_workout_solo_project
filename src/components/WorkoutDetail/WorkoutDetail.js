@@ -5,18 +5,11 @@ import { Link } from 'react-router-dom';
 
 import Nav from '../../components/Nav/Nav';
 
-import { triggerLogout } from '../../redux/actions/loginActions';
-
 class WorkoutDetail extends Component {
   componentDidUpdate() {
     if (!this.props.user.isLoading && this.props.user.userName === null) {
       this.props.history.push('home');
     }
-  }
-
-  logout = () => {
-    this.props.dispatch(triggerLogout());
-    // this.props.history.push('home');
   }
 
   render() {

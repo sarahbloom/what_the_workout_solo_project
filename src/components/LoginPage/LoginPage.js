@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { triggerLogin, formError, clearError } from '../../redux/actions/loginActions';
-
+import Button from 'material-ui/Button';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -88,11 +88,13 @@ class LoginPage extends Component {
             </label>
           </div>
           <div>
-            <input
-              type="submit"
-              name="submit"
-              value="Log In"
-            />
+            <Button>
+              <input
+                type="submit"
+                name="submit"
+                value="Log In"
+              />
+            </Button>
             <Link to="/register">Register</Link>
           </div>
         </form>

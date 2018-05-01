@@ -11,7 +11,7 @@ class CreateWorkout extends Component{
         return(
             <div>
                 <Nav />
-                <h2> Create Workout </h2>
+                <h2> Add/Edit Your Workout </h2>
             </div>
         )
     }
