@@ -33,13 +33,9 @@ class CreateWorkout extends Component{
         this.setState({
             redirect: !this.state.redirect
         })
-        // this.setState({
-        //     redirect: false,
-        //     workoutName: "",
-        // })
     }
 
-    // handle name change for new workout to be sent to DB
+    // handle name change for new workout name to be sent with payload
     handleNameChange = (event) => {
             event.preventDefault(); 
             this.setState({

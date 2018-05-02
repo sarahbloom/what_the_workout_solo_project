@@ -22,9 +22,9 @@ function* postNewWorkout(action){
     console.log('in saveWorkoutToDatabase sagas', action);
     try {
         yield call(axios.post, '/api/exercise/newworkout', action.payload);
-        yield put({
-            // type: 'FETCH_START_WORKOUT' - this will pull exercises to start the wokrout
-        })
+        // yield put({
+        //     type: 'FETCH_START_WORKOUT' - this will pull exercises to start the wokrout
+        // })
     } catch (error) {
         console.log('error in POST new workout', error);
     }

@@ -32,30 +32,23 @@ router.post('/newworkout', (req, res) => {
 
         try {
             await client.query('BEGIN');
-
+                // post new workout to DB and assign new ID
             let queryText = `INSERT INTO "workout" ("name", "user_id") VALUES ($1, $2) RETURNING "id";`;
             const workoutValues = [newWorkoutDetail.workoutName, req.user.id];
             const workoutResult = await client.query(queryText, workoutValues);
-            console.log('workoutResult', workoutResult);
-            
-            // id of the newly inserted address
+            // console.log('workoutResult', workoutResult);
             const workoutId = workoutResult.rows[0].id;
 
-            
+            //loop through exercises and post to "workout_details" with exerciseID and workoutIF
             for (let exerciseList of newWorkoutDetail.exerciseArray){
-            // newWorkoutDetail.exerciseArray.forOf((exerciseList) => { 
-            //     console.log('exerciseList', exerciseList);
-                
-                // return exerciseList
            
             if (exerciseList.selected == true) {
+                console.log('exerciseList', exerciseList);
+                
                 queryText = `INSERT INTO "workout_detail" ("workout_id", "exercise_id") VALUES ($1, $2);`;
-                const result = await client.query(queryText, [workoutId, exerciseList.id]);
+                await client.query(queryText, [workoutId, exerciseList.id]);
                 await client.query('COMMIT');
-                res.sendStatus(201);
-            } else {
-                res.sendStatus(500);
-            }
+            } 
         }
             
         } catch (e) {
