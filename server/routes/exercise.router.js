@@ -4,12 +4,12 @@ const router = express.Router();
 
 //GET all exercises from DOM to create a new workout
 router.get('/', (req, res) => {
-    console.log('is authenticated?', req.isAuthenticated());
-    console.log('user', req.user); 
+    // console.log('is authenticated?', req.isAuthenticated());
+    // console.log('user', req.user); 
     if( req.isAuthenticated()){
         let queryText = `SELECT * FROM "exercise" ORDER BY "family", "name";`;
         pool.query(queryText).then((result)=>{
-            console.log('GET /exercise', result.rows);
+            // console.log('GET /exercise', result.rows);
             res.send(result.rows)
         }).catch((err)=>{
             console.log('error in GET /exercise', err);
@@ -20,11 +20,48 @@ router.get('/', (req, res) => {
     }
 });
 
-/**
- * POST route template
- */
-router.post('/', (req, res) => {
 
+// POST new workout to workout table and then post new exercise to workout_detail table
+router.post('/newworkout', (req, res) => {
+    console.log('user', req.user); 
+    const newWorkoutDetail = req.body;
+    // console.log('newWorkoutDetail', newWorkoutDetail);
+
+    (async () => {
+        const client = await pool.connect();
+
+        try {
+            await client.query('BEGIN');
+                // post new workout to DB and assign new ID
+            let queryText = `INSERT INTO "workout" ("name", "user_id") VALUES ($1, $2) RETURNING "id";`;
+            const workoutValues = [newWorkoutDetail.workoutName, req.user.id];
+            const workoutResult = await client.query(queryText, workoutValues);
+            // console.log('workoutResult', workoutResult);
+            const workoutId = workoutResult.rows[0].id;
+
+            //loop through exercises and post to "workout_details" with exerciseID and workoutIF
+            for (let exerciseList of newWorkoutDetail.exerciseArray){
+           
+            if (exerciseList.selected == true) {
+                console.log('exerciseList', exerciseList);
+                
+                queryText = `INSERT INTO "workout_detail" ("workout_id", "exercise_id") VALUES ($1, $2);`;
+                await client.query(queryText, [workoutId, exerciseList.id]);
+                await client.query('COMMIT');
+            } 
+        }
+            
+        } catch (e) {
+            console.log('ROLLBACK', e);
+            await client.query('ROLLBACK');
+            throw e;
+        } finally {
+            client.release();
+        }
+    })().catch((error) => {
+        console.log('CATCH', error);
+        res.sendStatus(500);
+    });
 });
 
 module.exports = router;
