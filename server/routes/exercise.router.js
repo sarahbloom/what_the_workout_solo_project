@@ -4,12 +4,12 @@ const router = express.Router();
 
 //GET all exercises from DOM to create a new workout
 router.get('/', (req, res) => {
-    console.log('is authenticated?', req.isAuthenticated());
-    console.log('user', req.user); 
+    // console.log('is authenticated?', req.isAuthenticated());
+    // console.log('user', req.user); 
     if( req.isAuthenticated()){
         let queryText = `SELECT * FROM "exercise" ORDER BY "family", "name";`;
         pool.query(queryText).then((result)=>{
-            console.log('GET /exercise', result.rows);
+            // console.log('GET /exercise', result.rows);
             res.send(result.rows)
         }).catch((err)=>{
             console.log('error in GET /exercise', err);
@@ -23,7 +23,11 @@ router.get('/', (req, res) => {
 /**
  * POST route template
  */
-router.post('/', (req, res) => {
+router.post('/newworkout', (req, res) => {
+    console.log('user', req.user); 
+    const newWorkoutDetail = req.body;
+    console.log('newWorkoutDetail', newWorkoutDetail);
+    
 
 });
 
