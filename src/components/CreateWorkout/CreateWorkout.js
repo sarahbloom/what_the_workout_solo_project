@@ -14,6 +14,15 @@ class CreateWorkout extends Component{
             type: 'GET_EXERCISE'
         });
     }
+
+    submitWorkout(exercise) {
+        console.log('submitWorkout clicked', exercise);
+        
+        this.props.dispatch({
+            type: 'POST_SELECTED_STATUS',
+            payload: this.props.createWorkoutExerciseList
+        })
+    }
     
     render(){
         let ExerciseList = this.props.createWorkoutExerciseList.map(exercise =>{
@@ -38,7 +47,10 @@ class CreateWorkout extends Component{
                 {ExerciseList}
                 {/* THIS will post to DB - workout */}
                 <Link to="/startworkout">
-                    <Button variant="raised" color="primary" > Start Workout! </Button>
+                    <Button value={this.props.createWorkoutExerciseList} onClick={() => this.submitWorkout(this.props.createWorkoutExerciseList)} 
+                        variant="raised" color="primary"> 
+                    Start Workout! 
+                    </Button>
                 </Link>
             </div>
         )
@@ -47,7 +59,8 @@ class CreateWorkout extends Component{
 
 const mapStateToProps = state => ({
     user: state.user,
-    createWorkoutExerciseList: state.createWorkoutExerciseList
+    createWorkoutExerciseList: state.createWorkoutExerciseList,
+    state,
 });
 
 export default connect(mapStateToProps)(CreateWorkout);

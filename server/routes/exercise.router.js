@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
     console.log('is authenticated?', req.isAuthenticated());
     console.log('user', req.user); 
     if( req.isAuthenticated()){
-        let queryText = `SELECT * FROM "exercise";`;
+        let queryText = `SELECT * FROM "exercise" ORDER BY "family", "name";`;
         pool.query(queryText).then((result)=>{
             console.log('GET /exercise', result.rows);
             res.send(result.rows)
