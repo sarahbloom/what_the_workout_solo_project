@@ -9,6 +9,7 @@ import Nav from '../../components/Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 
 class ViewWorkout extends Component {
+  
   //all workouts will display on DOM on page load
   componentDidMount() {
     this.props.dispatch({ 
@@ -48,8 +49,9 @@ class ViewWorkout extends Component {
     if (this.props.user.userName) {
       content = (
         <div>
-          <h1 id="welcome"> Welcome, { this.props.user.userName }!</h1>
-          
+          <h1 id="welcome"> 
+            Welcome, { this.props.user.userName }!
+          </h1>
           <h2>Your Workouts</h2>
           <ul> {workoutList} </ul>
         </div>

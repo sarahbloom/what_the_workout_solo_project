@@ -3,7 +3,8 @@ import userSaga from './userSaga';
 import loginSaga from './loginSaga';
 import viewWorkoutList from './viewWorkoutSaga';
 import workoutDetailSaga from './workoutDetailSaga';
-import createWorkoutSaga from './createWorkoutSaga'
+import createWorkoutSaga from './createWorkoutSaga';
+import deleteWorkoutSaga from './deleteWorkoutSaga';
 
 
 export default function* rootSaga() {
@@ -13,6 +14,7 @@ export default function* rootSaga() {
     viewWorkoutList(),
     workoutDetailSaga(),
     createWorkoutSaga(),
+    deleteWorkoutSaga(),
     // watchIncrementAsync()
   ]);
 }

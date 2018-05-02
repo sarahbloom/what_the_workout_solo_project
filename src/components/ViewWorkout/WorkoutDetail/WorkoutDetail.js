@@ -2,11 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from 'material-ui/Button';
 import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import Nav from '../../Nav/Nav';
 import WorkoutDetailItem from './WorkoutDetailItem';
 
 class WorkoutDetail extends Component {
+  state = {
+    redirect: false,
+  }
+
   componentDidUpdate() {
     if (!this.props.user.isLoading && this.props.user.userName === null) {
       this.props.history.push('home');
@@ -18,6 +23,9 @@ class WorkoutDetail extends Component {
     this.props.dispatch({
       type: 'DELETE_WORKOUT',
       payload: this.props.workoutDetailList[0].workout_id
+    })
+    this.setState({
+      redirect: !this.state.redirect
     })
   }
 
@@ -31,7 +39,7 @@ class WorkoutDetail extends Component {
         )
     })
 
-    if (this.props.user.userName) {
+    if (this.props.user.userName && this.state.redirect === false) {
       content = (
           <div>
             <br />
@@ -47,6 +55,8 @@ class WorkoutDetail extends Component {
             </Link>
           </div>
       );
+    } else if (this.props.user.userName && this.state.redirect) {
+      content = (<Redirect exact from="/viewworkout/detail" to="/viewworkout" />);
     }
 
     return (

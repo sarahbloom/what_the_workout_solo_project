@@ -7,10 +7,10 @@ router.get('/', (req, res) => {
     // console.log('is authenticated?', req.isAuthenticated());
     console.log('user', req.user);  
     if (req.isAuthenticated()){
-        let queryText = `SELECT * FROM "workout" WHERE user_id = $1;`;
+        let queryText = `SELECT * FROM "workoutApp"."workout" WHERE user_id = $1;`;
         pool.query(queryText, [req.user.id])
         .then((result)=>{
-            console.log('GET workouts', result.rows);
+            // console.log('GET workouts', result.rows);
             res.send(result.rows)
         }).catch((err)=>{
             console.log('ERR in GET /workouts', err);
@@ -28,11 +28,11 @@ router.get('/detail/:id', (req, res)=>{
     console.log('workout id:', req.params.id);
     
     if (req.isAuthenticated()){
-        let queryText = `SELECT "exercise"."name", "default_sets", "default_reps", 
-            "default_weight", "workout_id", "workout"."name" as "workout_name" FROM "exercise"
-            JOIN "workout_detail" ON "exercise"."id" = "workout_detail"."exercise_id"
-            JOIN "workout" ON "workout"."id" = "workout_detail"."workout_id"
-            WHERE "workout"."id" = $1;`;
+        let queryText = `SELECT "workoutApp"."exercise"."name", "default_sets", "default_reps", 
+            "default_weight", "workout_id", "workoutApp"."workout"."name" as "workout_name" FROM "workoutApp"."exercise"
+            JOIN "workoutApp"."workout_detail" ON "workoutApp"."exercise"."id" = "workoutApp"."workout_detail"."exercise_id"
+            JOIN "workoutApp"."workout" ON "workoutApp"."workout"."id" = "workoutApp"."workout_detail"."workout_id"
+            WHERE "workoutApp"."workout"."id" = $1;`;
     pool.query(queryText, [req.params.id])
         .then((result)=>{
         console.log('GET workout details', result.rows);
@@ -47,15 +47,27 @@ router.get('/detail/:id', (req, res)=>{
 })// 
 
 //DELETE a workout from the database
-router.delete('/', (req, res) => {
-
+router.delete('/:id', (req, res) => {
+    if (req.isAuthenticated()) {
+        const workoutId = req.params.id;
+        console.log('workoutId', workoutId);
+        
+        let queryText = `DELETE FROM "workoutApp"."workout" WHERE "id" = $1;`;
+        pool.query(queryText, [req.params.id])
+        .then((response)=>{
+            res.sendStatus(200);
+        }).catch((err)=>{
+            res.sendStatus(500);
+        })
+    } else {
+        res.sendStatus(403);
+    }
 });
 
-//POST new session (completed workout) to database
-// router.post('/:id', (req, res) => {
-//     const workoutId = req.params.id;
-//     let queryText = 
+// POST new session (completed workout) to database
+router.post('/:id', (req, res) => {
+  
 
-// });
+});
 
 module.exports = router;

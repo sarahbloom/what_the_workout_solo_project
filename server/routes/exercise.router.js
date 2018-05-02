@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
     // console.log('is authenticated?', req.isAuthenticated());
     // console.log('user', req.user); 
     if( req.isAuthenticated()){
-        let queryText = `SELECT * FROM "exercise" ORDER BY "family", "name";`;
+        let queryText = `SELECT * FROM "workoutApp"."exercise" ORDER BY "family", "name";`;
         pool.query(queryText).then((result)=>{
             // console.log('GET /exercise', result.rows);
             res.send(result.rows)
@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
 
 // POST new workout to workout table and then post new exercise to workout_detail table
 router.post('/newworkout', (req, res) => {
-    console.log('user', req.user); 
+    // console.log('user', req.user); 
     const newWorkoutDetail = req.body;
     // console.log('newWorkoutDetail', newWorkoutDetail);
 
@@ -33,7 +33,7 @@ router.post('/newworkout', (req, res) => {
         try {
             await client.query('BEGIN');
                 // post new workout to DB and assign new ID
-            let queryText = `INSERT INTO "workout" ("name", "user_id") VALUES ($1, $2) RETURNING "id";`;
+            let queryText = `INSERT INTO "workoutApp"."workout" ("name", "user_id") VALUES ($1, $2) RETURNING "id";`;
             const workoutValues = [newWorkoutDetail.workoutName, req.user.id];
             const workoutResult = await client.query(queryText, workoutValues);
             // console.log('workoutResult', workoutResult);
@@ -43,9 +43,9 @@ router.post('/newworkout', (req, res) => {
             for (let exerciseList of newWorkoutDetail.exerciseArray){
            
             if (exerciseList.selected == true) {
-                console.log('exerciseList', exerciseList);
+                // console.log('exerciseList', exerciseList);
                 
-                queryText = `INSERT INTO "workout_detail" ("workout_id", "exercise_id") VALUES ($1, $2);`;
+                queryText = `INSERT INTO "workoutApp"."workout_detail" ("workout_id", "exercise_id") VALUES ($1, $2);`;
                 await client.query(queryText, [workoutId, exerciseList.id]);
                 await client.query('COMMIT');
             } 
@@ -62,6 +62,6 @@ router.post('/newworkout', (req, res) => {
         console.log('CATCH', error);
         res.sendStatus(500);
     });
-});
+});//end post
 
 module.exports = router;
