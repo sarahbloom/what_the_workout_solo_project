@@ -19,11 +19,12 @@ function* createWorkout (action){
 
 // FINISH THIS
 function* postNewWorkout(action){
-    console.log('in saveWorkoutToDatabase sagas', action);
+    // console.log('in saveWorkoutToDatabase sagas', action);
     try {
         yield call(axios.post, '/api/exercise/newworkout', action.payload);
+        // Check to see if need this action since will call it on page load
         // yield put({
-        //     type: 'FETCH_START_WORKOUT' - this will pull exercises to start the wokrout
+        //     type: 'FETCH_START_WORKOUT' 
         // })
     } catch (error) {
         console.log('error in POST new workout', error);

@@ -2,7 +2,7 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-//GET all exercises from DOM to create a new workout
+//GET all exercises from DOM to create a new workout - displays on Create Workout
 router.get('/', (req, res) => {
     // console.log('is authenticated?', req.isAuthenticated());
     // console.log('user', req.user); 
