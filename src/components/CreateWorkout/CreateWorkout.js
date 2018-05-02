@@ -27,7 +27,8 @@ class CreateWorkout extends Component{
         this.props.dispatch({
             type: 'POST_NEW_WORKOUT',
             payload: {
-                exerciseArray: this.props.createWorkoutExerciseList, workoutName: this.state.workoutName}
+                exerciseArray: this.props.createWorkoutExerciseList, 
+                workoutName: this.state.workoutName}
         })
         this.setState({
             redirect: !this.state.redirect
