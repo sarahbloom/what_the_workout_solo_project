@@ -45,7 +45,7 @@ router.get('/detail/:id', (req, res)=>{
     }
 })// end GET workout details
 
-//POST route template
+//POST new workout to database
 router.post('/', (req, res) => {
 
 });
