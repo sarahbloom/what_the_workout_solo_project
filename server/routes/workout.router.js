@@ -67,7 +67,6 @@ router.delete('/:id', (req, res) => {
 // POST new session (completed workout) to database
 router.post('/:id', (req, res) => {
   
-
 });
 
 module.exports = router;

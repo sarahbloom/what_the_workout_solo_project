@@ -5,19 +5,13 @@ class WorkoutDetailItem extends Component{
 
     render (){
 
-        let content = null;
-
-        if (this.props.user.userName) {
-            content = (<li key={this.props.exerciseItem.name}>
+        return (
+        <li key={this.props.exerciseItem.name}>
                 <strong>Name:</strong> {this.props.exerciseItem.name} &nbsp;
-            <strong>Sets:</strong> {this.props.exerciseItem.default_sets} &nbsp;
-            <strong>Repetitions:</strong> {this.props.exerciseItem.default_reps} &nbsp;
-            <strong>Resistance:</strong> {this.props.exerciseItem.default_weight}&nbsp;
-          </li>)
-        }
-
-        return(
-           content
+                <strong>Sets:</strong> {this.props.exerciseItem.default_sets} &nbsp;
+                <strong>Repetitions:</strong> {this.props.exerciseItem.default_reps} &nbsp;
+                <strong>Resistance:</strong> {this.props.exerciseItem.default_weight}&nbsp;
+          </li>
         )
     }//end render
 }//end class

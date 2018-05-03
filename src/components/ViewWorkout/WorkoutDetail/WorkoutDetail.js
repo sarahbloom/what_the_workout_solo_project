@@ -56,7 +56,11 @@ class WorkoutDetail extends Component {
           </div>
       );
     } else if (this.props.user.userName && this.state.redirect) {
-      content = (<Redirect exact from="/viewworkout/detail" to="/viewworkout" />);
+        content = (<Redirect exact from="/viewworkout/detail" to="/viewworkout" />);
+    } else {
+        return (
+          content
+        )
     }
 
     return (
