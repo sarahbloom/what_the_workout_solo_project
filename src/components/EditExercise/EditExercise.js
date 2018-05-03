@@ -6,6 +6,14 @@ import { connect } from 'react-redux';
 import Nav from '../../components/Nav/Nav';
 
 class EditExercise extends Component {
+    componentDidMount() {
+        console.log('exercise', this.props.state);
+        //dispatch will need to go here 'GET_SINGLE_EXERCISE_DETAILS' 
+
+    }
+
+    // dispatch to update info: 'UPDATE_SINGLE_EXERCISE'
+
     //info goes here
     render() {
         return (

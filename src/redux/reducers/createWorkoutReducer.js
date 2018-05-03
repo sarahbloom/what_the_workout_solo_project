@@ -1,4 +1,4 @@
-// 'SET_EXERCISE_LIST',
+
 
 const createWorkoutExerciseList = (state= [], action) => {
     switch (action.type) {

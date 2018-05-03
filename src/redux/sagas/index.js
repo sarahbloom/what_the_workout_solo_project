@@ -5,6 +5,7 @@ import viewWorkoutList from './viewWorkoutSaga';
 import workoutDetailSaga from './workoutDetailSaga';
 import createWorkoutSaga from './createWorkoutSaga';
 import deleteWorkoutSaga from './deleteWorkoutSaga';
+import editExerciseSaga from './editExerciseSaga';
 
 
 export default function* rootSaga() {
@@ -15,6 +16,7 @@ export default function* rootSaga() {
     workoutDetailSaga(),
     createWorkoutSaga(),
     deleteWorkoutSaga(),
+    editExerciseSaga(),
     // watchIncrementAsync()
   ]);
 }

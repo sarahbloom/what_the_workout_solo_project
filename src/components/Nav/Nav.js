@@ -38,7 +38,6 @@ class Nav extends Component {
 }
 const mapStateToProps = state => ({
   user: state.user,
-  state
 });
 
 export default connect(mapStateToProps) (Nav);

@@ -13,6 +13,15 @@ class CreateWorkoutItem extends Component {
     handleToggle = (exercise) => {
         this.props.exercise.selected = !this.props.exercise.selected;        
     }     
+
+    editSingleExercise = (exercise) =>{
+        console.log('clicked editSingleExercise', exercise);
+        this.props.dispatch({
+            type: 'VIEW_SINGLE_EXERCISE', 
+            payload: exercise
+        })
+        
+    }
     
     render() {
         
@@ -36,9 +45,10 @@ class CreateWorkoutItem extends Component {
                                         Weight: ${this.props.exercise.default_weight}`}/>
                         <ListItemSecondaryAction>
                             <Link to="/editexercise">
-                            <IconButton >
-                                <Edit />
-                            </IconButton>
+                                <IconButton value={this.props.exercise}
+                                onClick={() => this.editSingleExercise(this.props.exercise)} >
+                                    <Edit />
+                                </IconButton>
                             </Link>
                         </ListItemSecondaryAction>
                     </ListItem>

@@ -88,11 +88,14 @@ VALUES
 ('Rows', 12, 3, 75, 'lower body'),
 ('Box Jump', 10, 3, '18"', 'lower body'),
 ('Good Mornings', 8, 5, 85, 'lower body'),
+('Split Squat', 10, 4, '20x20', 'lower body'),
 ('Fly', 12, 4, '15x15', 'upper body'),
 ('Lateral Pull Down', 12, 3, 7, 'upper body'),
 ('Bicep Curls', 10, 4, '20x20', 'upper body'),
 ('Tricep Extensions', 10, 4, '10x10', 'upper body'),
-('Split Squat', 10, 4, '20x20', 'lower body');
+('Bench Press', 5, 5, 85, 'upper body'),
+('Overhead Press', 10, 4, '25x25', 'upper body');
+
 
 INSERT INTO "workoutApp"."workout_detail" ("workout_id", "exercise_id")
 VALUES (4,5), (4,7), (4,12), (4,10), (5,6), (5,8), (5,11), (5,9), (6,1), (6,2), (6,3), (6,4);

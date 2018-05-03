@@ -13,6 +13,11 @@ class StartWorkout extends Component {
         }
     }
 
+    finishedWorkout = () => {
+        console.log('finished workout');
+        // will dispatch action to save to DB with date
+    }
+
     render() {
         let content = null;
 
@@ -26,7 +31,9 @@ class StartWorkout extends Component {
             content = (
                 <div>
                 {sessionArray}
-                <Button variant="raised" color="primary"> Finished Workout! </Button>
+                <Button onClick={this.finishedWorkout} variant="raised" color="primary"> 
+                    Finished Workout! 
+                </Button>
                 </div>
             )
         }

@@ -43,7 +43,8 @@ class WorkoutDetail extends Component {
       content = (
           <div>
             <br />
-            <Button  variant="raised" color="primary" onClick={() => this.deleteWorkout(this.props.workoutDetailList[0].workout_id)}>
+            <Button  variant="raised" color="primary" 
+              onClick={() => this.deleteWorkout(this.props.workoutDetailList[0].workout_id)}>
               Delete Workout 
             </Button>
             <br />
@@ -56,7 +57,7 @@ class WorkoutDetail extends Component {
           </div>
       );
     } else if (this.props.user.userName && this.state.redirect) {
-        content = (<Redirect exact from="/viewworkout/detail" to="/viewworkout" />);
+      content = (<Redirect exact from="/viewworkout/detail" to="/viewworkout" />);
     } else {
         return (
           content

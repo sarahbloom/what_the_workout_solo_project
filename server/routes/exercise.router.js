@@ -20,6 +20,21 @@ router.get('/', (req, res) => {
     }
 });
 
+//GET a specific exercise to display on DOM to allow user to update details
+router.get('/:id', (req, res) => {
+    if (req.isAuthenticated()) {
+        let queryText = `SELECT * FROM "workoutApp"."exercise" WHERE "id"=$1;`;
+        pool.query(queryText, [req.params.id]).then((result) => {
+            // console.log('GET /exercise', result.rows);
+            res.send(result.rows)
+        }).catch((err) => {
+            console.log('error in GET /exercise/:id', err);
+            res.sendStatus(500);
+        })
+    } else {
+        res.sendStatus(403);
+    }
+});
 
 // POST new workout to workout table and then post new exercise to workout_detail table
 router.post('/newworkout', (req, res) => {
@@ -63,5 +78,20 @@ router.post('/newworkout', (req, res) => {
         res.sendStatus(500);
     });
 });//end post
+
+//PUT route - update single exercise default settings
+router.put('/:id', (req, res) =>{
+    console.log('put request', req.body)
+    let exerciseToUpdate = req.body;
+    // if (req.isAuthenticated()) {
+    // let queryText = `UPDATE "workoutApp"."exercise" SET "default_sets" = '$1', 
+    //         "default_reps" = '$2', "default_weight" = $3 WHERE "id" = $4;`;
+
+    // } else {
+    //     res.sendStatus(403);
+    // }
+})
+
+router.post
 
 module.exports = router;
