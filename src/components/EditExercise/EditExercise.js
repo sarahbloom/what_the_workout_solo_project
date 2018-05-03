@@ -7,7 +7,7 @@ import Nav from '../../components/Nav/Nav';
 
 class EditExercise extends Component {
     componentDidMount() {
-        console.log('exercise', this.props.state);
+        // console.log('exercise', this.props.state);
         //dispatch will need to go here 'GET_SINGLE_EXERCISE_DETAILS' 
 
     }
@@ -16,10 +16,15 @@ class EditExercise extends Component {
 
     //info goes here
     render() {
+        let EditExerciseList = this.props.state.editExerciseList;
+        console.log(EditExerciseList);
+        
+
         return (
             <div>
                 <Nav />
                 <h2> Edit Exercise </h2>
+                <pre>{JSON.stringify(EditExerciseList)}</pre>
             </div>
         )
     }
