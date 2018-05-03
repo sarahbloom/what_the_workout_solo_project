@@ -16,15 +16,26 @@ class EditExercise extends Component {
 
     //info goes here
     render() {
-        let EditExerciseList = this.props.state.editExerciseList;
-        console.log(EditExerciseList);
-        
+        let editExerciseList = this.props.exercise.map(exercise =>{
+            
+            console.log('exercise map', exercise);
+            return (
+                <div>
+                    <h4>Name: {exercise.name}</h4>
+                    <p>Sets: {exercise.default_sets}</p>
+                    <p>Repetitions: {exercise.default_reps}</p>
+                    <h3>Weight: {exercise.default_weight}</h3> 
+                </div>
+            )
 
+        });
+        
+        
         return (
             <div>
                 <Nav />
                 <h2> Edit Exercise </h2>
-                <pre>{JSON.stringify(EditExerciseList)}</pre>
+                {editExerciseList}
             </div>
         )
     }
@@ -32,7 +43,7 @@ class EditExercise extends Component {
 
 const mapStateToProps = state => ({
     user: state.user,
-    state
+    exercise: state.editExerciseList
 });
 
 export default connect(mapStateToProps)(EditExercise);
