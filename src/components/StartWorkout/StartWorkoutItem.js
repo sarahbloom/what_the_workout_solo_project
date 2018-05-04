@@ -22,11 +22,32 @@ class StartWorkoutItem extends Component {
         return this.props.exerciseItem.default_weight;
     }
 
-    addOneFor = (setsOrReps) => (event) => {
-        console.log('clicked addOneFor'); 
+    addOneSet = () => {
+        this.props.exerciseItem.default_sets = parseInt(this.props.exerciseItem.default_sets, 10)
+        this.props.exerciseItem.default_sets += 1;
+        console.log('sets', this.props.exerciseItem.default_sets);
+        return this.props.exerciseItem.default_sets ;
     }
-    deleteOneFor = (setsOrReps) => (event) => {
-        console.log('clicked deleteOneFor');   
+
+    deleteOneSet = () => {
+        this.props.exerciseItem.default_sets = parseInt(this.props.exerciseItem.default_sets, 10)
+        this.props.exerciseItem.default_sets -= 1;
+        console.log('sets', this.props.exerciseItem.default_sets);
+        return this.props.exerciseItem.default_sets;
+    }
+
+    addOneRep = () => {
+        this.props.exerciseItem.default_reps = parseInt(this.props.exerciseItem.default_reps, 10)
+        this.props.exerciseItem.default_reps += 1;
+        console.log('reps', this.props.exerciseItem.default_reps);
+        return this.props.exerciseItem.default_reps;
+    }
+    
+    deleteOneRep = () => {
+        this.props.exerciseItem.default_reps = parseInt(this.props.exerciseItem.default_reps, 10)
+        this.props.exerciseItem.default_reps -= 1;
+        console.log('reps', this.props.exerciseItem.default_reps);
+        return this.props.exerciseItem.default_reps;
     }
 
     render(){
@@ -37,22 +58,22 @@ class StartWorkoutItem extends Component {
             <li><strong>Name: {this.props.exerciseItem.name} </strong> </li>
             <li>Sets: {this.props.exerciseItem.default_sets} 
                 <div className="updateInWorkout"> 
-                    <IconButton onClick={this.addOneFor('sets')} size="small" color="primary" >
+                    <IconButton onClick={this.addOneSet} size="small" color="primary" >
                         <AddCircleOutline />
                     </IconButton>
                          1 set
-                    <IconButton onClick={this.deleteOneFor('sets')} size="small" color="primary" >
+                    <IconButton onClick={this.deleteOneSet} size="small" color="primary" >
                         <RemoveCircleOutline />
                     </IconButton>
                 </div>
             </li>
             <li>Repetitions: {this.props.exerciseItem.default_reps} 
                 <div className="updateInWorkout"> 
-                    <IconButton onClick={this.addOneFor('reps')} size="small" color="primary" >
+                        <IconButton onClick={this.addOneRep} size="small" color="primary" >
                         <AddCircleOutline />
                     </IconButton>
                     1 rep
-                    <IconButton onClick={this.deleteOneFor('reps')} size="small" color="primary" >
+                    <IconButton onClick={this.deleteOneRep} size="small" color="primary" >
                         <RemoveCircleOutline />
                     </IconButton>
                 </div>                   
