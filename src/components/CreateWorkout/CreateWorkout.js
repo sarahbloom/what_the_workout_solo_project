@@ -23,16 +23,23 @@ class CreateWorkout extends Component{
     //submit new workout name and exercise list to BD
     submitWorkout = (event) => {
         console.log('submitWorkout clicked');
-        event.preventDefault(); 
-        this.props.dispatch({
-            type: 'POST_NEW_WORKOUT',
-            payload: {
-                exerciseArray: this.props.createWorkoutExerciseList, 
-                workoutName: this.state.workoutName}
-        })
-        this.setState({
-            redirect: !this.state.redirect
-        })
+
+        if (this.state.workoutName.length === 0){
+            console.log('you need a name');
+            
+            //TODO: add alert
+        } else { 
+            event.preventDefault(); 
+            this.props.dispatch({
+                type: 'POST_NEW_WORKOUT',
+                payload: {
+                    exerciseArray: this.props.createWorkoutExerciseList, 
+                    workoutName: this.state.workoutName}
+            })
+            this.setState({
+                redirect: !this.state.redirect
+            })
+        }
     }
 
     // handle name change for new workout name to be sent with payload
@@ -63,7 +70,7 @@ class CreateWorkout extends Component{
                     <form onSubmit={this.submitWorkout} >
                             <input placeholder="Workout Name" type="text" 
                                 onChange={this.handleNameChange}
-                        value={this.state.workoutName} />
+                                value={this.state.workoutName} />
                         {/* TODO: Determine how want to display this */}
                         {/* <select className="exerciseTypeDropDown">
                             <option value="">Exercise Type:</option>

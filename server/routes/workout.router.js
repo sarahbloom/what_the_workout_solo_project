@@ -5,7 +5,7 @@ const router = express.Router();
 //GET previsouly created workouts in DB to view all workouts - displays on View Workout
 router.get('/', (req, res) => {
     // console.log('is authenticated?', req.isAuthenticated());
-    console.log('user', req.user);  
+    // console.log('user', req.user);  
     if (req.isAuthenticated()){
         let queryText = `SELECT * FROM "workoutApp"."workout" WHERE user_id = $1;`;
         pool.query(queryText, [req.user.id])
@@ -24,8 +24,8 @@ router.get('/', (req, res) => {
 //GET workout details for a specific workout - displays on Workout Details
 router.get('/detail/:id', (req, res)=>{
     // console.log('is authenticated?', req.isAuthenticated());
-    console.log('user', req.user);
-    console.log('workout id:', req.params.id);
+    // console.log('user', req.user);
+    // console.log('workout id:', req.params.id);
     
     if (req.isAuthenticated()){
         let queryText = `SELECT "workoutApp"."exercise"."name", "default_sets", "default_reps", 
@@ -35,7 +35,7 @@ router.get('/detail/:id', (req, res)=>{
             WHERE "workoutApp"."workout"."id" = $1;`;
     pool.query(queryText, [req.params.id])
         .then((result)=>{
-        console.log('GET workout details', result.rows);
+        // console.log('GET workout details', result.rows);
         res.send(result.rows)
     }).catch((err)=>{
         console.log('ERR in GET /detail', err);
@@ -50,8 +50,6 @@ router.get('/detail/:id', (req, res)=>{
 router.delete('/:id', (req, res) => {
     if (req.isAuthenticated()) {
         const workoutId = req.params.id;
-        console.log('workoutId', workoutId);
-        
         let queryText = `DELETE FROM "workoutApp"."workout" WHERE "id" = $1;`;
         pool.query(queryText, [req.params.id])
         .then((response)=>{

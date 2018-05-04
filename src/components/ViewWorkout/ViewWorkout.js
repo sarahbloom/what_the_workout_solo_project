@@ -14,7 +14,9 @@ class ViewWorkout extends Component {
   componentDidMount() {
     this.props.dispatch({ 
       type: USER_ACTIONS.FETCH_USER,
-      type: "GET_WORKOUT"
+    });
+    this.props.dispatch({ 
+      type: 'GET_WORKOUT',
     });
   }
   componentDidUpdate() {

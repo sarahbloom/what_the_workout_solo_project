@@ -1,32 +1,3 @@
-SELECT * FROM "workout" WHERE user_id = $1;
-
-SELECT "exercise"."name", "default_sets", "default_reps", "default_weight" FROM "exercise" 
-	JOIN "workout_detail" ON "exercise"."id" = "workout_detail"."exercise_id"
-	JOIN "workout" ON "workout"."id" = "workout_detail"."workout_id"
-	WHERE "workout"."id" = 3;
-
-
-
-SELECT "exercise"."name", "default_sets", "default_reps", "default_weight", "workout"."name" as "workout_name" FROM "exercise" 
-    JOIN "workout_detail" ON "exercise"."id" = "workout_detail"."exercise_id"
-    JOIN "workout" ON "workout"."id" = "workout_detail"."workout_id"
-    WHERE "workout"."id" = 1;
-
-SELECT * FROM "exercise" ORDER BY "family", "name";
-
-INSERT INTO "workout" ("name", "user_id") VALUES ($1, $2);
-
-workout_id REFERNCES 
-
-
-
-INSERT INTO "workout_detail" ("workout_id", "exercise_id") VALUES (4, 4);
-
-DELETE FROM "workout" WHERE "id"=25;
-
-
-
-
 CREATE SCHEMA "workoutApp";
 
 CREATE TABLE "workoutApp"."person" (
@@ -59,7 +30,8 @@ CREATE TABLE "workoutApp"."workout_detail" (
 CREATE TABLE "workoutApp"."session" (
   "id" SERIAL PRIMARY KEY,
   "user_id" INT NOT NULL,
-  "workout_id" INT REFERENCES "workoutApp"."workout" (id) ON DELETE CASCADE
+  "workout_id" INT REFERENCES "workoutApp"."workout" (id) ON DELETE CASCADE,
+  "date" DATE,
 );
 
 

@@ -59,13 +59,11 @@ router.post('/newworkout', (req, res) => {
            
             if (exerciseList.selected == true) {
                 // console.log('exerciseList', exerciseList);
-                
                 queryText = `INSERT INTO "workoutApp"."workout_detail" ("workout_id", "exercise_id") VALUES ($1, $2);`;
                 await client.query(queryText, [workoutId, exerciseList.id]);
                 await client.query('COMMIT');
-            } 
-        }
-            
+                } 
+            }   
         } catch (e) {
             console.log('ROLLBACK', e);
             await client.query('ROLLBACK');
@@ -73,23 +71,35 @@ router.post('/newworkout', (req, res) => {
         } finally {
             client.release();
         }
-    })().catch((error) => {
-        console.log('CATCH', error);
+    })().catch((err) => {
+        console.log('CATCH', err);
         res.sendStatus(500);
     });
 });//end post
 
-//PUT route - update single exercise default settings
+//PUT route - update the default settings for asingle exercise in the DB
 router.put('/:id', (req, res) =>{
     console.log('put request', req.body)
     let exerciseToUpdate = req.body;
-    // if (req.isAuthenticated()) {
-    // let queryText = `UPDATE "workoutApp"."exercise" SET "default_sets" = '$1', 
-    //         "default_reps" = '$2', "default_weight" = $3 WHERE "id" = $4;`;
-
-    // } else {
-    //     res.sendStatus(403);
-    // }
+    if (req.isAuthenticated()) {
+    let queryText = `UPDATE "workoutApp"."exercise" SET "default_sets" = $1, 
+            "default_reps" = $2, "default_weight" = $3 WHERE "id" = $4;`;
+        pool.query(queryText, 
+            [exerciseToUpdate.default_sets, 
+            exerciseToUpdate.default_reps, 
+            exerciseToUpdate.default_weight,
+            exerciseToUpdate.id])
+        .then((result) => {
+            console.log('successful PUT /exercise', result);
+            res.sendStatus(201);
+        })
+        .catch((err) =>{
+            console.log('ERROR in PUT /exercise', err);
+            res.sendStatus(500);
+        })
+    } else {
+        res.sendStatus(403);
+    }
 })
 
 router.post
