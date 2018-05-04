@@ -42,15 +42,15 @@ class WorkoutDetail extends Component {
     if (this.props.user.userName && this.state.redirect === false) {
       content = (
           <div>
-            <br />
+            <h2> Workout Details </h2>
+              <br />
             <Button  variant="raised" color="primary" 
               onClick={() => this.deleteWorkout(this.props.workoutDetailList[0].workout_id)}>
               Delete Workout 
             </Button>
-            <br />
-            <h2> Workout Details </h2>
-              <ul> {workoutDetailArray} </ul>
-            <br />
+              <br />
+            <ul> {workoutDetailArray} </ul>
+              <br />
             <Link to="/startworkout">
               <Button variant="raised" color="primary" > Start Workout! </Button>
             </Link>

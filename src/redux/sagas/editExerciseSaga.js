@@ -8,7 +8,7 @@ function* editExerciseDefault (action){
         withCredentials: true,
     }
     try {
-        let exerciseUpdate = yield call(axios.put, `/api/exercise/${action.payload.id}`, action.payload)
+        let exerciseUpdate = yield call(axios.put, `/api/exercise/${action.payload.id}`, action.payload, config)
         yield put ({
             type: 'GET_SINGLE_EXERCISE_DETAILS',
             payload: exerciseUpdate.data
