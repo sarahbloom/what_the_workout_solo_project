@@ -23,38 +23,30 @@ class EditExercise extends Component {
             this.setState({
                 ...this.state,
                 [exerciseDefault]: event.target.value,
-                // ...this.state.default_sets,
-                // [exerciseDefault]: event.target.value
             })
-            // console.log('state', this.state);
         }
 
     handleSubmitForSets = () => {
-        this.props.state.editExerciseList[0].default_sets = this.state.default_sets
-
+        this.props.state.editSingleExerciseList[0].default_sets = this.state.default_sets
         this.props.dispatch({
-            type: 'UPDATE_SETS',
-            payload: this.props.state.editExerciseList[0]
+            type: 'UPDATE_DEFAULT',
+            payload: this.props.state.editSingleExerciseList[0]
         })
     }
 
     handleSubmitForReps = () => {
+        this.props.state.editSingleExerciseList[0].default_reps = this.state.default_reps
         this.props.dispatch({
-            type: 'UPDATE_REPS',
-            payload: {
-                default_reps: this.state.default_reps,
-                id: this.props.exercise.id
-            }
+            type: 'UPDATE_DEFAULT',
+            payload: this.props.state.editSingleExerciseList[0]
         })
     }
 
     handleSubmitForWeight = () => {
+        this.props.state.editExerceditSingleExerciseListiseList[0].default_weight = this.state.default_weight
         this.props.dispatch({
-            type: 'UPDATE_WEIGHT',
-            payload: {
-                default_weight: this.state.default_weight,
-                id: this.props.exercise.id
-            }
+            type: 'UPDATE_DEFAULT',
+            payload: this.props.state.editSingleExerciseList[0]
         })
     }
 
@@ -88,17 +80,17 @@ class EditExercise extends Component {
                         < CheckCircle />
                     </IconButton></span>
 
-                    <p>Repetitions: <input defaultValue={this.state.default_reps}
+                    <p>Repetitions: <input defaultValue={exercise.default_reps}
                         onChange={this.handleNameChangeFor("default_reps")} /> </p>
-                    {/* <span><IconButton onClick={this.handleSubmitForReps} variant="raised" color="primary">
+                    <span><IconButton onClick={this.handleSubmitForReps} variant="raised" color="primary">
                         < CheckCircle />
-                    </IconButton></span> */}
+                    </IconButton></span>
 
-                    <h3>Weight: <input defaultValue={this.state.default_weight}
+                    <h3>Weight: <input defaultValue={exercise.default_weight}
                         onChange={this.handleNameChangeFor("default_weight")} /> </h3>
-                    {/* <span><IconButton onClick={this.handleSubmitForWeight} variant="raised" color="primary">
+                    <span><IconButton onClick={this.handleSubmitForWeight} variant="raised" color="primary">
                         < CheckCircle />
-                    </IconButton></span> */}
+                    </IconButton></span>
                 </div>
 
                 //TODO: figure out span
@@ -118,7 +110,7 @@ class EditExercise extends Component {
 
 const mapStateToProps = state => ({
     user: state.user,
-    exercise: state.editExerciseList,
+    exercise: state.editSingleExerciseList,
     state
 });
 
