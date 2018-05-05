@@ -78,8 +78,8 @@ router.post('/newworkout', (req, res) => {
 });//end post
 
 //PUT route - update the default settings for asingle exercise in the DB
-router.put('/:id', (req, res) =>{
-    // console.log('put request', req.body)
+router.put('/:id', (req, res) => {
+    // console.log('PUT /exercise', req.body)
     let exerciseToUpdate = req.body;
     if (req.isAuthenticated()) {
     let queryText = `UPDATE "workoutApp"."exercise" SET "default_sets" = $1, 
@@ -91,9 +91,9 @@ router.put('/:id', (req, res) =>{
             exerciseToUpdate.id])
         .then((result) => {
             // console.log('successful PUT /exercise', result);
-            res.sendStatus(201);
+            res.send(exerciseToUpdate);
         })
-        .catch((err) =>{
+        .catch((err) => {
             console.log('ERROR in PUT /exercise', err);
             res.sendStatus(500);
         })
@@ -102,6 +102,5 @@ router.put('/:id', (req, res) =>{
     }
 })
 
-router.post
 
 module.exports = router;

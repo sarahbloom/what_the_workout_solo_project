@@ -6,7 +6,7 @@ import workoutDetailSaga from './workoutDetailSaga';
 import createWorkoutSaga from './createWorkoutSaga';
 import deleteWorkoutSaga from './deleteWorkoutSaga';
 import editExerciseSaga from './editExerciseSaga';
-
+import startSessionSaga from './startSessionSaga';
 
 export default function* rootSaga() {
   yield all([
@@ -17,6 +17,7 @@ export default function* rootSaga() {
     createWorkoutSaga(),
     deleteWorkoutSaga(),
     editExerciseSaga(),
+    startSessionSaga(),
     // watchIncrementAsync()
   ]);
 }

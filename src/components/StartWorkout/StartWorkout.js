@@ -23,7 +23,7 @@ class StartWorkout extends Component {
 
         let sessionArray = this.props.workoutDetailList.map(sessionItem => {
             return (
-                < StartWorkoutItem key={sessionItem.name} exerciseItem={sessionItem} />
+                < StartWorkoutItem key={sessionItem.name} sessionItem={sessionItem} />
             )
         })
 

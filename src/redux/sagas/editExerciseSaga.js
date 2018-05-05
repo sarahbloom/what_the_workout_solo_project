@@ -36,8 +36,6 @@ function* viewSingleExercise (action){
 
 function* editExerciseSaga() {
     yield takeEvery('UPDATE_DEFAULT', editExerciseDefault)
-    // yield takeEvery('UPDATE_REPS', editReps)
-    // yield takeEvery('UPDATE_WEIGHT', editWeight)
     yield takeEvery('VIEW_SINGLE_EXERCISE', viewSingleExercise)
 }
 
