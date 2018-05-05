@@ -63,17 +63,45 @@ router.delete('/:id', (req, res) => {
 });
 
 // POST new session (completed workout) to database
-router.post('/:id', (req, res) => {
-  
+router.post('/newsession', (req, res) => {
+    // console.log('user', req.user); 
+    const newSession = req.body;
+    console.log('newSession', newSession);
+
+    (async () => {
+        const client = await pool.connect();
+
+        try {
+            await client.query('BEGIN');
+            // post new workout to DB and assign new ID
+            let queryText = `INSERT INTO "workoutApp"."session" ("user_id", "workout_id", "date") VALUES ($1, $2, now()) RETURNING "id";`;
+            const sessionValues = [req.user.id, newSession.exerciseArray[0].workout_id,];
+            const sessionResult = await client.query(queryText, sessionValues);
+            // console.log('workoutResult', workoutResult);
+            const sessionId = sessionResult.rows[0].id;
+            console.log('sessionId', sessionId);
+
+            // loop through exercises and post to "workout_details" with exerciseID and workoutIF
+            for (let sessionExercise of newSession.exerciseArray) {
+                queryText = `INSERT INTO "workoutApp"."completed_exercise" 
+                            ("session_id", "exercise_id", "completed_sets", "completed_reps", "completed_weights", "completed?" ) 
+                            VALUES ($1, $2, $3, $4, $5, $6);`;
+                await client.query(queryText, 
+                            [sessionId, sessionExercise.id, sessionExercise.default_sets, 
+                            sessionExercise.default_reps, sessionExercise.default_weight, "TRUE"]);
+                    await client.query('COMMIT');
+        }
+            } catch (e) {
+            console.log('ROLLBACK', e);
+            await client.query('ROLLBACK');
+            throw e;
+        } finally {
+            client.release();
+        }
+    })().catch((err) => {
+        console.log('CATCH', err);
+        res.sendStatus(500);
+    });
 });
-
-//PUT route - update the details of an exercise during a session
-// router.put('/:id', (req, res) => {
-//     console.log('PUT request /workout', req.body)
-//     let completedExerciseToUpdate = req.body;
-//     if (req.isAuthenticated()) {
-
-//     }
-// })
 
 module.exports = router;

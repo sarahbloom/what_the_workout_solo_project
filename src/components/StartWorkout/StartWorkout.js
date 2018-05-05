@@ -13,9 +13,16 @@ class StartWorkout extends Component {
         }
     }
 
-    finishedWorkout = () => {
+    finishedWorkout = (event) => {
         console.log('finished workout');
-        // will dispatch action to save to DB with date
+        event.preventDefault();
+        this.props.dispatch({
+            type: 'POST_COMPLETED_SESSION',
+            payload: {
+            exerciseArray: this.props.workoutDetailList,
+            }
+        })
+        // console.log(this.props.workoutDetailList)
     }
 
     render() {

@@ -24,12 +24,20 @@ class StartWorkoutItem extends Component {
         this.props.sessionItem.default_weight = parseInt(this.props.sessionItem.default_weight, 10)
         this.props.sessionItem.default_weight -= 5;
         // console.log('weight', this.props.sessionItem.default_weight);
+        this.props.dispatch({
+            type: 'UPDATE_EXERCISE_IN_SESSION',
+            payload: this.props.sessionItem
+        })
     }
 
     addOneSet = () => {
         this.props.sessionItem.default_sets = parseInt(this.props.sessionItem.default_sets, 10)
         this.props.sessionItem.default_sets += 1;
         // console.log('sets', this.props.sessionItem.default_sets);
+        this.props.dispatch({
+            type: 'UPDATE_EXERCISE_IN_SESSION',
+            payload: this.props.sessionItem
+        })
         
     }
 
@@ -37,18 +45,30 @@ class StartWorkoutItem extends Component {
         this.props.sessionItem.default_sets = parseInt(this.props.sessionItem.default_sets, 10)
         this.props.sessionItem.default_sets -= 1;
         // console.log('sets', this.props.sessionItem.default_sets);
+        this.props.dispatch({
+            type: 'UPDATE_EXERCISE_IN_SESSION',
+            payload: this.props.sessionItem
+        })
     }
 
     addOneRep = () => {
         this.props.sessionItem.default_reps = parseInt(this.props.sessionItem.default_reps, 10)
         this.props.sessionItem.default_reps += 1;
         // console.log('reps', this.props.sessionItem.default_reps);
+        this.props.dispatch({
+            type: 'UPDATE_EXERCISE_IN_SESSION',
+            payload: this.props.sessionItem
+        })
     }
     
     deleteOneRep = () => {
         this.props.sessionItem.default_reps = parseInt(this.props.sessionItem.default_reps, 10)
         this.props.sessionItem.default_reps -= 1;
         // console.log('reps', this.props.sessionItem.default_reps);
+        this.props.dispatch({
+            type: 'UPDATE_EXERCISE_IN_SESSION',
+            payload: this.props.sessionItem
+        })
     }
 
     render(){
