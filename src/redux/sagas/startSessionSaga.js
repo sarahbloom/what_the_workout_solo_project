@@ -28,7 +28,7 @@ function* postSession (action) {
 }
 
 function* startSessionSaga() {
-    yield takeEvery('UPDATE_EXERCISE_IN_SESSION', startSession),
+    yield takeEvery('UPDATE_EXERCISE_IN_SESSION', startSession);
     yield takeEvery('POST_COMPLETED_SESSION', postSession)
 }
 

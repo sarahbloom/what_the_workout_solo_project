@@ -1,0 +1,9 @@
+.paper {
+    height: 300px;
+    width: 300px;
+    background-color: rgb(253, 251, 246);
+    box-shadow: rgb(189, 182, 171); 
+    padding: 20px; 
+    align-content: center;
+    border: '1px solid #e5e5e5'
+}

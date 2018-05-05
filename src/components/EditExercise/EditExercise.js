@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import IconButton from 'material-ui/IconButton';
-import Button from 'material-ui/Button';
 import { Done } from 'material-ui-icons';
 
 // import { Link } from 'react-router-dom';
 
-import Nav from '../../components/Nav/Nav';
 import './EditExercise.css'
 
 class EditExercise extends Component {
@@ -81,7 +79,6 @@ class EditExercise extends Component {
          
         return (
             <div>
-                <Nav />
                 <h2> Edit Exercise </h2>
                 {editExerciseList}
             </div>
