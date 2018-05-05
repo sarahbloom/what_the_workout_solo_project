@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import IconButton from 'material-ui/IconButton';
+import Button from 'material-ui/Button';
 import { Done } from 'material-ui-icons';
 
 // import { Link } from 'react-router-dom';
@@ -42,7 +43,7 @@ class EditExercise extends Component {
         })
     }
     handleSubmitForWeight = () => {
-        this.props.state.editExerceditSingleExerciseListiseList[0].default_weight = this.state.default_weight
+        this.props.state.editSingleExerciseList[0].default_weight = this.state.default_weight
         this.props.dispatch({
             type: 'UPDATE_DEFAULT',
             payload: this.props.state.editSingleExerciseList[0]
@@ -53,6 +54,8 @@ class EditExercise extends Component {
         let editExerciseList = this.props.exercise.map(exercise =>{
             return (
                 <div key={exercise.id}>
+                {/* TODO: direct back to create workout
+                <button> back </button> */}
                     <h4>Name: {exercise.name}</h4>
                     <p>Sets: <input defaultValue={exercise.default_sets}
                         onChange={this.handleNameChangeFor("default_sets")} /> 
