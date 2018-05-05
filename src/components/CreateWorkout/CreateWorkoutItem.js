@@ -9,17 +9,13 @@ import Modal from 'material-ui/Modal';
 import EditExercise from '../EditExercise/EditExercise';
 import './CreateWorkoutItem.css'
 
-function rand() {
-    return Math.round(Math.random() * 10) - 10;
-}
-
 function getModalStyle() {
-    let top = 20 + rand();
-    let left = 20 + rand();
+    let top = 50;
+    let left = 50;
 
     return {
         position: 'absolute',
-        // width: 300,
+        width: 300,
         top: top + '%', left: left + '%',
         transform: `translate(-${top}%, -${left}%)`,
     };
