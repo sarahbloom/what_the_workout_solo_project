@@ -1,14 +1,31 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import List, { ListItem, ListItemSecondaryAction, ListItemText } from 'material-ui/List';
 import { Edit } from 'material-ui-icons';
 import IconButton from 'material-ui/IconButton';
 import Checkbox from 'material-ui/Checkbox';
-import { Link } from 'react-router-dom';
+import Modal from 'material-ui/Modal';
+
+import EditExercise from '../EditExercise/EditExercise';
+import './CreateWorkoutItem.css'
+
+function getModalStyle() {
+    let top = 50;
+    let left = 50;
+
+    return {
+        position: 'absolute',
+        width: 300,
+        top: top + '%', left: left + '%',
+        transform: `translate(-${top}%, -${left}%)`,
+    };
+}
 
 
 class CreateWorkoutItem extends Component {
+    state = {
+        open: false,
+    };
 
     handleToggle = (exercise) => {
         this.props.exercise.selected = !this.props.exercise.selected;        
@@ -16,15 +33,18 @@ class CreateWorkoutItem extends Component {
 
     editSingleExercise = (exercise) =>{
         console.log('clicked editSingleExercise', exercise);
+        this.setState({ open: true });
         this.props.dispatch({
             type: 'VIEW_SINGLE_EXERCISE', 
             payload: exercise
         })
-        
     }
+
+    handleClose = () => {
+        this.setState({ open: false });
+    };
     
-    render() {
-        
+    render() {    
             let content = (
             <div  className="editExerciseClass">
                     <ListItem
@@ -34,25 +54,33 @@ class CreateWorkoutItem extends Component {
                         button
                         onClick={this.handleToggle}
                     >
-                        <Checkbox
-                            tabIndex={-1}
-                            disableRipple
-                        />
-                    
-                        <ListItemText primary={`Name: ${this.props.exercise.name} 
-                                        Sets: ${this.props.exercise.default_sets}
-                                        Repetitions: ${this.props.exercise.default_reps}
-                                        Weight: ${this.props.exercise.default_weight}`}/>
-                        <ListItemSecondaryAction>
-                            <Link to="/editexercise">
-                                <IconButton value={this.props.exercise}
-                                onClick={() => this.editSingleExercise(this.props.exercise)} >
-                                    <Edit />
-                                </IconButton>
-                            </Link>
-                        </ListItemSecondaryAction>
-                    </ListItem>
+                    <Checkbox
+                        tabIndex={-1}
+                        disableRipple
+                    />
                 
+                    <ListItemText primary={`Name: ${this.props.exercise.name} 
+                                    Sets: ${this.props.exercise.default_sets}
+                                    Repetitions: ${this.props.exercise.default_reps}
+                                    Weight: ${this.props.exercise.default_weight}`}/>
+                    <ListItemSecondaryAction>
+                            <IconButton value={this.props.exercise}
+                            onClick={() => this.editSingleExercise(this.props.exercise)} >
+                                <Edit />
+                            </IconButton>
+                    </ListItemSecondaryAction>
+                </ListItem>
+            
+                <Modal
+                    aria-labelledby="exercise-item"
+                    aria-describedby="update default settings for a single exercise"
+                    open={this.state.open}
+                    onClose={this.handleClose}
+                >
+                <div style={getModalStyle()} className="paper">
+                    < EditExercise />
+                </div>
+                </Modal>
             </div>
             )
 
