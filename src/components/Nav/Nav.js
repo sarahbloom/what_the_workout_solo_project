@@ -18,17 +18,17 @@ class Nav extends Component {
             <li className="navBar">
               <Link to="/viewworkout">
                 View Workouts
-          </Link>
+              </Link>
             </li>
             <li className="navBar">
               <Link to="/createworkout">
                 Create Workout
-          </Link>
+              </Link>
             </li>
             <li className="navBar" onClick={this.logout}>
               <Link to="/home">
                 Logout
-          </Link>
+              </Link>
             </li>
           </ul>
         </div>

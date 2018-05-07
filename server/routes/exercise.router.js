@@ -64,7 +64,8 @@ router.post('/newworkout', (req, res) => {
                 await client.query('COMMIT');
                 } 
             }   
-        } catch (e) {
+            res.send(workoutResult.rows[0])
+        }catch (e) {
             console.log('ROLLBACK', e);
             await client.query('ROLLBACK');
             throw e;

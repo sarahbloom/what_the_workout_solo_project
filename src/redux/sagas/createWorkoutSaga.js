@@ -21,9 +21,11 @@ function* postNewWorkout(action){
     // console.log('in saveWorkoutToDatabase sagas', action);
     try {
         const createNewWorkout = yield call(axios.post, '/api/exercise/newworkout', action.payload);
+        console.log('createNewWorkout', createNewWorkout);
+        
         yield put({
             type: 'DISPLAY_WORKOUT_DETAIL',
-            payload: createNewWorkout.workoutID
+            payload: createNewWorkout.data.id
         })
     } catch (error) {
         console.log('error in POST new workout', error);
