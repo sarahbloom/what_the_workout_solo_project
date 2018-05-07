@@ -7,12 +7,10 @@ import Checkbox from 'material-ui/Checkbox';
 import Modal from 'material-ui/Modal';
 
 import EditExercise from '../EditExercise/EditExercise';
-import './CreateWorkoutItem.css'
 
 function getModalStyle() {
     let top = 50;
     let left = 50;
-
     return {
         position: 'absolute',
         width: 300,
@@ -20,7 +18,6 @@ function getModalStyle() {
         transform: `translate(-${top}%, -${left}%)`,
     };
 }
-
 
 class CreateWorkoutItem extends Component {
     state = {
@@ -42,11 +39,14 @@ class CreateWorkoutItem extends Component {
 
     handleClose = () => {
         this.setState({ open: false });
+        this.props.dispatch({
+            type: 'GET_EXERCISE'
+        });
     };
     
     render() {    
             let content = (
-            <div  className="editExerciseClass">
+            <div>
                     <ListItem
                         style={{ maxWidth: "350px" }}
                         key={this.props.exercise.id}
@@ -60,14 +60,14 @@ class CreateWorkoutItem extends Component {
                     />
                 
                     <ListItemText primary={`Name: ${this.props.exercise.name} 
-                                    Sets: ${this.props.exercise.default_sets}
-                                    Repetitions: ${this.props.exercise.default_reps}
-                                    Weight: ${this.props.exercise.default_weight}`}/>
+                                Sets: ${this.props.exercise.default_sets}
+                                Repetitions: ${this.props.exercise.default_reps}
+                                Weight: ${this.props.exercise.default_weight}`}/>
                     <ListItemSecondaryAction>
-                            <IconButton value={this.props.exercise}
-                            onClick={() => this.editSingleExercise(this.props.exercise)} >
-                                <Edit />
-                            </IconButton>
+                        <IconButton value={this.props.exercise}
+                        onClick={() => this.editSingleExercise(this.props.exercise)} >
+                            <Edit />
+                        </IconButton>
                     </ListItemSecondaryAction>
                 </ListItem>
             
@@ -77,7 +77,7 @@ class CreateWorkoutItem extends Component {
                     open={this.state.open}
                     onClose={this.handleClose}
                 >
-                <div style={getModalStyle()} className="paper">
+                <div style={getModalStyle()} className="editExerciseClass">
                     < EditExercise />
                 </div>
                 </Modal>
