@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import IconButton from 'material-ui/IconButton';
 import { AddCircleOutline, RemoveCircleOutline } from 'material-ui-icons';
+import Card, { CardContent, CardActions, } from 'material-ui/Card';
+import { Grid, Typography } from 'material-ui';
 
 import '../StartWorkout/StartWorkout.css'
 
@@ -75,32 +77,49 @@ class StartWorkoutItem extends Component {
 
         return (
 
-        <ul key={this.props.sessionItem.name}>
-            <li><strong>Name: {this.props.sessionItem.name} </strong> </li>
-            <li>Sets: {this.props.sessionItem.default_sets} 
-                <div className="updateInWorkout"> 
+        <Grid item>
+        <Card key={this.props.sessionItem.name} 
+            className="startWorkoutCards" 
+            style= {{ maxWidth: "345px" }} 
+            // style= {{backgroundColor: "secondary"}}
+            >
+            <CardContent className="startWorkoutCards" >
+
+                <Typography variant="headline" component="h3">
+                    <strong>Name: {this.props.sessionItem.name} </strong> 
+                </Typography>
+
+                <Typography>
+                    Sets: {this.props.sessionItem.default_sets} 
+                </Typography>
+                <CardActions className="updateInWorkout"> 
                     <IconButton onClick={this.addOneSet} size="small" color="primary" >
                         <AddCircleOutline />
                     </IconButton>
-                         1 set
+                            1 set
                     <IconButton onClick={this.deleteOneSet} size="small" color="primary" >
                         <RemoveCircleOutline />
                     </IconButton>
-                </div>
-            </li>
-            <li>Repetitions: {this.props.sessionItem.default_reps} 
-                <div className="updateInWorkout"> 
-                        <IconButton onClick={this.addOneRep} size="small" color="primary" >
+                </CardActions>
+
+                <Typography>
+                    Repetitions: {this.props.sessionItem.default_reps} 
+                </Typography>
+                <CardActions className="updateInWorkout"> 
+                    <IconButton onClick={this.addOneRep} size="small" color="primary" >
                         <AddCircleOutline />
                     </IconButton>
-                    1 rep
+                        1 rep
                     <IconButton onClick={this.deleteOneRep} size="small" color="primary" >
                         <RemoveCircleOutline />
                     </IconButton>
-                </div>                   
-            </li>
-            <li><strong>Resistance: {this.props.sessionItem.default_weight} </strong>
-                <div className="updateInWorkout"> 
+                </CardActions>                   
+                
+
+                <Typography component="h3">
+                    <strong>Resistance: {this.props.sessionItem.default_weight} </strong>
+                </Typography>
+                <CardActions className="updateInWorkout"> 
                     <IconButton onClick={this.addFive} size="small" variant="fab" color="primary" >
                         <AddCircleOutline />
                     </IconButton>
@@ -108,12 +127,12 @@ class StartWorkoutItem extends Component {
                     <IconButton onClick={this.deleteFive} size="small" variant="fab" color="primary" >
                         <RemoveCircleOutline />
                     </IconButton>
-                </div>  
-            </li>
-            <br/>
-          </ul>
-        )
+                </CardActions>  
 
+          </CardContent>
+        </Card>
+        </Grid>
+        )
     }
 }
 

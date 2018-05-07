@@ -1,3 +1,14 @@
-/* .updateInWorkout{
-    float: right;
-} */
+.updateInWorkout{
+    float: center;
+     /* display: flex; */
+     flex-direction: row;
+     display: inline-flex;
+     margin-left: 100px;
+}
+
+.startWorkoutCards{
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+    /* TODO: figure out spacing */

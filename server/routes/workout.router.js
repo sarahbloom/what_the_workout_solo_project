@@ -77,7 +77,6 @@ router.post('/newsession', (req, res) => {
             let queryText = `INSERT INTO "workoutApp"."session" ("user_id", "workout_id", "date") VALUES ($1, $2, now()) RETURNING "id";`;
             const sessionValues = [req.user.id, newSession.exerciseArray[0].workout_id,];
             const sessionResult = await client.query(queryText, sessionValues);
-            // console.log('workoutResult', workoutResult);
             const sessionId = sessionResult.rows[0].id;
             console.log('sessionId', sessionId);
 
