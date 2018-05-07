@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
     // console.log('is authenticated?', req.isAuthenticated());
     // console.log('user', req.user);  
     if (req.isAuthenticated()){
-        let queryText = `SELECT * FROM "workoutApp"."workout" WHERE user_id = $1;`;
+        let queryText = `SELECT * FROM "workoutApp"."workout" WHERE user_id = $1 ORDER BY "name" ASC;`;
         pool.query(queryText, [req.user.id])
         .then((result)=> {
             // console.log('GET workouts', result.rows);

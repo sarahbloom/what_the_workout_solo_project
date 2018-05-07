@@ -13,7 +13,7 @@ import ViewWorkout from './components/ViewWorkout/ViewWorkout';
 import WorkoutDetail from './components/ViewWorkout/WorkoutDetail/WorkoutDetail';
 import CreateWorkout from './components//CreateWorkout/CreateWorkout';
 import StartWorkout from './components/StartWorkout/StartWorkout';
-import EditExercise from './components/EditExercise/EditExercise';
+// import EditExercise from './components/EditExercise/EditExercise';
 
 import './styles/main.css';
 
@@ -43,10 +43,10 @@ const App = () => (
           path="/createworkout"
           component={CreateWorkout}
         />
-        <Route
+        {/* <Route
           path="/editexercise"
           component={EditExercise}
-        />
+        /> */}
         <Route
           path="/startworkout"
           component={StartWorkout}

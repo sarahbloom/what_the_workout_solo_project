@@ -62,9 +62,10 @@ class CreateWorkout extends Component{
                     workoutName: this.state.workoutName
                 }
             })
-            this.setState({
-                redirect: !this.state.redirect
-            })
+            this.props.history.push('startworkout')
+            // this.setState({
+            //     redirect: !this.state.redirect
+            // })
         }
     }
     

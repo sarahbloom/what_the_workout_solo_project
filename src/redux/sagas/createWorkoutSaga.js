@@ -1,5 +1,6 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
+// import { push } from 'react-router-redux';
 
 function* createWorkout (action){
     console.log('in createWorkoutSaga');
@@ -19,7 +20,11 @@ function* createWorkout (action){
 function* postNewWorkout(action){
     // console.log('in saveWorkoutToDatabase sagas', action);
     try {
-        yield call(axios.post, '/api/exercise/newworkout', action.payload);
+        const createNewWorkout = yield call(axios.post, '/api/exercise/newworkout', action.payload);
+        yield put({
+            type: 'DISPLAY_WORKOUT_DETAIL',
+            payload: createNewWorkout.workoutID
+        })
     } catch (error) {
         console.log('error in POST new workout', error);
         //TODO: add alert box
