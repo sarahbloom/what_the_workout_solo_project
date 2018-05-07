@@ -18,7 +18,7 @@ import StartWorkout from './components/StartWorkout/StartWorkout';
 import './styles/main.css';
 
 const App = () => (
-  <div>
+  <div id="background">
     <Header title="What the Workout" />
     <Router>
       <Switch>

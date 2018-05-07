@@ -2,7 +2,7 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
 function* workoutDetail (action){
-    console.log('in workoutDetail saga', action.payload);
+    // console.log('in workoutDetail saga', action.payload);
     try {
         const workoutDetailResponse = yield call(axios.get, `/api/workout/detail/${action.payload}`)
         yield put ({

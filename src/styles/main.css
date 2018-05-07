@@ -12,19 +12,20 @@ h2, h1{
 }
 
 .instructions {
-    background-color: #1c92c0;
+    background-color: #000070;
     padding: 5px;
     color: #ece7e7;
 }
 
 #loginForm {
-    background-color: #41c6fa;
+    background-color: #7953d2;
     width: 30%;
     height: 250px;
     width: 150px;
     margin: 20px auto;
     padding: 25px;
     border-radius: 2px;
+    color: #ece7e7
 }
 
 input {
@@ -53,7 +54,7 @@ input[type="submit"] {
 }
 
 .navbar {
-  background-color: #1c92c0;
+  background-color: #000070;
   width: 100%;
   border-radius: 0px;
   text-align: center;

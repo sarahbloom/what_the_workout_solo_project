@@ -52,8 +52,6 @@ class EditExercise extends Component {
         let editExerciseList = this.props.exercise.map(exercise =>{
             return (
                 <div key={exercise.id}>
-                {/* TODO: direct back to create workout
-                <button> back </button> */}
                     <h4>Name: {exercise.name}</h4>
                     <p>Sets: <input defaultValue={exercise.default_sets}
                         onChange={this.handleNameChangeFor("default_sets")} /> 

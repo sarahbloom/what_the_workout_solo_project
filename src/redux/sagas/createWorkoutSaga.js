@@ -1,9 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
-// import { push } from 'react-router-redux';
 
 function* createWorkout (action){
-    console.log('in createWorkoutSaga');
     try {
         const createWorkoutResponse = yield call(axios.get, '/api/exercise') 
         yield put({
@@ -16,9 +14,7 @@ function* createWorkout (action){
     }
 }
 
-
 function* postNewWorkout(action){
-    // console.log('in saveWorkoutToDatabase sagas', action);
     try {
         const createNewWorkout = yield call(axios.post, '/api/exercise/newworkout', action.payload);
         console.log('createNewWorkout', createNewWorkout);

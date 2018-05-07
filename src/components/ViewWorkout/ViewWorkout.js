@@ -26,7 +26,7 @@ class ViewWorkout extends Component {
   }
 
   viewWorkoutDetail = (workoutItem) => {
-  console.log('clicked button', workoutItem.id);
+  // console.log('clicked button', workoutItem.id);
     this.props.dispatch({ 
       type: 'DISPLAY_WORKOUT_DETAIL',
       payload: workoutItem.id
