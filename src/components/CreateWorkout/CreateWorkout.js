@@ -1,16 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect} from 'react-router-dom';
 
 import Button from 'material-ui/Button';
 import List from 'material-ui/List';
 import Input from 'material-ui/Input';
-import Dialog, {
-    DialogActions,
-    DialogContent,
-    DialogContentText,
-    DialogTitle,
-} from 'material-ui/Dialog';
+import Dialog, { DialogActions, DialogContent, DialogContentText, 
+    DialogTitle } from 'material-ui/Dialog';
 
 import Nav from '../Nav/Nav';
 import CreateWorkoutItem from './CreateWorkoutItem'
@@ -19,7 +14,6 @@ import './CreateWorkout.css'
 class CreateWorkout extends Component{
     state = {
         open: false,
-        redirect: false,
         workoutName: "",
     }
 
@@ -62,10 +56,6 @@ class CreateWorkout extends Component{
                     workoutName: this.state.workoutName
                 }
             })
-            this.props.history.push('startworkout')
-            // this.setState({
-            //     redirect: !this.state.redirect
-            // })
         }
     }
     
@@ -80,43 +70,37 @@ class CreateWorkout extends Component{
         })
 
         let content = null;
-            if (this.state.redirect) {
-                content = (<Redirect exact from="/createworkout" to="/startworkout" />)
-            } else {
-                content =(
-                <div>
-                    <h2> Create Your Workout! </h2>
-                    <form onSubmit={this.submitWorkout} className="newWorkout">
-                    <Input placeholder="Workout Name" type="text" 
-                        onChange={this.handleNameChange}
-                        value={this.state.workoutName} />
-                        {/* TODO: Determine how want to display this */}
-                        {/* <select className="exerciseTypeDropDown">
-                            <option value="">Exercise Type:</option>
-                            <option value="lower body">Lower Body</option>
-                            <option value="upper body">Upper Body</option>
-                            </select> */}
-                    <List value={WorkoutExerciseList}> {ExerciseList}</List>
-                    <Button type="submit" variant="raised" color="primary">
-                        Start Workout!
-                    </Button>
-                    </form>
-                </div>
-                )
+        if (this.props.user.userName) {
+            content =(
+            <div>
+                <h2> Create Your Workout! </h2>
+                <form onSubmit={this.submitWorkout} className="newWorkout">
+                <Input placeholder="Workout Name" type="text" 
+                    onChange={this.handleNameChange}
+                    value={this.state.workoutName} />
+                    {/* TODO: Determine how want to display this */}
+                    {/* <select className="exerciseTypeDropDown">
+                        <option value="">Exercise Type:</option>
+                        <option value="lower body">Lower Body</option>
+                        <option value="upper body">Upper Body</option>
+                        </select> */}
+                <List value={WorkoutExerciseList}> {ExerciseList}</List>
+                <Button type="submit" variant="raised" color="primary">
+                    Start Workout!
+                </Button>
+                </form>
+            </div>
+            )
             }
 
         return(
             <div>
                 <Nav />
-                <Dialog
-                    open={this.state.open}
-                    // onClose={this.handleClose}
-                    aria-describedby="alert-dialog-no-workout-name"
-                >
+                <Dialog open={this.state.open} aria-describedby="alert-dialog-no-workout-name">
                 <DialogTitle>{"Your Workout Needs a Name!"}</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        Please enter in a name for your new workout before starting.
+                        Please enter in a name for your new workout before continuing.
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>

@@ -17,6 +17,12 @@ h2, h1{
     color: #ece7e7;
 }
 
+#loginButton {
+    margin: 15px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
 #loginForm {
     background-color: #7953d2;
     width: 30%;
