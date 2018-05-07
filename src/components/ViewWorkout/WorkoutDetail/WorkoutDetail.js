@@ -31,7 +31,7 @@ class WorkoutDetail extends Component {
 
   render() {
     let content = null;
-    // console.log("workout detail props", this.props.workoutDetailList);
+    // console.log("workout detail props", this.props.workoutDetailList);    
     
     let workoutDetailArray = this.props.workoutDetailList.map(exerciseItem =>{
         return (
@@ -42,18 +42,20 @@ class WorkoutDetail extends Component {
     if (this.props.user.userName && this.state.redirect === false) {
       content = (
           <div>
-            <h2> Workout Details </h2>
-              <br />
-            <Button  variant="raised" color="primary" 
-              onClick={() => this.deleteWorkout(this.props.workoutDetailList[0].workout_id)}>
-              Delete Workout 
-            </Button>
-              <br />
-            <ul> {workoutDetailArray} </ul>
-              <br />
+            <h2> Workout Detail </h2>
+            <br />
+            <ul>
+              {workoutDetailArray}
+            </ul>
             <Link to="/startworkout">
               <Button variant="raised" color="primary" > Start Workout! </Button>
             </Link>
+            <br />
+            <br />
+            <Button variant="raised" color="primary"
+              onClick={() => this.deleteWorkout(this.props.workoutDetailList[0].workout_id)}>
+              Delete Workout
+            </Button>
           </div>
       );
     } else if (this.props.user.userName && this.state.redirect) {

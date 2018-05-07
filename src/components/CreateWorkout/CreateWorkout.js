@@ -4,12 +4,21 @@ import { Redirect} from 'react-router-dom';
 
 import Button from 'material-ui/Button';
 import List from 'material-ui/List';
+import Input from 'material-ui/Input';
+import Dialog, {
+    DialogActions,
+    DialogContent,
+    DialogContentText,
+    DialogTitle,
+} from 'material-ui/Dialog';
 
 import Nav from '../Nav/Nav';
 import CreateWorkoutItem from './CreateWorkoutItem'
+import './CreateWorkout.css'
 
 class CreateWorkout extends Component{
     state = {
+        open: false,
         redirect: false,
         workoutName: "",
     }
@@ -20,34 +29,43 @@ class CreateWorkout extends Component{
         });
     }
 
+    handleClickOpen = () => {
+        this.setState({ open: true });
+    };
+
+    handleClose = (event) => {
+        event.preventDefault();
+        this.setState({ open: false });
+    };
+
+    // handle name change for new workout name to be sent with payload
+    handleNameChange = (event) => {
+        event.preventDefault(); 
+        this.setState({
+            workoutName:  (event.target.value)
+        }) 
+    }
+
     //submit new workout name and exercise list to BD
     submitWorkout = (event) => {
-        console.log('submitWorkout clicked');
-
-        if (this.state.workoutName.length === 0){
+        if (this.state.workoutName.length === 0) {
             console.log('you need a name');
-            
-            //TODO: add alert
-        } else { 
-            event.preventDefault(); 
+            this.setState({
+                open: true
+            });
+        } else {
+            event.preventDefault();
             this.props.dispatch({
                 type: 'POST_NEW_WORKOUT',
                 payload: {
-                    exerciseArray: this.props.createWorkoutExerciseList, 
-                    workoutName: this.state.workoutName}
+                    exerciseArray: this.props.createWorkoutExerciseList,
+                    workoutName: this.state.workoutName
+                }
             })
             this.setState({
                 redirect: !this.state.redirect
             })
         }
-    }
-
-    // handle name change for new workout name to be sent with payload
-    handleNameChange = (event) => {
-            event.preventDefault(); 
-            this.setState({
-                workoutName:  (event.target.value)
-            }) 
     }
     
     render(){
@@ -67,10 +85,10 @@ class CreateWorkout extends Component{
                 content =(
                 <div>
                     <h2> Create Your Workout! </h2>
-                    <form onSubmit={this.submitWorkout} >
-                            <input placeholder="Workout Name" type="text" 
-                                onChange={this.handleNameChange}
-                                value={this.state.workoutName} />
+                    <form onSubmit={this.submitWorkout} className="newWorkout">
+                    <Input placeholder="Workout Name" type="text" 
+                        onChange={this.handleNameChange}
+                        value={this.state.workoutName} />
                         {/* TODO: Determine how want to display this */}
                         {/* <select className="exerciseTypeDropDown">
                             <option value="">Exercise Type:</option>
@@ -89,6 +107,23 @@ class CreateWorkout extends Component{
         return(
             <div>
                 <Nav />
+                <Dialog
+                    open={this.state.open}
+                    // onClose={this.handleClose}
+                    aria-describedby="alert-dialog-no-workout-name"
+                >
+                <DialogTitle>{"Your Workout Needs a Name!"}</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        Please enter in a name for your new workout before starting.
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={this.handleClose} color="primary">
+                        OK!
+                    </Button>
+                </DialogActions>
+                </Dialog>
                 {content}
             </div>
         )
