@@ -6,3 +6,7 @@
     padding: 20px; 
     border: '1px solid'
 }
+
+.createWorkoutButton {
+    text-align: center
+}

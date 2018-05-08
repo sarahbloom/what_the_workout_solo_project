@@ -31,7 +31,8 @@
     "redux-form-material-ui": "^4.3.4",
     "redux-logger": "^3.0.6",
     "redux-saga": "^0.16.0",
-    "sweetalert": "^2.1.0"
+    "sweetalert": "^2.1.0",
+    "typeface-roboto": "0.0.54"
   },
   "scripts": {
     "start": "react-scripts build && node server/server.js",

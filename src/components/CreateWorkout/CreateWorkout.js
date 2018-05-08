@@ -1,17 +1,28 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {
+    Component
+} from 'react';
+import {
+    connect
+} from 'react-redux';
 
 import Button from 'material-ui/Button';
 import List from 'material-ui/List';
 import Input from 'material-ui/Input';
-import Dialog, { DialogActions, DialogContent, DialogContentText, 
-    DialogTitle } from 'material-ui/Dialog';
+import Typography from 'material-ui/Typography';
+import { KeyboardArrowDown } from 'material-ui-icons';
+import Dialog, 
+    { DialogActions, DialogContent,DialogContentText, DialogTitle } 
+    from 'material-ui/Dialog';
+import ExpansionPanel, 
+    { ExpansionPanelSummary, ExpansionPanelDetails } 
+    from 'material-ui/ExpansionPanel';
+
 
 import Nav from '../Nav/Nav';
 import CreateWorkoutItem from './CreateWorkoutItem'
 import './CreateWorkout.css'
 
-class CreateWorkout extends Component{
+class CreateWorkout extends Component {
     state = {
         open: false,
         workoutName: "",
@@ -24,20 +35,24 @@ class CreateWorkout extends Component{
     }
 
     handleClickOpen = () => {
-        this.setState({ open: true });
+        this.setState({
+            open: true
+        });
     };
 
     handleClose = (event) => {
         event.preventDefault();
-        this.setState({ open: false });
+        this.setState({
+            open: false
+        });
     };
 
     // handle name change for new workout name to be sent with payload
     handleNameChange = (event) => {
-        event.preventDefault(); 
+        event.preventDefault();
         this.setState({
-            workoutName:  (event.target.value)
-        }) 
+            workoutName: (event.target.value)
+        })
     }
 
     //submit new workout name and exercise list to BD
@@ -57,60 +72,101 @@ class CreateWorkout extends Component{
                 }
             })
         }
+        this.props.history.push('startworkout')
     }
-    
-    render(){
+
+    render() {
         let WorkoutExerciseList = this.props.createWorkoutExerciseList;
-        
-        let ExerciseList = WorkoutExerciseList.map(exercise =>{
-            return (
-                < CreateWorkoutItem key={exercise.id} exercise={exercise} 
-                handleToggle={this.handleToggle}/> 
-            )  
+
+        let lowerBodyExercise = WorkoutExerciseList.map(exercise => {
+            if (exercise.family === "lower body") {
+                return ( 
+                <CreateWorkoutItem key = {exercise.id}exercise = {exercise}
+                handleToggle = {this.handleToggle}/> 
+                )
+            }
+        })
+
+        let upperBodyExercise = WorkoutExerciseList.map(exercise => {
+            if (exercise.family === "upper body") {
+            return ( 
+                <CreateWorkoutItem key = {exercise.id}exercise = {exercise}
+                handleToggle = {this.handleToggle}/> 
+                )
+            }
         })
 
         let content = null;
         if (this.props.user.userName) {
-            content =(
-            <div>
-                <h2> Create Your Workout! </h2>
-                <form onSubmit={this.submitWorkout} className="newWorkout">
-                <Input placeholder="Workout Name" type="text" 
-                    onChange={this.handleNameChange}
-                    value={this.state.workoutName} />
-                    {/* TODO: Determine how want to display this */}
-                    {/* <select className="exerciseTypeDropDown">
-                        <option value="">Exercise Type:</option>
-                        <option value="lower body">Lower Body</option>
-                        <option value="upper body">Upper Body</option>
-                        </select> */}
-                <List value={WorkoutExerciseList}> {ExerciseList}</List>
-                <Button type="submit" variant="raised" color="primary">
-                    Start Workout!
-                </Button>
-                </form>
-            </div>
-            )
-            }
+            content = ( 
+                <div>
+                <h2> Create Your Workout! </h2> 
+                <form onSubmit = {this.submitWorkout} className = "newWorkout" >
+                <Input placeholder = "Workout Name"
+                    type = "text"
+                    onChange = {this.handleNameChange}
+                    value = {this.state.workoutName}
+                />
 
-        return(
-            <div>
-                <Nav />
-                <Dialog open={this.state.open} aria-describedby="alert-dialog-no-workout-name">
-                <DialogTitle>{"Your Workout Needs a Name!"}</DialogTitle>
-                <DialogContent>
-                    <DialogContentText>
-                        Please enter in a name for your new workout before continuing.
-                    </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={this.handleClose} color="primary">
+                <div>
+                <br/>
+                <ExpansionPanel>
+                    <ExpansionPanelSummary expandIcon = { < KeyboardArrowDown/> }>
+                        < Typography className = "heading" > Lower Body </Typography>
+                    </ExpansionPanelSummary >
+                    <ExpansionPanelDetails >
+                        <List> {lowerBodyExercise} </List> 
+                    </ExpansionPanelDetails > 
+                </ExpansionPanel>
+
+                <ExpansionPanel >
+                    < ExpansionPanelSummary expandIcon = { <KeyboardArrowDown /> }>
+                        <Typography className = "heading">  Upper Body </Typography> 
+                    </ExpansionPanelSummary > 
+                    <ExpansionPanelDetails >
+                        <List> {upperBodyExercise} </List>
+                    </ExpansionPanelDetails > 
+                </ExpansionPanel>
+
+                {/* <ExpansionPanel >
+                    < ExpansionPanelSummary expandIcon = { <KeyboardArrowDown /> }>
+                    < Typography className = "heading" > Core </Typography> 
+                    </ExpansionPanelSummary > 
+                </ExpansionPanel> */}
+                < br />
+                </div> 
+                <Button type = "submit" variant = "raised" color = "primary" >
+                    Start Workout!
+                </Button> 
+                </form> 
+                </div>
+            )
+        }
+
+        return ( 
+            <div >
+            <Nav />
+
+            <Dialog open = {this.state.open}
+                    aria-describedby = "alert-dialog-no-workout-name" >
+                <DialogTitle > 
+                    {"Your Workout Needs a Name!"} 
+                </DialogTitle> 
+                <DialogContent >
+                <DialogContentText >
+                    Please enter in a name for your new workout before continuing. 
+                </DialogContentText> 
+                </DialogContent> 
+
+                <DialogActions >
+                    <Button onClick = { this.handleClose }
+                        color = "primary" >
                         OK!
-                    </Button>
+                    </Button> 
                 </DialogActions>
-                </Dialog>
-                {content}
-            </div>
+             </Dialog> 
+                {content} 
+             </div>
         )
     }
 }

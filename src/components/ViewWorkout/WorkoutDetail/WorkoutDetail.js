@@ -6,6 +6,7 @@ import { Redirect } from 'react-router-dom';
 
 import Nav from '../../Nav/Nav';
 import WorkoutDetailItem from './WorkoutDetailItem';
+import './WorkoutDetail.css'
 
 class WorkoutDetail extends Component {
   state = {
@@ -47,15 +48,21 @@ class WorkoutDetail extends Component {
             <ul>
               {workoutDetailArray}
             </ul>
+            <div className="workoutDetailButton">
             <Link to="/startworkout">
-              <Button variant="raised" color="primary" > Start Workout! </Button>
+              <Button variant="raised" color="primary" > 
+                Start Workout! 
+              </Button>
             </Link>
             <br />
             <br />
+            <div className="createWorkoutButton">
             <Button variant="raised" color="primary"
               onClick={() => this.deleteWorkout(this.props.workoutDetailList[0].workout_id)}>
               Delete Workout
             </Button>
+            </div>
+            </div>
           </div>
       );
     } else if (this.props.user.userName && this.state.redirect) {
