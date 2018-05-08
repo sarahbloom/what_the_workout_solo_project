@@ -72,6 +72,7 @@ class CreateWorkout extends Component {
                 }
             })
         }
+        this.props.history.push('startworkout')
     }
 
     render() {
