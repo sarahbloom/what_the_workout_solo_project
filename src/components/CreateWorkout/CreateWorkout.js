@@ -10,13 +10,12 @@ import List from 'material-ui/List';
 import Input from 'material-ui/Input';
 import Typography from 'material-ui/Typography';
 import { KeyboardArrowDown } from 'material-ui-icons';
-import Dialog, {
-    DialogActions,
-    DialogContent,
-    DialogContentText,
-    DialogTitle
-} from 'material-ui/Dialog';
-import ExpansionPanel, { ExpansionPanelSummary, ExpansionPanelDetails,} from 'material-ui/ExpansionPanel';
+import Dialog, 
+    { DialogActions, DialogContent,DialogContentText, DialogTitle } 
+    from 'material-ui/Dialog';
+import ExpansionPanel, 
+    { ExpansionPanelSummary, ExpansionPanelDetails } 
+    from 'material-ui/ExpansionPanel';
 
 
 import Nav from '../Nav/Nav';
@@ -109,12 +108,13 @@ class CreateWorkout extends Component {
                 />
 
                 <div>
+                <br/>
                 <ExpansionPanel>
                     <ExpansionPanelSummary expandIcon = { < KeyboardArrowDown/> }>
                         < Typography className = "heading" > Lower Body </Typography>
                     </ExpansionPanelSummary >
                     <ExpansionPanelDetails >
-                        <Typography> {lowerBodyExercise} </Typography> 
+                        <List> {lowerBodyExercise} </List> 
                     </ExpansionPanelDetails > 
                 </ExpansionPanel>
 
@@ -123,19 +123,18 @@ class CreateWorkout extends Component {
                         <Typography className = "heading">  Upper Body </Typography> 
                     </ExpansionPanelSummary > 
                     <ExpansionPanelDetails >
-                        <Typography > {upperBodyExercise} </Typography> 
+                        <List> {upperBodyExercise} </List>
                     </ExpansionPanelDetails > 
                 </ExpansionPanel>
 
-                <ExpansionPanel >
+                {/* <ExpansionPanel >
                     < ExpansionPanelSummary expandIcon = { <KeyboardArrowDown /> }>
                     < Typography className = "heading" > Core </Typography> 
                     </ExpansionPanelSummary > 
-                </ExpansionPanel>
+                </ExpansionPanel> */}
+                < br />
                 </div> 
-                <Button type = "submit"
-                    variant = "raised"
-                    color = "primary" >
+                <Button type = "submit" variant = "raised" color = "primary" >
                     Start Workout!
                 </Button> 
                 </form> 
@@ -165,8 +164,7 @@ class CreateWorkout extends Component {
                     </Button> 
                 </DialogActions>
              </Dialog> 
-
-             {content} 
+                {content} 
              </div>
         )
     }
