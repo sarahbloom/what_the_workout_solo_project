@@ -13,11 +13,11 @@ class WorkoutDetail extends Component {
     redirect: false,
   }
 
-  componentDidUpdate() {
-    if (!this.props.user.isLoading && this.props.user.userName === null) {
-      this.props.history.push('home');
-    }
-  }
+  // componentDidUpdate() {
+  //   if (!this.props.user.isLoading && this.props.user.userName === null) {
+  //     this.props.history.push('home');
+  //   }
+  // }
 
   deleteWorkout = (idToDelete) => {
     console.log('clicked delete workout', idToDelete);
@@ -39,11 +39,11 @@ class WorkoutDetail extends Component {
           < WorkoutDetailItem key={exerciseItem.name} exerciseItem={exerciseItem} /> 
         )
     })
-
+    
     if (this.props.user.userName && this.state.redirect === false) {
       content = (
           <div>
-            <h2> Workout Detail </h2>
+            <h2>Workout Details</h2>
             <br />
             <ul>
               {workoutDetailArray}

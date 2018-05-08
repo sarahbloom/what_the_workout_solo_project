@@ -1,5 +1,3 @@
-
-
 const workoutDetailList = (state = [], action) => {
     // console.log('workoutDetailList', action);
     
@@ -9,6 +7,6 @@ const workoutDetailList = (state = [], action) => {
         default:
             return state;
     }
-}
+}     
 
 export default workoutDetailList;

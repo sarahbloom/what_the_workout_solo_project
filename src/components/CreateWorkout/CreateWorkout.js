@@ -102,42 +102,44 @@ class CreateWorkout extends Component {
                 <div>
                 <h2> Create Your Workout! </h2> 
                 <form onSubmit = {this.submitWorkout} className = "newWorkout" >
-                <Input placeholder = "Workout Name"
-                    type = "text"
-                    onChange = {this.handleNameChange}
-                    value = {this.state.workoutName}
-                />
+                    <Input placeholder = "Workout Name"
+                        type = "text"
+                        onChange = {this.handleNameChange}
+                        value = {this.state.workoutName}
+                    />
 
-                <div>
-                <br/>
-                <ExpansionPanel>
-                    <ExpansionPanelSummary expandIcon = { < KeyboardArrowDown/> }>
-                        < Typography className = "heading" > Lower Body </Typography>
-                    </ExpansionPanelSummary >
-                    <ExpansionPanelDetails >
-                        <List> {lowerBodyExercise} </List> 
-                    </ExpansionPanelDetails > 
-                </ExpansionPanel>
+                    <div>
+                    <br/>
+                    <ExpansionPanel>
+                        <ExpansionPanelSummary expandIcon = { < KeyboardArrowDown/> }>
+                            < Typography className = "heading" > Lower Body </Typography>
+                        </ExpansionPanelSummary >
+                        <ExpansionPanelDetails >
+                            <List> {lowerBodyExercise} </List> 
+                        </ExpansionPanelDetails > 
+                    </ExpansionPanel>
 
-                <ExpansionPanel >
-                    < ExpansionPanelSummary expandIcon = { <KeyboardArrowDown /> }>
-                        <Typography className = "heading">  Upper Body </Typography> 
-                    </ExpansionPanelSummary > 
-                    <ExpansionPanelDetails >
-                        <List> {upperBodyExercise} </List>
-                    </ExpansionPanelDetails > 
-                </ExpansionPanel>
+                    <ExpansionPanel >
+                        < ExpansionPanelSummary expandIcon = { <KeyboardArrowDown /> }>
+                            <Typography className = "heading">  Upper Body </Typography> 
+                        </ExpansionPanelSummary > 
+                        <ExpansionPanelDetails >
+                            <List> {upperBodyExercise} </List>
+                        </ExpansionPanelDetails > 
+                    </ExpansionPanel>
 
-                {/* <ExpansionPanel >
-                    < ExpansionPanelSummary expandIcon = { <KeyboardArrowDown /> }>
-                    < Typography className = "heading" > Core </Typography> 
-                    </ExpansionPanelSummary > 
-                </ExpansionPanel> */}
-                < br />
-                </div> 
-                <Button type = "submit" variant = "raised" color = "primary" >
-                    Start Workout!
-                </Button> 
+                    {/* <ExpansionPanel >
+                        < ExpansionPanelSummary expandIcon = { <KeyboardArrowDown /> }>
+                        < Typography className = "heading" > Core </Typography> 
+                        </ExpansionPanelSummary > 
+                    </ExpansionPanel> */}
+                    < br />
+                    </div> 
+                    < div className = "createWorkoutButton">
+                        <Button type = "submit" variant = "raised" color = "primary" >
+                            Start Workout!
+                        </Button> 
+                    </div>
                 </form> 
                 </div>
             )
