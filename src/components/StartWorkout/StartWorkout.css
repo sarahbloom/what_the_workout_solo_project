@@ -13,11 +13,11 @@
 }
 
 img {
-    height: 350px;
+    height: 325px;
     width: 250px;
 }
 
-#alert-dialog-title {
+.finishedWorkoutBox dialog {
     color: #000070;
 }
 

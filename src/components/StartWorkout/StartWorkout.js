@@ -39,6 +39,7 @@ class StartWorkout extends Component {
         this.setState({ 
             open: false 
         });
+        this.props.history.push('viewworkout')
     };
 
 
@@ -66,25 +67,19 @@ class StartWorkout extends Component {
                     open={this.state.open}
                     onClose={this.handleClose}
                     aria-labelledby="alert-dialog-finished-workout"
+                    className="finishedWorkoutBox"
                 >
-                    < DialogTitle id="alert-dialog-title">
+                    < DialogTitle id="alertDialogTitle">
                         <strong>You're a Champ!</strong>
                     </DialogTitle>
                     <DialogContent>
                         < img src="https://images.pexels.com/photos/347135/pexels-photo-347135.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
                             alt="cheers for completeing the workout"/>
                     </DialogContent>
-                    <DialogActions>
-                        < Link to = "/viewworkout" >
-                            <Button onClick={this.handleClose} color="primary" autoFocus>
-                                View Workouts
-                            </Button>
-                        </Link>
-                        < Link to = "/createworkout" >
-                            <Button onClick={this.handleClose} color="primary">
-                                Create New Workout
-                            </Button>
-                        </Link>
+                    <DialogActions >
+                        <Button className="workoutButton" onClick={this.handleClose} color="primary" >
+                            Back to View Workouts
+                        </Button>
                     </DialogActions>
                 </Dialog>
             </div>
