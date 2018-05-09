@@ -13,6 +13,14 @@ class WorkoutDetail extends Component {
     redirect: false,
   }
 
+  componentDidUpdate(){
+     console.log('id-0', this.props.workoutDetailList[0].workout_id);
+     this.props.dispatch({
+       type: 'GET_SESSION_DATE',
+      //  payload: this.props.workoutDetailList[0].workout_id
+     })
+  }
+
   componentDidUpdate() {
     if (!this.props.user.isLoading && this.props.user.userName === null) {
       this.props.history.push('home');
@@ -34,7 +42,7 @@ class WorkoutDetail extends Component {
     let content = null;
     // console.log("workout detail props", this.props.workoutDetailList);    
     
-    let workoutDetailArray = this.props.workoutDetailList.map(exerciseItem =>{
+    let workoutDetailArray = this.props.workoutDetailList.map(exerciseItem => {
         return (
           < WorkoutDetailItem key={exerciseItem.name} exerciseItem={exerciseItem} /> 
         )
@@ -58,7 +66,9 @@ class WorkoutDetail extends Component {
             <br />
             <div className="createWorkoutButton">
             <Button variant="raised" color="primary"
-              onClick={() => this.deleteWorkout(this.props.workoutDetailList[0].workout_id)}>
+              onClick = {
+                () => this.deleteWorkout(this.props.workoutDetailList[0].workout_id)
+              } >
               Delete Workout
             </Button>
             </div>
@@ -87,6 +97,7 @@ class WorkoutDetail extends Component {
 const mapStateToProps = state => ({
   user: state.user,
   workoutDetailList: state.workoutDetailList,
+  viewWorkoutList: state.viewWorkoutList,
   state
 });
 

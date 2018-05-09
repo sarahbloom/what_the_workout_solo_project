@@ -36,7 +36,7 @@ class ViewWorkout extends Component {
   render() {
     let content = null;
     
-    let workoutList = this.props.state.viewWorkoutList.map((workoutItem) =>{
+    let workoutList = this.props.viewWorkoutList.map((workoutItem) =>{
       return <li className="workoutList" key={workoutItem.id}> 
                 <Link to="/viewworkout/detail" >
                   <Button value={workoutItem} 
@@ -71,6 +71,7 @@ class ViewWorkout extends Component {
 
 const mapStateToProps = state => ({
   user: state.user,
+  viewWorkoutList: state.viewWorkoutList,
   state
 });
 

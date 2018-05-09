@@ -5,7 +5,8 @@ import viewWorkoutList from './viewWorkoutReducer';
 import workoutDetailList from './workoutDetailReducer';
 import createWorkoutExerciseList from './createWorkoutReducer';
 import editSingleExerciseList from './editExerciseReducer';
-import startSessionList from './startSessionReducer'
+import startSessionList from './startSessionReducer';
+import viewLastSessionDate from './getLastSessionDateReducer'
 
 const store = combineReducers({
   user,
@@ -15,6 +16,7 @@ const store = combineReducers({
   createWorkoutExerciseList,
   editSingleExerciseList,
   startSessionList,
+  viewLastSessionDate
 });
 
 export default store;
