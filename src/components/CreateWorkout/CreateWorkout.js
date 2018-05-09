@@ -102,9 +102,8 @@ class CreateWorkout extends Component {
                 <div>
                 <h2> Create Your Workout! </h2> 
                 <form onSubmit = {this.submitWorkout} className = "newWorkout" >
-                    <Input placeholder = "Workout Name"
-                        type = "text"
-                        onChange = {this.handleNameChange}
+                    <Input className="inputField" placeholder = "Workout Name"
+                        type = "text" onChange = {this.handleNameChange}
                         value = {this.state.workoutName}
                     />
 

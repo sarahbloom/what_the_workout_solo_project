@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Button from 'material-ui/Button';
 
 class RegisterPage extends Component {
   constructor(props) {
@@ -72,7 +73,7 @@ class RegisterPage extends Component {
     return (
       <div>
         {this.renderAlert()}
-        <form onSubmit={this.registerUser}>
+        < form className = "loginForm" onSubmit = {this.registerUser} >
           <h1>Register User</h1>
           <div>
             <label htmlFor="username">
@@ -96,13 +97,15 @@ class RegisterPage extends Component {
               />
             </label>
           </div>
-          <div>
-            <input
-              type="submit"
-              name="submit"
-              value="Register"
-            />
-            <Link to="/home">Cancel</Link>
+          <div className="loginButton">
+           <Button type="submit" name="submit">
+             Register 
+            </Button>
+            <Link to="/home">
+              <Button>
+              Cancel
+              </Button>
+            </Link>
           </div>
         </form>
       </div>

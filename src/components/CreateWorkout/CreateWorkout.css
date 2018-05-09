@@ -10,3 +10,13 @@
 .createWorkoutButton {
     text-align: center
 }
+
+.inputField{
+    margin-left: 80px;
+}
+
+.inputField input {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}

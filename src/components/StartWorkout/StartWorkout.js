@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Button from 'material-ui/Button';
 import Dialog, 
-    { DialogActions, DialogContent, DialogContentText, DialogTitle,}
+    { DialogActions, DialogContent, DialogTitle,}
     from 'material-ui/Dialog';
 
 import Nav from '../../components/Nav/Nav';
@@ -64,7 +64,8 @@ class StartWorkout extends Component {
                 >
                     <DialogTitle id="alert-dialog-title">You're a Champ!</DialogTitle>
                     <DialogContent>
-                        < img src='https://images.pexels.com/photos/347135/pexels-photo-347135.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260' / >
+                        < img src="https://images.pexels.com/photos/347135/pexels-photo-347135.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                            alt="cheers for completeing the workout"/>
                     </DialogContent>
                     <DialogActions>
                         < Link to = "/viewworkout" >
