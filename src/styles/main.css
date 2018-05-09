@@ -37,6 +37,10 @@ h2, h1{
     color: #ece7e7
 }
 
+.workoutButton {
+    text-align: center
+}
+
 input {
     margin: 5px;
     margin-bottom: 10px;

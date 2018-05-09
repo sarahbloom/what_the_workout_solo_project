@@ -8,7 +8,7 @@ import { Grid, Typography } from 'material-ui';
 import '../StartWorkout/StartWorkout.css'
 
 class StartWorkoutItem extends Component {
-
+    //update completed weight by five
     addFive = () => {
         this.props.sessionItem.default_weight = parseInt(this.props.sessionItem.default_weight, 10)
         this.props.sessionItem.default_weight += 5;
@@ -20,7 +20,7 @@ class StartWorkoutItem extends Component {
             payload: this.props.sessionItem
         })
     }
-
+    //decrease completed weight by five
     deleteFive = () => {
         console.log('clicked deleteFive');
         this.props.sessionItem.default_weight = parseInt(this.props.sessionItem.default_weight, 10)
@@ -31,7 +31,7 @@ class StartWorkoutItem extends Component {
             payload: this.props.sessionItem
         })
     }
-
+    //update completed sets by one
     addOneSet = () => {
         this.props.sessionItem.default_sets = parseInt(this.props.sessionItem.default_sets, 10)
         this.props.sessionItem.default_sets += 1;
@@ -42,7 +42,7 @@ class StartWorkoutItem extends Component {
         })
         
     }
-
+    //decrease completed sets by one
     deleteOneSet = () => {
         this.props.sessionItem.default_sets = parseInt(this.props.sessionItem.default_sets, 10)
         this.props.sessionItem.default_sets -= 1;
@@ -52,7 +52,7 @@ class StartWorkoutItem extends Component {
             payload: this.props.sessionItem
         })
     }
-
+    //update completed reps by one
     addOneRep = () => {
         this.props.sessionItem.default_reps = parseInt(this.props.sessionItem.default_reps, 10)
         this.props.sessionItem.default_reps += 1;
@@ -62,7 +62,7 @@ class StartWorkoutItem extends Component {
             payload: this.props.sessionItem
         })
     }
-    
+    //decrease completed reps by one
     deleteOneRep = () => {
         this.props.sessionItem.default_reps = parseInt(this.props.sessionItem.default_reps, 10)
         this.props.sessionItem.default_reps -= 1;
@@ -84,11 +84,11 @@ class StartWorkoutItem extends Component {
             // style= {{backgroundColor: "secondary"}}
             >
             <CardContent className="startWorkoutCards" >
-
+                {/* Exercise name */}
                 <Typography variant="headline" component="h3">
                     <strong>Name: {this.props.sessionItem.name} </strong> 
                 </Typography>
-
+                { /* sets info with buttons*/ }
                 <Typography>
                     Sets: {this.props.sessionItem.default_sets} 
                 </Typography>
@@ -101,7 +101,7 @@ class StartWorkoutItem extends Component {
                         <RemoveCircleOutline />
                     </IconButton>
                 </CardActions>
-
+                { /* reps info with buttons*/ }
                 <Typography>
                     Repetitions: {this.props.sessionItem.default_reps} 
                 </Typography>
@@ -114,8 +114,7 @@ class StartWorkoutItem extends Component {
                         <RemoveCircleOutline />
                     </IconButton>
                 </CardActions>                   
-                
-
+                {/* weight info with buttons*/}
                 <Typography component="h3">
                     <strong>Resistance: {this.props.sessionItem.default_weight} </strong>
                 </Typography>

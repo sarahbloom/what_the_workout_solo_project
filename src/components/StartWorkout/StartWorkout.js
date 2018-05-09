@@ -20,6 +20,7 @@ class StartWorkout extends Component {
         }
     }
 
+    //save completed session to database. Change of local state will display diaglog box.
     finishedWorkout = (event) => {
         console.log('finished workout');
         event.preventDefault();
@@ -33,7 +34,7 @@ class StartWorkout extends Component {
             open: true
         });
     }
-
+    //close of dialog box
       handleClose = () => {
         this.setState({ 
             open: false 
@@ -52,17 +53,23 @@ class StartWorkout extends Component {
 
         if (this.props.user.userName) {
             content = (
-                <div>
+            <div>
                 {sessionArray}
-                <Button onClick={this.finishedWorkout} variant="raised" color="primary"> 
-                    Finished Workout! 
-                </Button>
+                <div className="workoutButton">
+                    <Button onClick={this.finishedWorkout} variant="raised" color="primary"> 
+                     Finished Workout! 
+                    </Button>
+                </div>
+
+                {/* dialog box which appears upon completion of workout */}
                 <Dialog
-                open={this.state.open}
-                onClose={this.handleClose}
-                aria-labelledby="alert-dialog-finished-workout"
+                    open={this.state.open}
+                    onClose={this.handleClose}
+                    aria-labelledby="alert-dialog-finished-workout"
                 >
-                    <DialogTitle id="alert-dialog-title">You're a Champ!</DialogTitle>
+                    < DialogTitle id="alert-dialog-title">
+                        <strong>You're a Champ!</strong>
+                    </DialogTitle>
                     <DialogContent>
                         < img src="https://images.pexels.com/photos/347135/pexels-photo-347135.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
                             alt="cheers for completeing the workout"/>
@@ -70,17 +77,17 @@ class StartWorkout extends Component {
                     <DialogActions>
                         < Link to = "/viewworkout" >
                             <Button onClick={this.handleClose} color="primary" autoFocus>
-                            View Workouts
+                                View Workouts
                             </Button>
                         </Link>
                         < Link to = "/createworkout" >
                             <Button onClick={this.handleClose} color="primary">
-                            Create New Workout
+                                Create New Workout
                             </Button>
                         </Link>
                     </DialogActions>
-                    </Dialog>
-                </div>
+                </Dialog>
+            </div>
             )
         }
 

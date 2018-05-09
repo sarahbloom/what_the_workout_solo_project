@@ -18,14 +18,14 @@ class EditExercise extends Component {
             // id: this.props.exercise.id
         }
     }
-
-    handleNameChangeFor = (exerciseDefault) => (event) => {
+    //function to handle change for default settings
+    handleChangeFor = (exerciseDefault) => (event) => {
             this.setState({
                 ...this.state,
                 [exerciseDefault]: event.target.value,
             })
         }
-
+    // update default sets in database
     handleSubmitForSets = () => {
         this.props.state.editSingleExerciseList[0].default_sets = this.state.default_sets
         this.props.dispatch({
@@ -33,6 +33,7 @@ class EditExercise extends Component {
             payload: this.props.state.editSingleExerciseList[0]
         })
     }
+    // update default reps in database
     handleSubmitForReps = () => {
         this.props.state.editSingleExerciseList[0].default_reps = this.state.default_reps
         this.props.dispatch({
@@ -40,6 +41,7 @@ class EditExercise extends Component {
             payload: this.props.state.editSingleExerciseList[0]
         })
     }
+     // update default weight in database
     handleSubmitForWeight = () => {
         this.props.state.editSingleExerciseList[0].default_weight = this.state.default_weight
         this.props.dispatch({
@@ -54,19 +56,19 @@ class EditExercise extends Component {
                 <div key={exercise.id}>
                     <h4>Name: {exercise.name}</h4>
                     <p>Sets: <input defaultValue={exercise.default_sets}
-                        onChange={this.handleNameChangeFor("default_sets")} /> 
+                        onChange={this.handleChangeFor("default_sets")} /> 
                         <IconButton className="updateIcon" onClick={this.handleSubmitForSets} variant="raised" color="primary">
                             < Done />
                         </IconButton>
                     </p>
                     <p>Repetitions: <input defaultValue={exercise.default_reps}
-                        onChange={this.handleNameChangeFor("default_reps")} />  
+                        onChange={this.handlehangeFor("default_reps")} />  
                         <IconButton onClick={this.handleSubmitForReps} variant="raised" color="primary">
                             < Done />
                         </IconButton>
                     </p>
                     <h3>Weight: <input defaultValue={exercise.default_weight}
-                        onChange={this.handleNameChangeFor("default_weight")} /> 
+                        onChange={this.handleChangeFor("default_weight")} /> 
                         <IconButton onClick={this.handleSubmitForWeight} variant="raised" color="primary">
                             < Done />
                         </IconButton>

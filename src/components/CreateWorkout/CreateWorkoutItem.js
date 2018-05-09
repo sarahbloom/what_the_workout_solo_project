@@ -23,11 +23,20 @@ class CreateWorkoutItem extends Component {
     state = {
         open: false,
     };
-
+    //select a specific exercise to be included with workout
     handleToggle = (exercise) => {
         this.props.exercise.selected = !this.props.exercise.selected;        
     }     
-
+    //close modal and refresh page
+     handleClose = () => {
+         this.setState({
+             open: false
+         });
+         this.props.dispatch({
+             type: 'GET_EXERCISE'
+         });
+     };
+    //update default exercise settings
     editSingleExercise = (exercise) =>{
         console.log('clicked editSingleExercise', exercise);
         this.setState({ open: true });
@@ -36,13 +45,6 @@ class CreateWorkoutItem extends Component {
             payload: exercise
         })
     }
-
-    handleClose = () => {
-        this.setState({ open: false });
-        this.props.dispatch({
-            type: 'GET_EXERCISE'
-        });
-    };
     
     render() {    
             let content = (

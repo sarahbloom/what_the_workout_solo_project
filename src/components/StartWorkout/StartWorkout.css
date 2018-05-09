@@ -17,4 +17,7 @@ img {
     width: 250px;
 }
 
-    /* TODO: figure out spacing */
+#alert-dialog-title {
+    color: #000070;
+}
+

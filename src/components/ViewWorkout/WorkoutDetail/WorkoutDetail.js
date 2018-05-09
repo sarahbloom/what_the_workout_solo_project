@@ -12,13 +12,7 @@ class WorkoutDetail extends Component {
   state = {
     redirect: false,
   }
-
-  // componentDidUpdate() {
-  //   if (!this.props.user.isLoading && this.props.user.userName === null) {
-  //     this.props.history.push('home');
-  //   }
-  // }
-
+// cascading delete of workout and any sessions or completed exercises associated with the workout
   deleteWorkout = (idToDelete) => {
     console.log('clicked delete workout', idToDelete);
     this.props.dispatch({
