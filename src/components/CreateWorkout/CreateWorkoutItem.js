@@ -60,7 +60,7 @@ class CreateWorkoutItem extends Component {
                         tabIndex={-1}
                         disableRipple
                     />
-                    <ListItemText primary={`Name: ${this.props.exercise.name} 
+                    <ListItemText primary={`Name: ${this.props.exercise.name}
                                 Sets: ${this.props.exercise.default_sets}
                                 Repetitions: ${this.props.exercise.default_reps}
                                 Weight: ${this.props.exercise.default_weight}`}/>
