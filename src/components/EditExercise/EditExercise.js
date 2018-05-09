@@ -62,7 +62,7 @@ class EditExercise extends Component {
                         </IconButton>
                     </p>
                     <p>Repetitions: <input defaultValue={exercise.default_reps}
-                        onChange={this.handlehangeFor("default_reps")} />  
+                        onChange={this.handleChangeFor("default_reps")} />  
                         <IconButton onClick={this.handleSubmitForReps} variant="raised" color="primary">
                             < Done />
                         </IconButton>

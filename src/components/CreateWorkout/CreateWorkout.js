@@ -34,6 +34,12 @@ class CreateWorkout extends Component {
         });
     }
 
+     handleClickOpen = () => {
+         this.setState({
+             open: true
+         });
+     };
+
     handleClose = (event) => {
         event.preventDefault();
         this.setState({
