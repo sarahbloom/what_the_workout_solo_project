@@ -40,7 +40,7 @@ router.get('/:id', (req, res) => {
 router.post('/newworkout', (req, res) => {
     // console.log('user', req.user); 
     const newWorkoutDetail = req.body;
-    // console.log('newWorkoutDetail', newWorkoutDetail);
+    console.log('newWorkoutDetail', newWorkoutDetail);
 
     (async () => {
         const client = await pool.connect();
@@ -51,7 +51,7 @@ router.post('/newworkout', (req, res) => {
             let queryText = `INSERT INTO "workoutApp"."workout" ("name", "user_id") VALUES ($1, $2) RETURNING "id";`;
             const workoutValues = [newWorkoutDetail.workoutName, req.user.id];
             const workoutResult = await client.query(queryText, workoutValues);
-            // console.log('workoutResult', workoutResult);
+            console.log('workoutResult', workoutResult);
             const workoutId = workoutResult.rows[0].id;
 
             //loop through exercises and post to "workout_details" with exerciseID and workoutIF
@@ -64,7 +64,7 @@ router.post('/newworkout', (req, res) => {
                 await client.query('COMMIT');
                 } 
             }   
-            // res.send(workoutResult.rows[0])
+            res.send(workoutResult.rows[0])
         }catch (e) {
             console.log('ROLLBACK', e);
             await client.query('ROLLBACK');
