@@ -77,6 +77,7 @@ class WorkoutDetail extends Component {
               <Button onClick={this.handleClickOpen} variant="raised" color="primary">
                 Delete Workout
               </Button>
+              
                 <Dialog
                   open={this.state.open}
                   onClose={this.handleClose}
