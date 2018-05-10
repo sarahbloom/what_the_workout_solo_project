@@ -1,7 +1,7 @@
 .editExerciseClass {
     height: 300px;
     width: 300px;
-    background-color: #1acae5bb;
+    background-color: #1acae5f6;
     box-shadow: rgb(189, 182, 171); 
     padding: 20px; 
     color: black;
@@ -12,7 +12,7 @@
 }
 
 .inputField input {
-    color: white;
+    color: black;
     font-weight: bold;
     text-align: center;
 }

@@ -55,19 +55,19 @@ class EditExercise extends Component {
                 <h3>Name: {singleExercise.name}</h3>
                 <h4>Sets: <input defaultValue={singleExercise.default_sets}
                     onChange={this.handleChangeFor("default_sets")} /> 
-                    <IconButton className="updateIcon" onClick={this.handleSubmitForSets} variant="raised" color="primary">
+                    <IconButton className="updateIcon" onClick={this.handleSubmitForSets} variant="raised" color="secondary">
                         <Done />
                     </IconButton>
                 </h4>
                 <h4> Repetitions: < input defaultValue = {singleExercise.default_reps}
                     onChange={this.handleChangeFor("default_reps")} />  
-                    <IconButton onClick={this.handleSubmitForReps} variant="raised" color="primary">
+                    <IconButton onClick={this.handleSubmitForReps} variant="raised" color="secondary">
                         <Done />
                     </IconButton>
                 </h4>
                 <h4>Weight: <input defaultValue={singleExercise.default_weight}
                     onChange={this.handleChangeFor("default_weight")} /> 
-                    <IconButton onClick={this.handleSubmitForWeight} variant="raised" color="primary">
+                    <IconButton onClick={this.handleSubmitForWeight} variant="raised" color="secondary">
                         <Done />
                     </IconButton>
                 </h4>
@@ -75,7 +75,7 @@ class EditExercise extends Component {
         )
 
         return (
-            <div>
+            <div className="editExerciseContent">
                 <h2> Edit Exercise </h2>
                 {content}
             </div>
