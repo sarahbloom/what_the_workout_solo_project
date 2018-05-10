@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Button from 'material-ui/Button';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
+import moment from 'moment';
 
 import Nav from '../../Nav/Nav';
 import WorkoutDetailItem from './WorkoutDetailItem';
@@ -11,14 +12,6 @@ import './WorkoutDetail.css'
 class WorkoutDetail extends Component {
   state = {
     redirect: false,
-  }
-
-  componentDidUpdate(){
-     console.log('id-0', this.props.workoutDetailList[0].workout_id);
-     this.props.dispatch({
-       type: 'GET_SESSION_DATE',
-      //  payload: this.props.workoutDetailList[0].workout_id
-     })
   }
 
   componentDidUpdate() {
@@ -40,19 +33,28 @@ class WorkoutDetail extends Component {
 
   render() {
     let content = null;
-    // console.log("workout detail props", this.props.workoutDetailList);    
-    
+
     let workoutDetailArray = this.props.workoutDetailList.map(exerciseItem => {
         return (
           < WorkoutDetailItem key={exerciseItem.name} exerciseItem={exerciseItem} /> 
         )
     })
+    // from Redux State
+    let sessionDate = this.props.viewLastSessionDate
+    // format date
+    let date = sessionDate.date;
+    let viewDate = moment(date).format('L')
 
     if (this.props.user.userName && this.state.redirect === false) {
       content = (
           <div>
-            <h2> Workout Detail </h2>
+            <h2> {sessionDate.name} </h2>
+            <h3> 
+              Last Date Completed: {viewDate}
+            </h3>
+
             <br />
+
             <ul>
               {workoutDetailArray}
             </ul>
@@ -62,8 +64,10 @@ class WorkoutDetail extends Component {
                 Start Workout! 
               </Button>
             </Link>
+
             <br />
             <br />
+
             <div className="createWorkoutButton">
             <Button variant="raised" color="primary"
               onClick = {
@@ -72,6 +76,7 @@ class WorkoutDetail extends Component {
               Delete Workout
             </Button>
             </div>
+
             </div>
           </div>
       );
@@ -98,6 +103,7 @@ const mapStateToProps = state => ({
   user: state.user,
   workoutDetailList: state.workoutDetailList,
   viewWorkoutList: state.viewWorkoutList,
+  viewLastSessionDate: state.viewLastSessionDate,
   state
 });
 

@@ -27,24 +27,24 @@ class EditExercise extends Component {
         }
 
     handleSubmitForSets = () => {
-        this.props.state.editSingleExerciseList[0].default_sets = this.state.default_sets
+        this.props.state.editSingleExerciseList.default_sets = this.state.default_sets
         this.props.dispatch({
             type: 'UPDATE_DEFAULT',
-            payload: this.props.state.editSingleExerciseList[0]
+            payload: this.props.state.editSingleExerciseList
         })
     }
     handleSubmitForReps = () => {
-        this.props.state.editSingleExerciseList[0].default_reps = this.state.default_reps
+        this.props.state.editSingleExerciseList.default_reps = this.state.default_reps
         this.props.dispatch({
             type: 'UPDATE_DEFAULT',
-            payload: this.props.state.editSingleExerciseList[0]
+            payload: this.props.state.editSingleExerciseList
         })
     }
     handleSubmitForWeight = () => {
-        this.props.state.editSingleExerciseList[0].default_weight = this.state.default_weight
+        this.props.state.editSingleExerciseList.default_weight = this.state.default_weight
         this.props.dispatch({
             type: 'UPDATE_DEFAULT',
-            payload: this.props.state.editSingleExerciseList[0]
+            payload: this.props.state.editSingleExerciseList
         })
     }
 

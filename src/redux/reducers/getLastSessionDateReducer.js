@@ -1,8 +1,13 @@
 // Reducer to get last session date 
-const viewLastSessionDate = (state = [], action) => {
+const defaultState = {
+    name: "",
+    date: ""
+}
+
+const viewLastSessionDate = (state = defaultState, action) => {
     switch (action.type) {
         case 'SET_LAST_SESSION_DATE':
-            return action.payload;
+            return action.payload[0];
         default:
             return state;
     }

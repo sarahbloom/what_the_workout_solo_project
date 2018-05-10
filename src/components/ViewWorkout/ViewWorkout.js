@@ -31,6 +31,10 @@ class ViewWorkout extends Component {
       type: 'DISPLAY_WORKOUT_DETAIL',
       payload: workoutItem.id
     })
+    this.props.dispatch({
+      type: 'GET_SESSION_DATE',
+      payload: workoutItem.id
+    })
   }
 
   render() {
