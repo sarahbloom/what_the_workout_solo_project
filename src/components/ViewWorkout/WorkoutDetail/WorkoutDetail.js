@@ -18,12 +18,12 @@ class WorkoutDetail extends Component {
     open: false
   }
 
+  //prompts to show dialog box to confirm deletion of workout
     handleClickOpen = () => {
       this.setState({
         open: true
       });
     };
-
     handleClose = () => {
       this.setState({
         open: false
@@ -58,7 +58,7 @@ class WorkoutDetail extends Component {
     //only show content if user is logged in
     if (this.props.user.userName && this.state.redirect === false) {
       content = (
-          <div>
+          <div className="workoutDetail">
             <h2> {sessionDate.name} </h2>
             <h3>  Last Date Completed: {viewDate}</h3>
           <br />
@@ -81,7 +81,7 @@ class WorkoutDetail extends Component {
                   onClose={this.handleClose}
                   aria-labelledby="delete-dialog-title"
                 >
-                <DialogTitle id="delete-dialog-title">Are you sure you want to delete this exercise?</DialogTitle>
+                <DialogTitle id="delete-dialog-title">Are you sure you want to delete this workout?</DialogTitle>
                 <DialogContent>
                   <DialogContentText>
                     This will delete the workout and any associated completed sessions.

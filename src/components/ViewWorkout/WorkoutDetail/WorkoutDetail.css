@@ -4,5 +4,11 @@
 
 .workoutDetailClass {
     margin-bottom: 10px;
-    background-color: #7953d2;
+    /* background-color: #7953d2;
+    max-width: "350px";
+    text-align: "center" */
+}
+
+.workoutDetail {
+    color: aliceblue;
 }

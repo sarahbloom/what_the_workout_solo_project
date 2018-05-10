@@ -10,7 +10,7 @@ class WorkoutDetailItem extends Component{
     render (){
 //cards displaying the exercises associated with a created workout
         return (
-            <Card key={this.props.exerciseItem.name} style={{ maxWidth: "350px", backgroundColor: '#7953d2' }} className="workoutDetailClass" >
+            <Card key={this.props.exerciseItem.name} style={{ maxWidth: "350px", backgroundColor: '#a8ffff', textAlign: "center" }} className="workoutDetailClass" >
                 <CardContent >
                     <Typography variant="headline" component="h4">
                         <strong>Name:</strong> {this.props.exerciseItem.name} 

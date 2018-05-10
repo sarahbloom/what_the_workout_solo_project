@@ -30,10 +30,10 @@ const store = createStore(
 const theme = createMuiTheme({
   palette: {
     primary: {
-      light: '#7953d2',
-      main: '#4527a0',
-      dark: '#000070',
-      contrastText: '#ffffff',
+      light: '#4dd0e1',
+      main: '#26c6da',
+      dark: '#0095a8',
+      contrastText: '#000000',
     },
     secondary: {
       light: '#9be7ff',
