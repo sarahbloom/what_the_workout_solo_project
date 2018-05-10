@@ -8,9 +8,8 @@ import './WorkoutDetail.css'
 class WorkoutDetailItem extends Component{
 
     render (){
-
+//cards displaying the exercises associated with a created workout
         return (
-            // <li key={this.props.exerciseItem.name}>
             <Card key={this.props.exerciseItem.name} style={{ maxWidth: "350px", backgroundColor: '#7953d2' }} className="workoutDetailClass" >
                 <CardContent >
                     <Typography variant="headline" component="h4">
@@ -23,7 +22,6 @@ class WorkoutDetailItem extends Component{
                     </Typography>
                 </CardContent >
                 </Card>
-            /* </li> */
         )
     }//end render
 }//end class

@@ -9,6 +9,15 @@
 .startWorkoutCards{
     text-align: center;
     margin-bottom: 15px;
+    margin-left: 7.5px;
 }
 
-    /* TODO: figure out spacing */
+img {
+    height: 325px;
+    width: 250px;
+}
+
+.finishedWorkoutBox dialog {
+    color: #000070;
+}
+

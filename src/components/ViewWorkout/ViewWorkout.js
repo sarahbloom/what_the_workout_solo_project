@@ -9,7 +9,6 @@ import Nav from '../../components/Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 
 class ViewWorkout extends Component {
-  
   //all workouts will display on DOM on page load
   componentDidMount() {
     this.props.dispatch({ 
@@ -19,14 +18,14 @@ class ViewWorkout extends Component {
       type: 'GET_WORKOUT',
     });
   }
+
   componentDidUpdate() {
     if (!this.props.user.isLoading && this.props.user.userName === null) {
       this.props.history.push('home');
     }
   }
-
+//button which will direct user to see the details of the workout
   viewWorkoutDetail = (workoutItem) => {
-  // console.log('clicked button', workoutItem.id);
     this.props.dispatch({ 
       type: 'DISPLAY_WORKOUT_DETAIL',
       payload: workoutItem.id

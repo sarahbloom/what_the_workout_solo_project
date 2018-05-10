@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Button from 'material-ui/Button';
 
 class RegisterPage extends Component {
   constructor(props) {
@@ -72,15 +73,12 @@ class RegisterPage extends Component {
     return (
       <div>
         {this.renderAlert()}
-        <form onSubmit={this.registerUser}>
+        < form className = "loginForm" onSubmit = {this.registerUser} >
           <h1>Register User</h1>
           <div>
             <label htmlFor="username">
               Username:
-              <input
-                type="text"
-                name="username"
-                value={this.state.username}
+              <input type="text" name="username" value={this.state.username}
                 onChange={this.handleInputChangeFor('username')}
               />
             </label>
@@ -88,21 +86,20 @@ class RegisterPage extends Component {
           <div>
             <label htmlFor="password">
               Password:
-              <input
-                type="password"
-                name="password"
-                value={this.state.password}
+              <input type="password" name="password" value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}
               />
             </label>
           </div>
-          <div>
-            <input
-              type="submit"
-              name="submit"
-              value="Register"
-            />
-            <Link to="/home">Cancel</Link>
+          <div className="loginButton">
+           <Button type="submit" name="submit">
+             Register 
+            </Button>
+            <Link to="/home">
+              <Button>
+              Cancel
+              </Button>
+            </Link>
           </div>
         </form>
       </div>
