@@ -79,10 +79,11 @@ class CreateWorkout extends Component {
         let lowerBodyExercise = WorkoutExerciseList.map(exercise => {
             if (exercise.family === "lower body") {
                 return ( 
-                <CreateWorkoutItem key = {exercise.id}exercise = {exercise}
-                handleToggle = {this.handleToggle}/> 
+                    <CreateWorkoutItem key = {exercise.id}exercise = {exercise}
+                    handleToggle = {this.handleToggle}/> 
                 )
-            }
+            } 
+            return null
         })
 
         let upperBodyExercise = WorkoutExerciseList.map(exercise => {
@@ -92,6 +93,7 @@ class CreateWorkout extends Component {
                 handleToggle = {this.handleToggle}/> 
                 )
             }
+            return null
         })
 
         let content = null;

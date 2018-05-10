@@ -17,7 +17,7 @@ function* createWorkout (action){
 function* postNewWorkout(action){
     try {
         const createNewWorkout = yield call(axios.post, '/api/exercise/newworkout', action.payload);
-        console.log('createNewWorkout', createNewWorkout);
+        // console.log('createNewWorkout', createNewWorkout);
         
         yield put({
             type: 'DISPLAY_WORKOUT_DETAIL',

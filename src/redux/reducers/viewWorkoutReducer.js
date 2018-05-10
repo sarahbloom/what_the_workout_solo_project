@@ -1,11 +1,11 @@
-// Reducer to get workout array into viewWorkoutList
-
-const viewWorkoutList = (state = [], action) =>{
+// Reducer to get workout detail array 
+const viewWorkoutList = (state = [], action) => {    
+    // console.log('viewWorkoutList', action.payload);
     switch (action.type){
         case 'SET_WORKOUT_LIST':
-        return action.payload;
+            return action.payload;
         default:
-        return state;
+            return state;
     }
 }
 

@@ -18,4 +18,5 @@ function* workoutDetail (action){
 function* workoutDetailSaga() {
     yield takeEvery('DISPLAY_WORKOUT_DETAIL', workoutDetail)
 }
+
 export default workoutDetailSaga

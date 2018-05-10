@@ -24,8 +24,9 @@ router.get('/', (req, res) => {
 //GET workout details for a specific workout - displays on Workout Details
 router.get('/detail/:id', (req, res) => { 
     if (req.isAuthenticated()){
-        let queryText = `SELECT "workoutApp"."exercise"."name","workoutApp"."exercise"."id", "default_sets", "default_reps", 
-            "default_weight", "workout_id", "workoutApp"."workout"."name" as "workout_name" FROM "workoutApp"."exercise"
+        let queryText = `SELECT "workoutApp"."exercise"."name","workoutApp"."exercise"."id", 
+            "default_sets", "default_reps", "default_weight", "workout_id", 
+            "workoutApp"."workout"."name" as "workout_name" FROM "workoutApp"."exercise"
             JOIN "workoutApp"."workout_detail" ON "workoutApp"."exercise"."id" = "workoutApp"."workout_detail"."exercise_id"
             JOIN "workoutApp"."workout" ON "workoutApp"."workout"."id" = "workoutApp"."workout_detail"."workout_id"
             WHERE "workoutApp"."workout"."id" = $1;`;
@@ -62,6 +63,28 @@ router.get('/detail/:id', (req, res) => {
 //         res.sendStatus(403);
 //     }
 // })
+
+//get last completed session based on workout ID
+router.get('/session/:id', (req, res) => {
+    console.log('in GET /workout/session');
+    
+    if (req.isAuthenticated()){
+        let queryText = `SELECT "workoutApp"."session"."date", "workoutApp"."workout"."name" 
+            FROM "workoutApp"."session" JOIN "workoutApp"."workout" 
+            ON "workoutApp"."workout"."id" = "workoutApp"."session"."workout_id"
+            WHERE "workoutApp"."session"."workout_id" = $1 ORDER BY "date" DESC LIMIT 1;`;
+    pool.query(queryText, [req.params.id])
+    .then ((result) => {
+        // console.log('GET workout details', result.rows);
+        res.send(result.rows)
+    }).catch ((err) => {
+        console.log('ERR in GET /session', err);
+        res.sendStatus(500);
+    })
+    } else {
+        res.sendStatus(403);
+    }
+})
 
 //DELETE a workout from the database
 router.delete('/:id', (req, res) => {
