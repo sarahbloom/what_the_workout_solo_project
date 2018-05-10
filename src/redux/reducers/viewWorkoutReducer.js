@@ -1,4 +1,4 @@
-// Reducer to get workout detail array 
+// Reducer to get array of workout names and IDs 
 const viewWorkoutList = (state = [], action) => {    
     // console.log('viewWorkoutList', action.payload);
     switch (action.type){

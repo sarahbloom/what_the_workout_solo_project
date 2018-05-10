@@ -1,4 +1,4 @@
-// Reducer to get last session date 
+//Get the last session date for a completed workout
 const defaultState = {
     name: "",
     date: ""
