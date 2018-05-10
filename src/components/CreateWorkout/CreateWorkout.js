@@ -1,15 +1,12 @@
-import React, {
-    Component
-} from 'react';
-import {
-    connect
-} from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import Button from 'material-ui/Button';
 import List from 'material-ui/List';
 import Input from 'material-ui/Input';
 import Typography from 'material-ui/Typography';
 import { KeyboardArrowDown } from 'material-ui-icons';
+// import { Link } from 'react-router-dom';
 import Dialog, 
     { DialogActions, DialogContent,DialogContentText, DialogTitle } 
     from 'material-ui/Dialog';
@@ -70,7 +67,7 @@ class CreateWorkout extends Component {
                 }
             })
         }
-        this.props.history.push('startworkout')
+        this.props.history.push('viewworkout')
     }
 
     render() {
@@ -136,9 +133,9 @@ class CreateWorkout extends Component {
             <br />
                 </div> 
                 < div className = "workoutButton" >
-                        <Button type = "submit" variant = "raised" color = "primary" >
-                            Start Workout!
-                        </Button> 
+                    <Button type = "submit" variant = "raised" color = "primary" >
+                        Save Workout!
+                    </Button> 
                 </div>
                 </form> 
                 </div>

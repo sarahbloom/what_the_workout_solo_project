@@ -106,7 +106,7 @@ router.delete('/:id', (req, res) => {
 router.post('/newsession', (req, res) => {
     // console.log('user', req.user); 
     const newSession = req.body;
-    console.log('newSession', newSession);
+    console.log('POST newSession', newSession);
 
     (async () => {
         const client = await pool.connect();

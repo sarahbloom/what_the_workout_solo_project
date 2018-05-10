@@ -50,16 +50,17 @@ class WorkoutDetail extends Component {
           < WorkoutDetailItem key={exerciseItem.name} exerciseItem={exerciseItem} /> 
         )
     })
-    // information is from Redux State
+    // information from Redux State
     let sessionDate = this.props.viewLastSessionDate
     // format date of last completed session
     let date = sessionDate.date;
     let viewDate = moment(date).format('L')
+
     //only show content if user is logged in
     if (this.props.user.userName && this.state.redirect === false) {
       content = (
           <div className="workoutDetail">
-            <h2> {sessionDate.name} </h2>
+            <h2> Workout Details </h2>
             <h3>  Last Date Completed: {viewDate}</h3>
           <br />
             <ul>
