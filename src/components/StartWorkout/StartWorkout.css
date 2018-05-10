@@ -1,23 +1,20 @@
-.updateInWorkout{
-    float: center;
-     /* display: flex; */
-     flex-direction: row;
-     display: inline-flex;
-     margin-left: 100px;
-}
-
-.startWorkoutCards{
-    text-align: center;
-    margin-bottom: 15px;
-    margin-left: 7.5px;
-}
-
 img {
     height: 325px;
     width: 250px;
 }
 
-.finishedWorkoutBox dialog {
-    color: #000070;
+.startWorkoutCards {
+    text-align: center;
+    margin-bottom: 15px;
+    margin-left: 7.5px;
 }
+
+.updateInWorkout {
+    float: center;
+    /* display: flex; */
+    flex-direction: row;
+    display: inline-flex;
+    margin-left: 100px;
+}
+
 

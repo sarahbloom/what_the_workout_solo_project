@@ -1,9 +1,8 @@
+.workoutDetailButton {
+    text-align: center
+}
+
 .workoutDetailClass {
     margin-bottom: 10px;
     background-color: #7953d2;
-}
-
-
-.workoutDetailButton {
-    text-align: center
 }

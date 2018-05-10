@@ -27,49 +27,41 @@ class WorkoutDetail extends Component {
 
   render() {
     let content = null;
-
+    //map over exercises in the selectedworkout
     let workoutDetailArray = this.props.workoutDetailList.map(exerciseItem => {
         return (
           < WorkoutDetailItem key={exerciseItem.name} exerciseItem={exerciseItem} /> 
         )
     })
-    // from Redux State
+    // information is from Redux State
     let sessionDate = this.props.viewLastSessionDate
-    // format date
+    // format date of last completed session
     let date = sessionDate.date;
     let viewDate = moment(date).format('L')
-
+    //only show content if user is logged in
     if (this.props.user.userName && this.state.redirect === false) {
       content = (
           <div>
             <h2> {sessionDate.name} </h2>
-            <h3> 
-              Last Date Completed: {viewDate}
-            </h3>
-            <br />
-
+            <h3>  Last Date Completed: {viewDate}</h3>
+          <br />
             <ul>
               {workoutDetailArray}
             </ul>
             <div className="workoutDetailButton">
-            <Link to="/startworkout">
-              <Button variant="raised" color="primary" > 
-                Start Workout! 
+              <Link to="/startworkout">
+                <Button variant="raised" color="primary" > 
+                  Start Workout! 
+                </Button>
+              </Link>
+          <br />
+          <br />
+              <Button variant="raised" color="primary"
+                onClick = {
+                  () => this.deleteWorkout(this.props.workoutDetailList[0].workout_id)} 
+              >
+                Delete Workout
               </Button>
-            </Link>
-
-            <br />
-            <br />
-
-            <div className="createWorkoutButton">
-            <Button variant="raised" color="primary"
-              onClick = {
-                () => this.deleteWorkout(this.props.workoutDetailList[0].workout_id)
-              } >
-              Delete Workout
-            </Button>
-            </div>
-
             </div>
           </div>
       );

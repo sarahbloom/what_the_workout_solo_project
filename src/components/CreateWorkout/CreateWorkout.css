@@ -1,10 +1,10 @@
 .editExerciseClass {
     height: 300px;
     width: 300px;
-    background-color: #64b5f6;
+    background-color: #a595cab6;
     box-shadow: rgb(189, 182, 171); 
     padding: 20px; 
-    border: '1px solid'
+    color: black;
 }
 
 .inputField{

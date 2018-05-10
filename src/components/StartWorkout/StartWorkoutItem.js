@@ -12,9 +12,7 @@ class StartWorkoutItem extends Component {
     addFive = () => {
         this.props.sessionItem.default_weight = parseInt(this.props.sessionItem.default_weight, 10)
         this.props.sessionItem.default_weight += 5;
-        // console.log('weight', this.props.sessionItem.default_weight);
         console.log(this.props.sessionItem);
-
         this.props.dispatch({
             type: 'UPDATE_EXERCISE_IN_SESSION',
             payload: this.props.sessionItem
@@ -25,7 +23,6 @@ class StartWorkoutItem extends Component {
         console.log('clicked deleteFive');
         this.props.sessionItem.default_weight = parseInt(this.props.sessionItem.default_weight, 10)
         this.props.sessionItem.default_weight -= 5;
-        // console.log('weight', this.props.sessionItem.default_weight);
         this.props.dispatch({
             type: 'UPDATE_EXERCISE_IN_SESSION',
             payload: this.props.sessionItem
@@ -35,7 +32,6 @@ class StartWorkoutItem extends Component {
     addOneSet = () => {
         this.props.sessionItem.default_sets = parseInt(this.props.sessionItem.default_sets, 10)
         this.props.sessionItem.default_sets += 1;
-        // console.log('sets', this.props.sessionItem.default_sets);
         this.props.dispatch({
             type: 'UPDATE_EXERCISE_IN_SESSION',
             payload: this.props.sessionItem
@@ -46,7 +42,6 @@ class StartWorkoutItem extends Component {
     deleteOneSet = () => {
         this.props.sessionItem.default_sets = parseInt(this.props.sessionItem.default_sets, 10)
         this.props.sessionItem.default_sets -= 1;
-        // console.log('sets', this.props.sessionItem.default_sets);
         this.props.dispatch({
             type: 'UPDATE_EXERCISE_IN_SESSION',
             payload: this.props.sessionItem
@@ -56,7 +51,6 @@ class StartWorkoutItem extends Component {
     addOneRep = () => {
         this.props.sessionItem.default_reps = parseInt(this.props.sessionItem.default_reps, 10)
         this.props.sessionItem.default_reps += 1;
-        // console.log('reps', this.props.sessionItem.default_reps);
         this.props.dispatch({
             type: 'UPDATE_EXERCISE_IN_SESSION',
             payload: this.props.sessionItem
@@ -66,7 +60,6 @@ class StartWorkoutItem extends Component {
     deleteOneRep = () => {
         this.props.sessionItem.default_reps = parseInt(this.props.sessionItem.default_reps, 10)
         this.props.sessionItem.default_reps -= 1;
-        // console.log('reps', this.props.sessionItem.default_reps);
         this.props.dispatch({
             type: 'UPDATE_EXERCISE_IN_SESSION',
             payload: this.props.sessionItem
@@ -81,8 +74,7 @@ class StartWorkoutItem extends Component {
         <Card key={this.props.sessionItem.name} 
             className="startWorkoutCards" 
             style= {{ maxWidth: "345px" }} 
-            // style= {{backgroundColor: "secondary"}}
-            >
+        >
             <CardContent className="startWorkoutCards" >
                 {/* Exercise name */}
                 <Typography variant="headline" component="h3">

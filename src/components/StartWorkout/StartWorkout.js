@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import Button from 'material-ui/Button';
 import Dialog, 
     { DialogActions, DialogContent, DialogTitle,}
@@ -45,13 +44,14 @@ class StartWorkout extends Component {
 
     render() {
         let content = null;
-
+        //map over exercises to be completed in the session
         let sessionArray = this.props.workoutDetailList.map(sessionItem => {
             return (
                 < StartWorkoutItem key={sessionItem.name} sessionItem={sessionItem} />
             )
-        })
-
+        });
+        
+        //only show content if user is logged in
         if (this.props.user.userName) {
             content = (
             <div>

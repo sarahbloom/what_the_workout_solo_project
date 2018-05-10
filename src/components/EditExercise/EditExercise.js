@@ -3,19 +3,15 @@ import { connect } from 'react-redux';
 import IconButton from 'material-ui/IconButton';
 import { Done } from 'material-ui-icons';
 
-// import { Link } from 'react-router-dom';
-
 import './EditExercise.css'
 
 class EditExercise extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            // isEditing: false,
             default_sets: '',
             default_reps: '',
             default_weight: '',
-            // id: this.props.exercise.id
         }
     }
     //function to handle change for default settings
@@ -51,36 +47,37 @@ class EditExercise extends Component {
     }
 
     render() {
-        let editExerciseList = this.props.exercise.map(exercise =>{
-            return (
-                <div key={exercise.id}>
-                    <h4>Name: {exercise.name}</h4>
-                    <p>Sets: <input defaultValue={exercise.default_sets}
-                        onChange={this.handleChangeFor("default_sets")} /> 
-                        <IconButton className="updateIcon" onClick={this.handleSubmitForSets} variant="raised" color="primary">
-                            < Done />
-                        </IconButton>
-                    </p>
-                    <p>Repetitions: <input defaultValue={exercise.default_reps}
-                        onChange={this.handleChangeFor("default_reps")} />  
-                        <IconButton onClick={this.handleSubmitForReps} variant="raised" color="primary">
-                            < Done />
-                        </IconButton>
-                    </p>
-                    <h3>Weight: <input defaultValue={exercise.default_weight}
-                        onChange={this.handleChangeFor("default_weight")} /> 
-                        <IconButton onClick={this.handleSubmitForWeight} variant="raised" color="primary">
-                            < Done />
-                        </IconButton>
-                    </h3>
-                </div>
-            )
-        });
-         
+        
+        let singleExercise = this.props.exercise;
+
+        let content = (
+            <div className="editExerciseModal" key={singleExercise.id}>
+                <h3>Name: {singleExercise.name}</h3>
+                <h4>Sets: <input defaultValue={singleExercise.default_sets}
+                    onChange={this.handleChangeFor("default_sets")} /> 
+                    <IconButton className="updateIcon" onClick={this.handleSubmitForSets} variant="raised" color="primary">
+                        <Done />
+                    </IconButton>
+                </h4>
+                <h4> Repetitions: < input defaultValue = {singleExercise.default_reps}
+                    onChange={this.handleChangeFor("default_reps")} />  
+                    <IconButton onClick={this.handleSubmitForReps} variant="raised" color="primary">
+                        <Done />
+                    </IconButton>
+                </h4>
+                <h4>Weight: <input defaultValue={singleExercise.default_weight}
+                    onChange={this.handleChangeFor("default_weight")} /> 
+                    <IconButton onClick={this.handleSubmitForWeight} variant="raised" color="primary">
+                        <Done />
+                    </IconButton>
+                </h4>
+            </div>
+        )
+
         return (
             <div>
                 <h2> Edit Exercise </h2>
-                {editExerciseList}
+                {content}
             </div>
         )
     }

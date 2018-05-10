@@ -66,7 +66,8 @@ class CreateWorkoutItem extends Component {
                                 Weight: ${this.props.exercise.default_weight}`}/>
                     <ListItemSecondaryAction>
                         <IconButton value={this.props.exercise}
-                        onClick={() => this.editSingleExercise(this.props.exercise)} >
+                            onClick={() => this.editSingleExercise(this.props.exercise)}
+                        >
                             <Edit />
                         </IconButton>
                     </ListItemSecondaryAction>

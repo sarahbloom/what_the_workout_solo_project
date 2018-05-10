@@ -75,7 +75,7 @@ class CreateWorkout extends Component {
 
     render() {
         let WorkoutExerciseList = this.props.createWorkoutExerciseList;
-
+        //return lower body exercises in the lower body panel
         let lowerBodyExercise = WorkoutExerciseList.map(exercise => {
             if (exercise.family === "lower body") {
                 return ( 
@@ -85,7 +85,7 @@ class CreateWorkout extends Component {
             } 
             return null
         })
-
+        //return upper body exercises in the upper body panel
         let upperBodyExercise = WorkoutExerciseList.map(exercise => {
             if (exercise.family === "upper body") {
             return ( 
@@ -97,6 +97,7 @@ class CreateWorkout extends Component {
         })
 
         let content = null;
+
         if (this.props.user.userName) {
             content = ( 
                 <div>
@@ -106,9 +107,8 @@ class CreateWorkout extends Component {
                         type = "text" onChange = {this.handleNameChange}
                         value = {this.state.workoutName}
                     />
-
-                    <div>
-                    <br/>
+                <div>
+            <br/>
                     { /* Expansion panel - Lower Body */ }
                     <ExpansionPanel>
                         <ExpansionPanelSummary expandIcon = { < KeyboardArrowDown/> }>
@@ -133,13 +133,13 @@ class CreateWorkout extends Component {
                         < Typography className = "heading" > Core </Typography> 
                         </ExpansionPanelSummary > 
                     </ExpansionPanel> */}
-                    < br />
-                    </div> 
-                    < div className = "workoutButton" >
+            <br />
+                </div> 
+                < div className = "workoutButton" >
                         <Button type = "submit" variant = "raised" color = "primary" >
                             Start Workout!
                         </Button> 
-                    </div>
+                </div>
                 </form> 
                 </div>
             )
@@ -148,25 +148,23 @@ class CreateWorkout extends Component {
         return ( 
             <div >
             <Nav />
+                <Dialog open = {this.state.open}
+                        aria-describedby = "alert-dialog-no-workout-name" >
+                    <DialogTitle > 
+                        {"Your Workout Needs a Name!"} 
+                    </DialogTitle> 
+                    <DialogContent >
+                    <DialogContentText >
+                        Please enter in a name for your new workout before continuing. 
+                    </DialogContentText> 
+                    </DialogContent> 
 
-            <Dialog open = {this.state.open}
-                    aria-describedby = "alert-dialog-no-workout-name" >
-                <DialogTitle > 
-                    {"Your Workout Needs a Name!"} 
-                </DialogTitle> 
-                <DialogContent >
-                <DialogContentText >
-                    Please enter in a name for your new workout before continuing. 
-                </DialogContentText> 
-                </DialogContent> 
-
-                <DialogActions >
-                    <Button onClick = { this.handleClose }
-                        color = "primary" >
-                        OK!
-                    </Button> 
-                </DialogActions>
-             </Dialog> 
+                    <DialogActions >
+                        <Button onClick = {this.handleClose} color = "primary">
+                            OK!
+                        </Button> 
+                    </DialogActions>
+                </Dialog> 
                 {content} 
              </div>
         )
