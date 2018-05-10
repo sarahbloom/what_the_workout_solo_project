@@ -67,7 +67,7 @@ class CreateWorkout extends Component {
                 }
             })
         }
-        this.props.history.push('viewworkout')
+        this.props.history.push('startworkout')
     }
 
     render() {
@@ -134,7 +134,7 @@ class CreateWorkout extends Component {
                 </div> 
                 < div className = "workoutButton" >
                     <Button type = "submit" variant = "raised" color = "primary" >
-                        Save Workout!
+                        Start Workout!
                     </Button> 
                 </div>
                 </form> 
