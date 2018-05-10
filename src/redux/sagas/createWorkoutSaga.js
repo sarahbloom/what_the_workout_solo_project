@@ -19,14 +19,28 @@ function* createWorkout (action){
 function* postNewWorkout(action){
     try {
         const createNewWorkout = yield call(axios.post, '/api/exercise/newworkout', action.payload);
-        // console.log('createNewWorkout', createNewWorkout);
-        
         yield put({
-            type: 'DISPLAY_WORKOUT_DETAIL',
+            type: 'DISPLAY_CREATED_WORKOUT_DETAIL',
             payload: createNewWorkout.data.id
         })
+        console.log('createNewWorkout', createNewWorkout);
     } catch (error) {
         console.log('error in POST new workout', error);
+        //TODO: add alert box
+    }
+}
+
+function* viewNewWorkout(action) {
+    try {
+        const newWorkoutDetailResponse = yield call(axios.get, `/api/workout/detail/${action.payload}`)
+        yield put({
+            type: 'SET_WORKOUT_DETAILS',
+            payload: newWorkoutDetailResponse.data
+        })
+        console.log('newWorkoutDetailResponse', newWorkoutDetailResponse);
+        
+    } catch (error) {
+        console.log('error in workoutDetail saga', error);
         //TODO: add alert box
     }
 }
@@ -34,6 +48,7 @@ function* postNewWorkout(action){
 function* createWorkoutSaga(){
     yield takeEvery('GET_EXERCISE', createWorkout)
     yield takeEvery('POST_NEW_WORKOUT', postNewWorkout)
+    yield takeEvery('DISPLAY_CREATED_WORKOUT_DETAIL', viewNewWorkout)
 }
 
 export default createWorkoutSaga;

@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
     }
 });
 
-//GET workout details for a specific workout - displays on Workout Details
+//GET workout details for a specific workout 
 router.get('/detail/:id', (req, res) => { 
     if (req.isAuthenticated()){
         let queryText = `SELECT "workoutApp"."exercise"."name","workoutApp"."exercise"."id", 
@@ -43,30 +43,9 @@ router.get('/detail/:id', (req, res) => {
     }
 })
 
-//GET workout name and last completed session date for specific workout
-// router.get('/session/:id', (req, res)=>{
-//     console.log('in GET /session ID');
-    
-//     if (req.isAuthenticated()){
-//          let queryText = `SELECT "workoutApp"."session"."date", "workoutApp"."workout"."name" FROM "workoutApp"."session" 
-//             JOIN "workoutApp"."workout" ON "workoutApp"."workout"."id" = "workoutApp"."session"."workout_id"
-//             WHERE "workoutApp"."session"."workout_id" = $1 ORDER BY "date" DESC LIMIT 1;`;
-//     pool.query(queryText, [req.params.id])
-//         .then((result) => {
-//             console.log('GET workout session info', result.rows);
-//             res.send(result.rows)
-//         }).catch((err) => {
-//             console.log('ERR in GET /detail', err);
-//             res.sendStatus(500);
-//     })
-//     } else {
-//         res.sendStatus(403);
-//     }
-// })
-
 //get last completed session based on workout ID
 router.get('/session/:id', (req, res) => {
-    console.log('in GET /workout/session');
+    // console.log('in GET /workout/session');
     
     if (req.isAuthenticated()){
         let queryText = `SELECT "workoutApp"."session"."date", "workoutApp"."workout"."name" 

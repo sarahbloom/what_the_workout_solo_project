@@ -59,7 +59,7 @@ class WorkoutDetail extends Component {
     if (this.props.user.userName && this.state.redirect === false) {
       content = (
           <div className="workoutDetail">
-            <h2> {sessionDate.name} </h2>
+            <h2> Workout Details </h2>
             <h3>  Last Date Completed: {viewDate}</h3>
           <br />
             <ul>
@@ -76,6 +76,7 @@ class WorkoutDetail extends Component {
               <Button onClick={this.handleClickOpen} variant="raised" color="primary">
                 Delete Workout
               </Button>
+              
                 <Dialog
                   open={this.state.open}
                   onClose={this.handleClose}
