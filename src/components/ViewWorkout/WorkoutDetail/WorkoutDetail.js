@@ -54,7 +54,13 @@ class WorkoutDetail extends Component {
     let sessionDate = this.props.viewLastSessionDate
     // format date of last completed session
     let date = sessionDate.date;
-    let viewDate = moment(date).format('L')
+    let viewDate;
+    
+    if (sessionDate.date === "") {
+      viewDate = "n/a"
+    } else {
+      viewDate = moment(date).format('L')
+    }
 
     //only show content if user is logged in
     if (this.props.user.userName && this.state.redirect === false) {

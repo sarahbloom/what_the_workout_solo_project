@@ -9,7 +9,7 @@ const viewLastSessionDate = (state = defaultState, action) => {
         case 'SET_LAST_SESSION_DATE':
             return action.payload[0];
         default:
-            return state;
+            return defaultState;
     }
 }
 

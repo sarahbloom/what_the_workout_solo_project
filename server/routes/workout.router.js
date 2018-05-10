@@ -97,7 +97,7 @@ router.post('/newsession', (req, res) => {
             const sessionValues = [req.user.id, newSession.exerciseArray[0].workout_id,];
             const sessionResult = await client.query(queryText, sessionValues);
             const sessionId = sessionResult.rows[0].id;
-            console.log('sessionId', sessionId);
+            // console.log('sessionId', sessionId);
 
             // loop through exercises and post to "workout_details" with exerciseID and workoutIF
             for (let sessionExercise of newSession.exerciseArray) {
