@@ -4,6 +4,9 @@ import Button from 'material-ui/Button';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import moment from 'moment';
+import Dialog, 
+  { DialogActions, DialogContent, DialogContentText, DialogTitle}
+  from 'material-ui/Dialog';
 
 import Nav from '../../Nav/Nav';
 import WorkoutDetailItem from './WorkoutDetailItem';
@@ -12,7 +15,21 @@ import './WorkoutDetail.css'
 class WorkoutDetail extends Component {
   state = {
     redirect: false,
+    open: false
   }
+
+    handleClickOpen = () => {
+      this.setState({
+        open: true
+      });
+    };
+
+    handleClose = () => {
+      this.setState({
+        open: false
+      });
+    };
+
 // cascading delete of workout and any sessions or completed exercises associated with the workout
   deleteWorkout = (idToDelete) => {
     console.log('clicked delete workout', idToDelete);
@@ -56,12 +73,29 @@ class WorkoutDetail extends Component {
               </Link>
           <br />
           <br />
-              <Button variant="raised" color="primary"
-                onClick = {
-                  () => this.deleteWorkout(this.props.workoutDetailList[0].workout_id)} 
-              >
+              <Button onClick={this.handleClickOpen} variant="raised" color="primary">
                 Delete Workout
               </Button>
+                <Dialog
+                  open={this.state.open}
+                  onClose={this.handleClose}
+                  aria-labelledby="delete-dialog-title"
+                >
+                <DialogTitle id="delete-dialog-title">Are you sure you want to delete this exercise?</DialogTitle>
+                <DialogContent>
+                  <DialogContentText>
+                    This will delete the workout and any associated completed sessions.
+                  </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={this.handleClose} color="primary">
+                    No, keep the workout.
+                  </Button>
+                  <Button onClick={() => this.deleteWorkout(this.props.workoutDetailList[0].workout_id)} color="primary" autoFocus>
+                    Yes, delete the workout.
+                  </Button>
+                </DialogActions>
+              </Dialog>
             </div>
           </div>
       );
