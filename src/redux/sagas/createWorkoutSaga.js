@@ -1,6 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
+//get all exercises in the database
 function* createWorkout (action){
     try {
         const createWorkoutResponse = yield call(axios.get, '/api/exercise') 
@@ -14,6 +15,7 @@ function* createWorkout (action){
     }
 }
 
+//post a new workout (with associated exercises) to the database
 function* postNewWorkout(action){
     try {
         const createNewWorkout = yield call(axios.post, '/api/exercise/newworkout', action.payload);

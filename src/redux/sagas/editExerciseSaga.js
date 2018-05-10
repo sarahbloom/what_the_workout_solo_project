@@ -1,6 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
+//update the defaults sets, reps, or weights for an exercise
 function* editExerciseDefault (action){
     // console.log('editSingleExercise', action);
     const config = {
@@ -19,6 +20,7 @@ function* editExerciseDefault (action){
     }
 }
 
+//get the default information for a single exercise (displays in modal for updating)
 function* viewSingleExercise (action){
     try {
         let viewExercise = yield call (axios.get, `/api/exercise/${action.payload.id}`)

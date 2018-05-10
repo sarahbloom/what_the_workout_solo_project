@@ -1,6 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
+//delete a workout and any completed sessions with the workout ID
 function* deleteWorkout (action){
     // console.log('in deleteWorkout saga', action);
     try {

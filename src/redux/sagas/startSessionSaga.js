@@ -1,6 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
+//update the specific details of a completed exercise
 function* startSession (action){
     const config = {
         headers: { 'Content-Type': 'application/json' },
@@ -18,6 +19,7 @@ function* startSession (action){
     }
 }
 
+//post a completed session to the database
 function* postSession (action) {
     try {
         yield call(axios.post, '/api/workout/newsession', action.payload);

@@ -1,6 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
+//view all workouts that have been created by the user
 function* viewWorkout(action){
     // console.log('in viewWorkoutSaga');
     try {

@@ -1,8 +1,8 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
+//get the date of the most recent session
 function* lastSessionDate(action) {
-    // console.log('in lastSessionDate saga', action.payload)
     try {
         const lastSessionDateResponse = yield call(axios.get, `/api/workout/session/${action.payload}`)
         yield put({
