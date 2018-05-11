@@ -57,7 +57,7 @@ class WorkoutDetail extends Component {
     let viewDate;
     
     if (sessionDate.date === "") {
-      viewDate = "n/a"
+      viewDate = "not previously completed"
     } else {
       viewDate = moment(date).format('L')
     }
