@@ -1,7 +1,9 @@
 # What The Workout
-This is my Solo Full Stack Application completed in May 2018 while a student at Prime Digital Academy. It was created with React, SQL, Express, and Node.js. This application allows a user to create and complete a workout. Upon going to the landing page, a user will be prompted to login or create a new account. Once the user is logged in they will see a list of all created workouts.
+This is my Solo Full Stack Application completed in May 2018 while a student at Prime Digital Academy. It was created with React using reducers and sagas, SQL, Express, and Node.js. 
 
-![view all workouts](wireframes/view-workouts.png)
+This application allows a user to create and complete a workout. Upon going to the landing page, a user will be prompted to login or create a new account. Once the user is logged in they will see a list of all created workouts.
+
+![login](wireframes/login-page.png)![view all workouts](wireframes/view-workouts.png)
 
 The user can select a workout to see more details - including the exercises, default weights, sets, and repetitions (reps). The user is able to start the workout or delete the workout. If the user chooses to delete the workout, a dialog box will prompt the user to confirm deletion before the workout and associated sessions are deleted.
 
@@ -96,12 +98,6 @@ CREATE TABLE "workoutApp"."completed_exercise" (
   "completed?" BOOLEAN NOT NULL
 );
 
-INSERT INTO "workoutApp"."workout" (name, user_id)
-VALUES
-('Squats and More', 1),
-('Deadlifts at Midnight', 1),
-('Wednesday Wonder Arms', 1);
-
 INSERT INTO "workoutApp"."exercise" (name, default_sets, default_reps, default_weight, family)
 VALUES
 ('Squats', 5, 5, 155, 'lower body'),
@@ -118,8 +114,5 @@ VALUES
 ('Tricep Extensions', 10, 4, '10x10', 'upper body'),
 ('Bench Press', 5, 5, 85, 'upper body'),
 ('Overhead Press', 10, 4, '25x25', 'upper body');
-
-INSERT INTO "workoutApp"."workout_detail" ("workout_id", "exercise_id")
-VALUES (4,5), (4,7), (4,12), (4,10), (5,6), (5,8), (5,11), (5,9), (6,1), (6,2), (6,3), (6,4);
 ```
 
