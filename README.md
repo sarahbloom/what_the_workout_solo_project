@@ -1,7 +1,7 @@
 # What The Workout
 This is my Solo Full Stack Application completed in May 2018 while a student at Prime Digital Academy. It was created with React, SQL, Express, and Node.js. This application allows a user to create and complete a workout. Upon going to the landing page, a user will be prompted to login or create a new account. Once the user is logged in they will see a list of all created workouts.
 
-![view all workouts](wireframes/view workouts.png)
+![view all workouts](wireframes/view-workouts.png)
 
 The user can select a workout to see more details - including the exercises, default weights, sets, and repetitions (reps). The user is able to start the workout or delete the workout. If the user chooses to delete the workout, a dialog box will prompt the user to confirm deletion before the workout and associated sessions are deleted.
 
@@ -12,10 +12,13 @@ Once a user starts the workout, each workout will appear individually on the scr
 
 ![complete workout](wireframes/complete-workout.png)
 
-The user can create a new workout by clicking “Create Workout”. This screen displays two expansion panels, “Lower Body” and “Upper Body.” The user is able to select specific exercises, and they are able to change default settings by clicking the Edit button. This allows the user to update the sets, reps, and weight. These are individually edited on the Edit Exercise modal.
+The user can create a new workout by clicking “Create Workout”. This screen displays two expansion panels, “Lower Body” and “Upper Body.” The user is able to select specific exercises, and they are able to change default settings by clicking the Edit button. 
 
-[create workout](wireframes/create-workout.png)
-[edit exercise](wireframes/edit-exercise.png)
+![create workout](wireframes/create-workout.png)
+
+This allows the user to update the sets, reps, and weight. These are individually edited on the Edit Exercise modal.
+
+![edit exercise](wireframes/edit-exercise.png)
 
 ## Technologies Used
 
