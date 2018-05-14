@@ -35,17 +35,11 @@ This application was created with the following:
 * Run `npm install`
 * Run `npm run server`
 * Run `npm run client`
-* You should be automatically directed to `localhost:3000`. If not, navigate to `localhost:3000`
+* You should be automatically directed to `localhost:3000`. If not, navigate to `localhost:3000`.
 
 ## To Create the Database and Tables with PostgreSQL
 
-Create a new database called `prime_solo_app` and a schema called `workoutApp`. Create the following tables: 
-* `workoutApp.completed_exercise`
-* `workoutApp.exercise`
-* `workoutApp.person`
-* `workoutApp.session`
-* `workoutApp.workout`
-* `workoutApp.workout_detail`
+Create a new database called `petHotel` and two tables: `pet` and `owner`. 
 
 ```SQL
 CREATE SCHEMA "workoutApp";

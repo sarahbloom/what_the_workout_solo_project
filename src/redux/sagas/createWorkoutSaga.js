@@ -37,7 +37,7 @@ function* viewNewWorkout(action) {
             type: 'SET_WORKOUT_DETAILS',
             payload: newWorkoutDetailResponse.data
         })
-        console.log('newWorkoutDetailResponse', newWorkoutDetailResponse);
+        // console.log('newWorkoutDetailResponse', newWorkoutDetailResponse);
         
     } catch (error) {
         console.log('error in workoutDetail saga', error);
