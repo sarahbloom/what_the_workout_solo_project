@@ -12,7 +12,6 @@ class StartWorkoutItem extends Component {
     addFive = () => {
         this.props.sessionItem.default_weight = parseInt(this.props.sessionItem.default_weight, 10)
         this.props.sessionItem.default_weight += 5;
-        console.log(this.props.sessionItem);
         this.props.dispatch({
             type: 'UPDATE_EXERCISE_IN_SESSION',
             payload: this.props.sessionItem

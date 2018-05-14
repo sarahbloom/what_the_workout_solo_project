@@ -21,7 +21,7 @@ class StartWorkout extends Component {
 
     //save completed session to database. Change of local state will display diaglog box.
     finishedWorkout = (event) => {
-        console.log('finished workout');
+        // console.log('finished workout');
         event.preventDefault();
         this.props.dispatch({
             type: 'POST_COMPLETED_SESSION',
