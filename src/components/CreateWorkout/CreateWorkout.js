@@ -32,9 +32,10 @@ class CreateWorkout extends Component {
     }
 
      handleClickOpen = () => {
-         this.setState({
-             open: true
-         });
+        if (this.state.workoutName.length === 0) 
+        {
+            this.setState({ open: true });
+        }
      };
 
     handleClose = (event) => {
@@ -53,10 +54,13 @@ class CreateWorkout extends Component {
     //submit new workout name and exercise list to BD
     submitWorkout = (event) => {
         if (this.state.workoutName.length === 0) {
+            event.preventDefault();
+            // this.setState({
+            //     open: true
+            // }) 
             console.log('you need a name');
-            this.setState({
-                open: true
-            });
+            console.log('name and state', this.state.workoutName.length, this.state);
+            return false;
         } else {
             event.preventDefault();
             this.props.dispatch({
@@ -99,7 +103,9 @@ class CreateWorkout extends Component {
             content = ( 
                 <div>
                 <h2> Create Your Workout! </h2> 
-                <form onSubmit = {this.submitWorkout} className = "newWorkout" >
+                <form onSubmit = {this.submitWorkout} 
+                        // onClick={this.handleClickOpen} 
+                        className = "newWorkout" >
                     <Input className="inputField" placeholder = "Workout Name"
                         type = "text" onChange = {this.handleNameChange}
                         value = {this.state.workoutName}
@@ -124,7 +130,7 @@ class CreateWorkout extends Component {
                             <List> {upperBodyExercise} </List>
                         </ExpansionPanelDetails > 
                     </ExpansionPanel>
-                    {/* added expansion panel for "core" to add another family of exercises in the future */}
+                    {/* TODO: added expansion panel for "core" to add another family of exercises in the future */}
                     {/* <ExpansionPanel >
                         < ExpansionPanelSummary expandIcon = { <KeyboardArrowDown /> }>
                         < Typography className = "heading" > Core </Typography> 
@@ -133,9 +139,29 @@ class CreateWorkout extends Component {
             <br />
                 </div> 
                 < div className = "workoutButton" >
-                    <Button type = "submit" variant = "raised" color = "primary" >
+                    <Button onClick={this.handleClickOpen} 
+                            type = "submit" 
+                            variant = "raised"
+                            color = "primary" >
                         Start Workout!
                     </Button> 
+
+                    <Dialog open = {this.state.open}
+                            onClose={this.handleClose}
+                            aria-labelledby="alert-dialog-title"
+                            aria-describedby="alert-dialog-description">
+                        <DialogTitle id="alert-dialog-title">{"Your workout needs a name!"}</DialogTitle>
+                        <DialogContent>
+                            <DialogContentText id="alert-dialog-description">
+                                Enter in a workout name before starting the workout.
+                            </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={this.handleClose} color="primary">
+                                OK!
+                            </Button>
+                        </DialogActions>
+                    </Dialog>
                 </div>
                 </form> 
                 </div>
@@ -144,26 +170,9 @@ class CreateWorkout extends Component {
 
         return ( 
             <div >
-            <Nav />
-                <Dialog open = {this.state.open}
-                        aria-describedby = "alert-dialog-no-workout-name" >
-                    <DialogTitle > 
-                        {"Your Workout Needs a Name!"} 
-                    </DialogTitle> 
-                    <DialogContent >
-                    <DialogContentText >
-                        Please enter in a name for your new workout before continuing. 
-                    </DialogContentText> 
-                    </DialogContent> 
-
-                    <DialogActions >
-                        <Button onClick = {this.handleClose} color = "primary">
-                            OK!
-                        </Button> 
-                    </DialogActions>
-                </Dialog> 
+                <Nav />
                 {content} 
-             </div>
+            </div>
         )
     }
 }
